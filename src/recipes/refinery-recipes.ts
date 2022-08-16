@@ -1,12 +1,12 @@
-import { Item, Machine, Resources } from '../elements';
+import { Item, Machine } from '../elements';
 import { Ratio } from '../interfaces';
 import { addMachineToRatios } from '../utils';
 
 const ratios: Ratio[] = [
   {
     inputs: [
-      { element: Resources.IRON_ORE, rate: 35 },
-      { element: Resources.WATER, rate: 20 },
+      { element: Item.IRON_ORE, rate: 35 },
+      { element: Item.WATER, rate: 20 },
     ],
     outputs: [{ element: Item.IRON_INGOT, rate: 65 }],
   },

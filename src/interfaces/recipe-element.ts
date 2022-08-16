@@ -1,8 +1,8 @@
-import { Element } from '../elements';
+import { Item } from '../elements';
 
 export type ElementPerMinute = number;
 
 export interface RecipeElement {
-  element: Element;
+  element: Item;
   rate: ElementPerMinute;
 }

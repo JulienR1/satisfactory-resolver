@@ -1,6 +1,6 @@
-import { Machine, Resources } from '../elements';
-import { addMachineToRatios, mapResourcesToRate } from '../utils';
+import { Item, Machine } from '../elements';
+import { addMachineToRatios, mapItemToRate } from '../utils';
 
-const ratios = mapResourcesToRate([Resources.WATER], 120);
+const ratios = mapItemToRate([Item.WATER], 120);
 
 export default addMachineToRatios(ratios, Machine.WATER_EXTRACTOR);

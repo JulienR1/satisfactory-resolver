@@ -1,11 +1,11 @@
-import { Machine, Resources } from '../elements';
-import { addMachineToRatios, mapResourcesToRate } from '../utils';
+import { Item, Machine } from '../elements';
+import { addMachineToRatios, mapItemToRate } from '../utils';
 
-const resources = [Resources.IRON_ORE, Resources.COPPER_ORE];
+const resources = [Item.IRON_ORE, Item.COPPER_ORE];
 
-const ratiosMk1 = mapResourcesToRate(resources, 60);
-const ratiosMk2 = mapResourcesToRate(resources, 120);
-const ratiosMk3 = mapResourcesToRate(resources, 240);
+const ratiosMk1 = mapItemToRate(resources, 60);
+const ratiosMk2 = mapItemToRate(resources, 120);
+const ratiosMk3 = mapItemToRate(resources, 240);
 
 const recipes = [
   ...addMachineToRatios(ratiosMk1, Machine.MINER_MK1),
