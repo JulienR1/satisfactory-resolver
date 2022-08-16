@@ -1,1 +1,14 @@
-export enum Item {}
+export enum Item {
+  REINFORCED_IRON_PLATE,
+  IRON_INGOT,
+  IRON_PLATE,
+  SCREW,
+  RUBBER,
+  PLASTIC,
+  WIRE,
+  STEEL_INGOT,
+  COMPACTED_COAL,
+  PETROLEUM_COKE,
+  ROD,
+  STEEL_BEAM,
+}

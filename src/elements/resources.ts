@@ -2,10 +2,12 @@ export enum Resources {
   IRON_ORE,
   COPPER_ORE,
   CATERIUM_ORE,
-  COAL_ORE,
+  COAL,
   LIMESTONE,
   RAW_QUARTZ,
   URANIUM,
   BAUXITE,
   SULFUR_ORE,
+  WATER,
+  OIL,
 }
