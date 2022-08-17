@@ -1,6 +1,6 @@
 # Satisfactory Resolver
 
-An attempt to automate recipe optimisation in Satisfactory.
+An attempt to automate recipe optimisation in [Satisfactory](https://www.satisfactorygame.com/).
 
 ## Setup
 
