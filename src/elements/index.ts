@@ -1,5 +1,6 @@
-import details from './item-details';
+import itemDetails from './item-details';
+import machineDetails from './machine-details';
 
 export * from './machines';
 export * from './items';
-export { details };
+export { itemDetails, machineDetails };
