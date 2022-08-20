@@ -8,20 +8,6 @@ const ratios: Ratio[] = [
     outputs: [{ element: Item.IRON_PLATE, rate: 20 }],
   },
   {
-    inputs: [
-      { element: Item.IRON_INGOT, rate: 50 },
-      { element: Item.PLASTIC, rate: 10 },
-    ],
-    outputs: [{ element: Item.IRON_PLATE, rate: 75 }],
-  },
-  {
-    inputs: [
-      { element: Item.STEEL_INGOT, rate: 7.5 },
-      { element: Item.PLASTIC, rate: 5 },
-    ],
-    outputs: [{ element: Item.IRON_PLATE, rate: 45 }],
-  },
-  {
     inputs: [{ element: Item.ROD, rate: 10 }],
     outputs: [{ element: Item.SCREW, rate: 40 }],
   },
