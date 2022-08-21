@@ -1,35 +1,35 @@
 import { Item, Machine } from '../elements';
-import { Ratio } from '../interfaces';
+import { Ratio, RecipeElement } from '../interfaces';
 import { addMachineToRatios } from '../utils';
 
 const ratios: Ratio[] = [
   {
-    inputs: [{ element: Item.IRON_INGOT, rate: 30 }],
-    outputs: [{ element: Item.IRON_PLATE, rate: 20 }],
+    inputs: [new RecipeElement(Item.IRON_INGOT, 30)],
+    outputs: [new RecipeElement(Item.IRON_PLATE, 20)],
   },
   {
-    inputs: [{ element: Item.ROD, rate: 10 }],
-    outputs: [{ element: Item.SCREW, rate: 40 }],
+    inputs: [new RecipeElement(Item.ROD, 10)],
+    outputs: [new RecipeElement(Item.SCREW, 40)],
   },
   {
-    inputs: [{ element: Item.IRON_INGOT, rate: 12.5 }],
-    outputs: [{ element: Item.SCREW, rate: 50 }],
+    inputs: [new RecipeElement(Item.IRON_INGOT, 12.5)],
+    outputs: [new RecipeElement(Item.SCREW, 50)],
   },
   {
-    inputs: [{ element: Item.STEEL_BEAM, rate: 5 }],
-    outputs: [{ element: Item.SCREW, rate: 260 }],
+    inputs: [new RecipeElement(Item.STEEL_BEAM, 5)],
+    outputs: [new RecipeElement(Item.SCREW, 260)],
   },
   {
-    inputs: [{ element: Item.STEEL_INGOT, rate: 60 }],
-    outputs: [{ element: Item.STEEL_BEAM, rate: 15 }],
+    inputs: [new RecipeElement(Item.STEEL_INGOT, 60)],
+    outputs: [new RecipeElement(Item.STEEL_BEAM, 15)],
   },
   {
-    inputs: [{ element: Item.IRON_INGOT, rate: 15 }],
-    outputs: [{ element: Item.ROD, rate: 15 }],
+    inputs: [new RecipeElement(Item.IRON_INGOT, 15)],
+    outputs: [new RecipeElement(Item.ROD, 15)],
   },
   {
-    inputs: [{ element: Item.STEEL_INGOT, rate: 12 }],
-    outputs: [{ element: Item.ROD, rate: 48 }],
+    inputs: [new RecipeElement(Item.STEEL_INGOT, 12)],
+    outputs: [new RecipeElement(Item.ROD, 48)],
   },
 ];
 

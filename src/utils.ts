@@ -1,5 +1,5 @@
 import { Item, Machine } from './elements';
-import { ElementPerMinute, Ratio, Recipe } from './interfaces';
+import { ElementPerMinute, Ratio, Recipe, RecipeElement } from './interfaces';
 
 export const addMachineToRatios = (
   ratios: Ratio[],
@@ -14,6 +14,6 @@ export const mapItemToRate = (
 ): Ratio[] => {
   return resources.map(resource => ({
     inputs: [],
-    outputs: [{ element: resource, rate }],
+    outputs: [new RecipeElement(resource, rate)],
   }));
 };

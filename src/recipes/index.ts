@@ -1,3 +1,4 @@
+import { Item } from '../elements';
 import { Recipe } from '../interfaces';
 import assemblerRecipes from './assembler-recipes';
 import blenderRecipes from './blender-recipes';
@@ -23,4 +24,17 @@ const recipes: Recipe[] = [
   ...notImplementedRecipes,
 ];
 
+const outputsToRecipes = recipes.reduce((accumulation, recipe, recipeIndex) => {
+  recipe.outputs.forEach(output => {
+    accumulation[output.element] = [
+      ...(accumulation[output.element] ?? []),
+      recipeIndex,
+    ];
+  });
+  return accumulation;
+}, {} as { [key in Item]: number[] });
+
+const getRecipesForItem = (item: Item) => outputsToRecipes[item];
+
 export default recipes;
+export { getRecipesForItem };

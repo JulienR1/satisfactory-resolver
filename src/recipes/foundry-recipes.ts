@@ -1,42 +1,42 @@
-import { Item,Machine } from '../elements';
-import { Ratio } from '../interfaces';
+import { Item, Machine } from '../elements';
+import { Ratio, RecipeElement } from '../interfaces';
 import { addMachineToRatios } from '../utils';
 
 const ratios: Ratio[] = [
   {
     inputs: [
-      { element: Item.IRON_ORE, rate: 45 },
-      { element: Item.COAL, rate: 45 },
+      new RecipeElement(Item.IRON_ORE, 45),
+      new RecipeElement(Item.COAL, 45),
     ],
-    outputs: [{ element: Item.STEEL_INGOT, rate: 45 }],
+    outputs: [new RecipeElement(Item.STEEL_INGOT, 45)],
   },
   {
     inputs: [
-      { element: Item.IRON_ORE, rate: 75 },
-      { element: Item.PETROLEUM_COKE, rate: 75 },
+      new RecipeElement(Item.IRON_ORE, 75),
+      new RecipeElement(Item.PETROLEUM_COKE, 75),
     ],
-    outputs: [{ element: Item.STEEL_INGOT, rate: 100 }],
+    outputs: [new RecipeElement(Item.STEEL_INGOT, 100)],
   },
   {
     inputs: [
-      { element: Item.IRON_ORE, rate: 22.5 },
-      { element: Item.COMPACTED_COAL, rate: 11.25 },
+      new RecipeElement(Item.IRON_ORE, 22.5),
+      new RecipeElement(Item.COMPACTED_COAL, 11.25),
     ],
-    outputs: [{ element: Item.STEEL_INGOT, rate: 37.5 }],
+    outputs: [new RecipeElement(Item.STEEL_INGOT, 37.5)],
   },
   {
     inputs: [
-      { element: Item.IRON_INGOT, rate: 40 },
-      { element: Item.COAL, rate: 40 },
+      new RecipeElement(Item.IRON_INGOT, 40),
+      new RecipeElement(Item.COAL, 40),
     ],
-    outputs: [{ element: Item.STEEL_INGOT, rate: 60 }],
+    outputs: [new RecipeElement(Item.STEEL_INGOT, 60)],
   },
   {
     inputs: [
-      { element: Item.IRON_ORE, rate: 20 },
-      { element: Item.COPPER_ORE, rate: 20 },
+      new RecipeElement(Item.IRON_ORE, 20),
+      new RecipeElement(Item.COPPER_ORE, 20),
     ],
-    outputs: [{ element: Item.IRON_INGOT, rate: 50 }],
+    outputs: [new RecipeElement(Item.IRON_INGOT, 50)],
   },
 ];
 

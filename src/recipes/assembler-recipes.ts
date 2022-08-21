@@ -1,49 +1,49 @@
 import { Item, Machine } from '../elements';
-import { Ratio } from '../interfaces';
+import { Ratio, RecipeElement } from '../interfaces';
 import { addMachineToRatios } from '../utils';
 
 const ratios: Ratio[] = [
   {
     inputs: [
-      { element: Item.IRON_PLATE, rate: 30 },
-      { element: Item.SCREW, rate: 60 },
+      new RecipeElement(Item.IRON_PLATE, 30),
+      new RecipeElement(Item.SCREW, 60),
     ],
-    outputs: [{ element: Item.REINFORCED_IRON_PLATE, rate: 5 }],
+    outputs: [new RecipeElement(Item.REINFORCED_IRON_PLATE, 5)],
   },
   {
     inputs: [
-      { element: Item.IRON_INGOT, rate: 50 },
-      { element: Item.PLASTIC, rate: 10 },
+      new RecipeElement(Item.IRON_INGOT, 50),
+      new RecipeElement(Item.PLASTIC, 10),
     ],
-    outputs: [{ element: Item.IRON_PLATE, rate: 75 }],
+    outputs: [new RecipeElement(Item.IRON_PLATE, 75)],
   },
   {
     inputs: [
-      { element: Item.STEEL_INGOT, rate: 7.5 },
-      { element: Item.PLASTIC, rate: 5 },
+      new RecipeElement(Item.STEEL_INGOT, 7.5),
+      new RecipeElement(Item.PLASTIC, 5),
     ],
-    outputs: [{ element: Item.IRON_PLATE, rate: 45 }],
+    outputs: [new RecipeElement(Item.IRON_PLATE, 45)],
   },
   {
     inputs: [
-      { element: Item.IRON_PLATE, rate: 90 },
-      { element: Item.SCREW, rate: 250 },
+      new RecipeElement(Item.IRON_PLATE, 90),
+      new RecipeElement(Item.SCREW, 250),
     ],
-    outputs: [{ element: Item.REINFORCED_IRON_PLATE, rate: 15 }],
+    outputs: [new RecipeElement(Item.REINFORCED_IRON_PLATE, 15)],
   },
   {
     inputs: [
-      { element: Item.IRON_PLATE, rate: 18.75 },
-      { element: Item.WIRE, rate: 37.5 },
+      new RecipeElement(Item.IRON_PLATE, 18.75),
+      new RecipeElement(Item.WIRE, 37.5),
     ],
-    outputs: [{ element: Item.REINFORCED_IRON_PLATE, rate: 5.625 }],
+    outputs: [new RecipeElement(Item.REINFORCED_IRON_PLATE, 5.625)],
   },
   {
     inputs: [
-      { element: Item.COAL, rate: 25 },
-      { element: Item.SULFUR_ORE, rate: 25 },
+      new RecipeElement(Item.COAL, 25),
+      new RecipeElement(Item.SULFUR_ORE, 25),
     ],
-    outputs: [{ element: Item.COMPACTED_COAL, rate: 25 }],
+    outputs: [new RecipeElement(Item.COMPACTED_COAL, 25)],
   },
 ];
 
