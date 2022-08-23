@@ -1,17 +1,19 @@
 # Satisfactory Resolver
 
-An attempt to automate recipe optimisation in [Satisfactory](https://www.satisfactorygame.com/).
+An attempt to automate recipe optimisation in [Satisfactory](https://www.satisfactorygame.com/).<br>
+Made with [SolidJS](https://www.solidjs.com/).
 
 ## Setup
 
-```bash
-$ npm install
-$ npm build
-$ npm start
-```
+### `npm install`
 
-To execute without compiling
+## Usage
 
-```bash
-$ npm start:dev
-```
+### `npm run dev` or `npm start`
+
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### `npm run build`
+
+Builds the app for production to the `dist` folder.<br>
