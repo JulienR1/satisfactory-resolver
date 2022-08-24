@@ -1,4 +1,8 @@
 .itemCard {
+  padding: 5px;
+}
+
+.itemCard__container {
   display: block;
   overflow: hidden;
   width: var(--size);
@@ -7,8 +11,8 @@
   font-size: calc(var(--size) * 0.16);
   background-color: var(--background);
   border-radius: 6px;
-  cursor: default;
-  margin: 5px;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
 
 .itemCard__img {
@@ -24,9 +28,10 @@
   text-align: center;
   line-height: 1.5em;
   transform: translateY(-0.5em);
+  transition: var(--transition-fast);
 }
 
-.itemCard:hover {
+.itemCard__container:hover {
   box-shadow: var(--shadow--high);
 
   .itemCard__caption {

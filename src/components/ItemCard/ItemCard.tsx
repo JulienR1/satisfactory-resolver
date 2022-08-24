@@ -11,12 +11,16 @@ interface IProps {
 
 export const ItemCard: Component<IProps> = props => {
   const merged = mergeProps({ size: 100 }, props);
-  const { title, img } = itemDetails[merged.item];
+  const itemData = itemDetails[merged.item];
+
+  const { title, img } = itemData ?? { title: 'unknown', img: '' };
 
   return (
-    <figure class="itemCard" style={`--size:${merged.size}px;`}>
-      <img src={img} alt={title} class="itemCard__img" />
-      <figcaption class="itemCard__caption">{title}</figcaption>
-    </figure>
+    <div class="itemCard">
+      <figure class="itemCard__container" style={`--size:${merged.size}px;`}>
+        <img src={img} alt={title} class="itemCard__img" />
+        <figcaption class="itemCard__caption">{title}</figcaption>
+      </figure>
+    </div>
   );
 };

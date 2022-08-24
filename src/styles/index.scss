@@ -2,6 +2,7 @@
 @use 'fonts.scss';
 @use 'colors.scss';
 @use 'shadows.scss';
+@use 'transitions.scss';
 
 html,
 body {
@@ -10,5 +11,5 @@ body {
 }
 
 * {
-  transition: all ease 0.2s;
+  transition: var(--transition-normal);
 }

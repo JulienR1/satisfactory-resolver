@@ -23,3 +23,7 @@ export enum Item {
   ROD,
   STEEL_BEAM,
 }
+
+export const ItemKeys: Item[] = Object.keys(Item).filter(
+  key => !isNaN(Number(key)),
+) as unknown[] as Item[];
