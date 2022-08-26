@@ -1,0 +1,21 @@
+.viewport {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.viewport--grabbable {
+  cursor: grab;
+}
+
+.viewport--grabbed {
+  cursor: grabbing;
+}
+
+.viewport__content {
+  transition: none;
+  transform: translate(var(--offset-x), var(--offset-y));
+}
