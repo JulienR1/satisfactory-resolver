@@ -1,0 +1,21 @@
+.draggable {
+  display: block;
+  user-select: none;
+  transition: none;
+}
+
+.draggable:hover:not(.draggable--dragging) {
+  cursor: grab;
+}
+
+.draggable--dragging {
+  cursor: grabbing;
+  transform: translate(var(--x-drag), var(--y-drag));
+}
+
+.draggable__content {
+  display: block;
+}
+
+.draggable__handles {
+}
