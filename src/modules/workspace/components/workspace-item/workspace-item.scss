@@ -1,0 +1,10 @@
+.workspaceItem {
+  display: flex;
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  transform: translate(-50%, -50%);
+  transition: none;
+  top: var(--y);
+  left: var(--x);
+}
