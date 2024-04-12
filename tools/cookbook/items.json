@@ -1,0 +1,3132 @@
+[
+  {
+    "id": "Desc_Stone_C",
+    "name": "Limestone",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Stone_C/name/Limestone",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/Stone_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_OreIron_C",
+    "name": "Iron Ore",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_OreIron_C/name/Iron+Ore",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_iron_new_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_OreCopper_C",
+    "name": "Copper Ore",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_OreCopper_C/name/Copper+Ore",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_copper_new_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_OreGold_C",
+    "name": "Caterium Ore",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_OreGold_C/name/Caterium+Ore",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_CateriumOre_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_Coal_C",
+    "name": "Coal",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Coal_C/name/Coal",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_CoalOre_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Alternate: Biocoal",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_GenericBiomass_C", "rate": 37.5 }],
+        "outputs": [{ "id": "Desc_Coal_C", "rate": 45 }]
+      },
+      {
+        "label": "Alternate: Charcoal",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_Wood_C", "rate": 15 }],
+        "outputs": [{ "id": "Desc_Coal_C", "rate": 150 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_RawQuartz_C",
+    "name": "Raw Quartz",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_RawQuartz_C/name/Raw+Quartz",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_QuartzCrystal_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_Sulfur_C",
+    "name": "Sulfur",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Sulfur_C/name/Sulfur",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/Sulfur_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_OreBauxite_C",
+    "name": "Bauxite",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_OreBauxite_C/name/Bauxite",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Bauxite_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_SAM_C",
+    "name": "S.A.M. Ore",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SAM_C/name/S.A.M.+Ore",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/SAMOre_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_OreUranium_C",
+    "name": "Uranium",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_OreUranium_C/name/Uranium",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_UraniumOre_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_IronIngot_C",
+    "name": "Iron Ingot",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_IronIngot_C/name/Iron+Ingot",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_IronIngot_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Iron Ingot",
+        "machine": "smelter",
+        "inputs": [{ "id": "Desc_OreIron_C", "rate": 30 }],
+        "outputs": [{ "id": "Desc_IronIngot_C", "rate": 30 }]
+      },
+      {
+        "label": "Alternate: Iron Alloy Ingot",
+        "machine": "foundry",
+        "inputs": [
+          { "id": "Desc_OreIron_C", "rate": 20 },
+          { "id": "Desc_OreCopper_C", "rate": 20 }
+        ],
+        "outputs": [{ "id": "Desc_IronIngot_C", "rate": 50 }]
+      },
+      {
+        "label": "Alternate: Pure Iron Ingot",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_OreIron_C", "rate": 35 },
+          { "id": "Desc_Water_C", "rate": 20 }
+        ],
+        "outputs": [{ "id": "Desc_IronIngot_C", "rate": 65 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_CopperIngot_C",
+    "name": "Copper Ingot",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_CopperIngot_C/name/Copper+Ingot",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_CopperIngot_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Copper Ingot",
+        "machine": "smelter",
+        "inputs": [{ "id": "Desc_OreCopper_C", "rate": 30 }],
+        "outputs": [{ "id": "Desc_CopperIngot_C", "rate": 30 }]
+      },
+      {
+        "label": "Alternate: Copper Alloy Ingot",
+        "machine": "foundry",
+        "inputs": [
+          { "id": "Desc_OreCopper_C", "rate": 50 },
+          { "id": "Desc_OreIron_C", "rate": 25 }
+        ],
+        "outputs": [{ "id": "Desc_CopperIngot_C", "rate": 100 }]
+      },
+      {
+        "label": "Alternate: Pure Copper Ingot",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_OreCopper_C", "rate": 15 },
+          { "id": "Desc_Water_C", "rate": 10 }
+        ],
+        "outputs": [{ "id": "Desc_CopperIngot_C", "rate": 37.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_GoldIngot_C",
+    "name": "Caterium Ingot",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_GoldIngot_C/name/Caterium+Ingot",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_CateriumIngot_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Caterium Ingot",
+        "machine": "smelter",
+        "inputs": [{ "id": "Desc_OreGold_C", "rate": 45 }],
+        "outputs": [{ "id": "Desc_GoldIngot_C", "rate": 15 }]
+      },
+      {
+        "label": "Alternate: Pure Caterium Ingot",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_OreGold_C", "rate": 24 },
+          { "id": "Desc_Water_C", "rate": 24 }
+        ],
+        "outputs": [{ "id": "Desc_GoldIngot_C", "rate": 12 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_SteelIngot_C",
+    "name": "Steel Ingot",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SteelIngot_C/name/Steel+Ingot",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_SteelIngot_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Steel Ingot",
+        "machine": "foundry",
+        "inputs": [
+          { "id": "Desc_OreIron_C", "rate": 45 },
+          { "id": "Desc_Coal_C", "rate": 45 }
+        ],
+        "outputs": [{ "id": "Desc_SteelIngot_C", "rate": 45 }]
+      },
+      {
+        "label": "Alternate: Coke Steel Ingot",
+        "machine": "foundry",
+        "inputs": [
+          { "id": "Desc_OreIron_C", "rate": 75 },
+          { "id": "Desc_PetroleumCoke_C", "rate": 75 }
+        ],
+        "outputs": [{ "id": "Desc_SteelIngot_C", "rate": 100 }]
+      },
+      {
+        "label": "Alternate: Compacted Steel Ingot",
+        "machine": "foundry",
+        "inputs": [
+          { "id": "Desc_OreIron_C", "rate": 22.5 },
+          { "id": "Desc_CompactedCoal_C", "rate": 11.25 }
+        ],
+        "outputs": [{ "id": "Desc_SteelIngot_C", "rate": 37.5 }]
+      },
+      {
+        "label": "Alternate: Solid Steel Ingot",
+        "machine": "foundry",
+        "inputs": [
+          { "id": "Desc_IronIngot_C", "rate": 40 },
+          { "id": "Desc_Coal_C", "rate": 40 }
+        ],
+        "outputs": [{ "id": "Desc_SteelIngot_C", "rate": 60 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_AluminumIngot_C",
+    "name": "Aluminum Ingot",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_AluminumIngot_C/name/Aluminum+Ingot",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_AluminiumIngot_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Aluminum Ingot",
+        "machine": "foundry",
+        "inputs": [
+          { "id": "Desc_AluminumScrap_C", "rate": 90 },
+          { "id": "Desc_Silica_C", "rate": 75 }
+        ],
+        "outputs": [{ "id": "Desc_AluminumIngot_C", "rate": 60 }]
+      },
+      {
+        "label": "Alternate: Pure Aluminum Ingot",
+        "machine": "smelter",
+        "inputs": [{ "id": "Desc_AluminumScrap_C", "rate": 60 }],
+        "outputs": [{ "id": "Desc_AluminumIngot_C", "rate": 30 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Cement_C",
+    "name": "Concrete",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Cement_C/name/Concrete",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Concrete_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Concrete",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_Stone_C", "rate": 45 }],
+        "outputs": [{ "id": "Desc_Cement_C", "rate": 15 }]
+      },
+      {
+        "label": "Alternate: Fine Concrete",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_Silica_C", "rate": 7.5 },
+          { "id": "Desc_Stone_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_Cement_C", "rate": 25 }]
+      },
+      {
+        "label": "Alternate: Rubber Concrete",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_Stone_C", "rate": 50 },
+          { "id": "Desc_Rubber_C", "rate": 10 }
+        ],
+        "outputs": [{ "id": "Desc_Cement_C", "rate": 45 }]
+      },
+      {
+        "label": "Alternate: Wet Concrete",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_Stone_C", "rate": 120 },
+          { "id": "Desc_Water_C", "rate": 100 }
+        ],
+        "outputs": [{ "id": "Desc_Cement_C", "rate": 80 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_QuartzCrystal_C",
+    "name": "Quartz Crystal",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_QuartzCrystal_C/name/Quartz+Crystal",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_QuartzResource_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Quartz Crystal",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_RawQuartz_C", "rate": 37.5 }],
+        "outputs": [{ "id": "Desc_QuartzCrystal_C", "rate": 22.5 }]
+      },
+      {
+        "label": "Alternate: Pure Quartz Crystal",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_RawQuartz_C", "rate": 67.5 },
+          { "id": "Desc_Water_C", "rate": 37.5 }
+        ],
+        "outputs": [{ "id": "Desc_QuartzCrystal_C", "rate": 52.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Silica_C",
+    "name": "Silica",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Silica_C/name/Silica",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Silica_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Alumina Solution",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_OreBauxite_C", "rate": 120 },
+          { "id": "Desc_Water_C", "rate": 180 }
+        ],
+        "outputs": [
+          { "id": "Desc_AluminaSolution_C", "rate": 120 },
+          { "id": "Desc_Silica_C", "rate": 50 }
+        ]
+      },
+      {
+        "label": "Silica",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_RawQuartz_C", "rate": 22.5 }],
+        "outputs": [{ "id": "Desc_Silica_C", "rate": 37.5 }]
+      },
+      {
+        "label": "Alternate: Cheap Silica",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_RawQuartz_C", "rate": 11.25 },
+          { "id": "Desc_Stone_C", "rate": 18.75 }
+        ],
+        "outputs": [{ "id": "Desc_Silica_C", "rate": 26.25 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_CopperDust_C",
+    "name": "Copper Powder",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_CopperDust_C/name/Copper+Powder",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_CopperDust_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Copper Powder",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_CopperIngot_C", "rate": 300 }],
+        "outputs": [{ "id": "Desc_CopperDust_C", "rate": 50 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PolymerResin_C",
+    "name": "Polymer Resin",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PolymerResin_C/name/Polymer+Resin",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_PolymerResin_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Fuel",
+        "machine": "refinery",
+        "inputs": [{ "id": "Desc_LiquidOil_C", "rate": 60 }],
+        "outputs": [
+          { "id": "Desc_LiquidFuel_C", "rate": 40 },
+          { "id": "Desc_PolymerResin_C", "rate": 30 }
+        ]
+      },
+      {
+        "label": "Alternate: Heavy Oil Residue",
+        "machine": "refinery",
+        "inputs": [{ "id": "Desc_LiquidOil_C", "rate": 30 }],
+        "outputs": [
+          { "id": "Desc_HeavyOilResidue_C", "rate": 40 },
+          { "id": "Desc_PolymerResin_C", "rate": 20 }
+        ]
+      },
+      {
+        "label": "Alternate: Polymer Resin",
+        "machine": "refinery",
+        "inputs": [{ "id": "Desc_LiquidOil_C", "rate": 60 }],
+        "outputs": [
+          { "id": "Desc_PolymerResin_C", "rate": 130 },
+          { "id": "Desc_HeavyOilResidue_C", "rate": 20 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PetroleumCoke_C",
+    "name": "Petroleum Coke",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PetroleumCoke_C/name/Petroleum+Coke",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_PetroleumCoke_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Petroleum Coke",
+        "machine": "refinery",
+        "inputs": [{ "id": "Desc_HeavyOilResidue_C", "rate": 40 }],
+        "outputs": [{ "id": "Desc_PetroleumCoke_C", "rate": 120 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_AluminumScrap_C",
+    "name": "Aluminum Scrap",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_AluminumScrap_C/name/Aluminum+Scrap",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_AluminiumScrap_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Aluminum Scrap",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_AluminaSolution_C", "rate": 240 },
+          { "id": "Desc_Coal_C", "rate": 120 }
+        ],
+        "outputs": [
+          { "id": "Desc_AluminumScrap_C", "rate": 360 },
+          { "id": "Desc_Water_C", "rate": 120 }
+        ]
+      },
+      {
+        "label": "Alternate: Electrode Aluminum Scrap",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_AluminaSolution_C", "rate": 180 },
+          { "id": "Desc_PetroleumCoke_C", "rate": 60 }
+        ],
+        "outputs": [
+          { "id": "Desc_AluminumScrap_C", "rate": 300 },
+          { "id": "Desc_Water_C", "rate": 105 }
+        ]
+      },
+      {
+        "label": "Alternate: Instant Scrap",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_OreBauxite_C", "rate": 150 },
+          { "id": "Desc_Coal_C", "rate": 100 },
+          { "id": "Desc_SulfuricAcid_C", "rate": 50 },
+          { "id": "Desc_Water_C", "rate": 60 }
+        ],
+        "outputs": [
+          { "id": "Desc_AluminumScrap_C", "rate": 300 },
+          { "id": "Desc_Water_C", "rate": 50 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Desc_AlienProtein_C",
+    "name": "Alien Protein",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_AlienProtein_C/name/Alien+Protein",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_AlienProtein_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Hatcher Protein",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_HatcherParts_C", "rate": 20 }],
+        "outputs": [{ "id": "Desc_AlienProtein_C", "rate": 20 }]
+      },
+      {
+        "label": "Hog Protein",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_HogParts_C", "rate": 20 }],
+        "outputs": [{ "id": "Desc_AlienProtein_C", "rate": 20 }]
+      },
+      {
+        "label": "Spitter Protein",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_SpitterParts_C", "rate": 20 }],
+        "outputs": [{ "id": "Desc_AlienProtein_C", "rate": 20 }]
+      },
+      {
+        "label": "Stinger Protein",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_StingerParts_C", "rate": 20 }],
+        "outputs": [{ "id": "Desc_AlienProtein_C", "rate": 20 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_AlienDNACapsule_C",
+    "name": "Alien DNA Capsule",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_AlienDNACapsule_C/name/Alien+DNA+Capsule",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_AlienDNA_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Alien DNA Capsule",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_AlienProtein_C", "rate": 10 }],
+        "outputs": [{ "id": "Desc_AlienDNACapsule_C", "rate": 10 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Water_C",
+    "name": "Water",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Water_C/name/Water",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/LiquidWater_Pipe_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Aluminum Scrap",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_AluminaSolution_C", "rate": 240 },
+          { "id": "Desc_Coal_C", "rate": 120 }
+        ],
+        "outputs": [
+          { "id": "Desc_AluminumScrap_C", "rate": 360 },
+          { "id": "Desc_Water_C", "rate": 120 }
+        ]
+      },
+      {
+        "label": "Battery",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_SulfuricAcid_C", "rate": 50 },
+          { "id": "Desc_AluminaSolution_C", "rate": 40 },
+          { "id": "Desc_AluminumCasing_C", "rate": 20 }
+        ],
+        "outputs": [
+          { "id": "Desc_Battery_C", "rate": 20 },
+          { "id": "Desc_Water_C", "rate": 30 }
+        ]
+      },
+      {
+        "label": "Non-fissile Uranium",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_NuclearWaste_C", "rate": 37.5 },
+          { "id": "Desc_Silica_C", "rate": 25 },
+          { "id": "Desc_NitricAcid_C", "rate": 15 },
+          { "id": "Desc_SulfuricAcid_C", "rate": 15 }
+        ],
+        "outputs": [
+          { "id": "Desc_NonFissibleUranium_C", "rate": 50 },
+          { "id": "Desc_Water_C", "rate": 15 }
+        ]
+      },
+      {
+        "label": "Unpackage Water",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedWater_C", "rate": 120 }],
+        "outputs": [
+          { "id": "Desc_Water_C", "rate": 120 },
+          { "id": "Desc_FluidCanister_C", "rate": 120 }
+        ]
+      },
+      {
+        "label": "Alternate: Electrode Aluminum Scrap",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_AluminaSolution_C", "rate": 180 },
+          { "id": "Desc_PetroleumCoke_C", "rate": 60 }
+        ],
+        "outputs": [
+          { "id": "Desc_AluminumScrap_C", "rate": 300 },
+          { "id": "Desc_Water_C", "rate": 105 }
+        ]
+      },
+      {
+        "label": "Alternate: Fertile Uranium",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_OreUranium_C", "rate": 25 },
+          { "id": "Desc_NuclearWaste_C", "rate": 25 },
+          { "id": "Desc_NitricAcid_C", "rate": 15 },
+          { "id": "Desc_SulfuricAcid_C", "rate": 25 }
+        ],
+        "outputs": [
+          { "id": "Desc_NonFissibleUranium_C", "rate": 100 },
+          { "id": "Desc_Water_C", "rate": 40 }
+        ]
+      },
+      {
+        "label": "Alternate: Instant Scrap",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_OreBauxite_C", "rate": 150 },
+          { "id": "Desc_Coal_C", "rate": 100 },
+          { "id": "Desc_SulfuricAcid_C", "rate": 50 },
+          { "id": "Desc_Water_C", "rate": 60 }
+        ],
+        "outputs": [
+          { "id": "Desc_AluminumScrap_C", "rate": 300 },
+          { "id": "Desc_Water_C", "rate": 50 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Desc_LiquidOil_C",
+    "name": "Crude Oil",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_LiquidOil_C/name/Crude+Oil",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/LiquidOil_Pipe_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Unpackage Oil",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedOil_C", "rate": 60 }],
+        "outputs": [
+          { "id": "Desc_LiquidOil_C", "rate": 60 },
+          { "id": "Desc_FluidCanister_C", "rate": 60 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Desc_HeavyOilResidue_C",
+    "name": "Heavy Oil Residue",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_HeavyOilResidue_C/name/Heavy+Oil+Residue",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_LiquidHeavyOilResidue_Pipe_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Plastic",
+        "machine": "refinery",
+        "inputs": [{ "id": "Desc_LiquidOil_C", "rate": 30 }],
+        "outputs": [
+          { "id": "Desc_Plastic_C", "rate": 20 },
+          { "id": "Desc_HeavyOilResidue_C", "rate": 10 }
+        ]
+      },
+      {
+        "label": "Rubber",
+        "machine": "refinery",
+        "inputs": [{ "id": "Desc_LiquidOil_C", "rate": 30 }],
+        "outputs": [
+          { "id": "Desc_Rubber_C", "rate": 20 },
+          { "id": "Desc_HeavyOilResidue_C", "rate": 20 }
+        ]
+      },
+      {
+        "label": "Unpackage Heavy Oil Residue",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedOilResidue_C", "rate": 20 }],
+        "outputs": [
+          { "id": "Desc_HeavyOilResidue_C", "rate": 20 },
+          { "id": "Desc_FluidCanister_C", "rate": 20 }
+        ]
+      },
+      {
+        "label": "Alternate: Heavy Oil Residue",
+        "machine": "refinery",
+        "inputs": [{ "id": "Desc_LiquidOil_C", "rate": 30 }],
+        "outputs": [
+          { "id": "Desc_HeavyOilResidue_C", "rate": 40 },
+          { "id": "Desc_PolymerResin_C", "rate": 20 }
+        ]
+      },
+      {
+        "label": "Alternate: Polymer Resin",
+        "machine": "refinery",
+        "inputs": [{ "id": "Desc_LiquidOil_C", "rate": 60 }],
+        "outputs": [
+          { "id": "Desc_PolymerResin_C", "rate": 130 },
+          { "id": "Desc_HeavyOilResidue_C", "rate": 20 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Desc_LiquidFuel_C",
+    "name": "Fuel",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_LiquidFuel_C/name/Fuel",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_LiquidFuel_Pipe_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Fuel",
+        "machine": "refinery",
+        "inputs": [{ "id": "Desc_LiquidOil_C", "rate": 60 }],
+        "outputs": [
+          { "id": "Desc_LiquidFuel_C", "rate": 40 },
+          { "id": "Desc_PolymerResin_C", "rate": 30 }
+        ]
+      },
+      {
+        "label": "Unpackage Fuel",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_Fuel_C", "rate": 60 }],
+        "outputs": [
+          { "id": "Desc_LiquidFuel_C", "rate": 60 },
+          { "id": "Desc_FluidCanister_C", "rate": 60 }
+        ]
+      },
+      {
+        "label": "Alternate: Diluted Fuel",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_HeavyOilResidue_C", "rate": 50 },
+          { "id": "Desc_Water_C", "rate": 100 }
+        ],
+        "outputs": [{ "id": "Desc_LiquidFuel_C", "rate": 100 }]
+      },
+      {
+        "label": "Residual Fuel",
+        "machine": "refinery",
+        "inputs": [{ "id": "Desc_HeavyOilResidue_C", "rate": 60 }],
+        "outputs": [{ "id": "Desc_LiquidFuel_C", "rate": 40 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_LiquidBiofuel_C",
+    "name": "Liquid Biofuel",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_LiquidBiofuel_C/name/Liquid+Biofuel",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_LiquidBiofuel_Pipe_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Liquid Biofuel",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_Biofuel_C", "rate": 90 },
+          { "id": "Desc_Water_C", "rate": 45 }
+        ],
+        "outputs": [{ "id": "Desc_LiquidBiofuel_C", "rate": 60 }]
+      },
+      {
+        "label": "Unpackage Liquid Biofuel",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedBiofuel_C", "rate": 60 }],
+        "outputs": [
+          { "id": "Desc_LiquidBiofuel_C", "rate": 60 },
+          { "id": "Desc_FluidCanister_C", "rate": 60 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Desc_LiquidTurboFuel_C",
+    "name": "Turbofuel",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_LiquidTurboFuel_C/name/Turbofuel",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_LiquidTurboFuel_Pipe_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Turbofuel",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_LiquidFuel_C", "rate": 22.5 },
+          { "id": "Desc_CompactedCoal_C", "rate": 15 }
+        ],
+        "outputs": [{ "id": "Desc_LiquidTurboFuel_C", "rate": 18.75 }]
+      },
+      {
+        "label": "Unpackage Turbofuel",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_TurboFuel_C", "rate": 20 }],
+        "outputs": [
+          { "id": "Desc_LiquidTurboFuel_C", "rate": 20 },
+          { "id": "Desc_FluidCanister_C", "rate": 20 }
+        ]
+      },
+      {
+        "label": "Alternate: Turbo Blend Fuel",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_LiquidFuel_C", "rate": 15 },
+          { "id": "Desc_HeavyOilResidue_C", "rate": 30 },
+          { "id": "Desc_Sulfur_C", "rate": 22.5 },
+          { "id": "Desc_PetroleumCoke_C", "rate": 22.5 }
+        ],
+        "outputs": [{ "id": "Desc_LiquidTurboFuel_C", "rate": 45 }]
+      },
+      {
+        "label": "Alternate: Turbo Heavy Fuel",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_HeavyOilResidue_C", "rate": 37.5 },
+          { "id": "Desc_CompactedCoal_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_LiquidTurboFuel_C", "rate": 30 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_AluminaSolution_C",
+    "name": "Alumina Solution",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_AluminaSolution_C/name/Alumina+Solution",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/LiquidAlumina_Pipe_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Alumina Solution",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_OreBauxite_C", "rate": 120 },
+          { "id": "Desc_Water_C", "rate": 180 }
+        ],
+        "outputs": [
+          { "id": "Desc_AluminaSolution_C", "rate": 120 },
+          { "id": "Desc_Silica_C", "rate": 50 }
+        ]
+      },
+      {
+        "label": "Unpackage Alumina Solution",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedAlumina_C", "rate": 120 }],
+        "outputs": [
+          { "id": "Desc_AluminaSolution_C", "rate": 120 },
+          { "id": "Desc_FluidCanister_C", "rate": 120 }
+        ]
+      },
+      {
+        "label": "Alternate: Sloppy Alumina",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_OreBauxite_C", "rate": 200 },
+          { "id": "Desc_Water_C", "rate": 200 }
+        ],
+        "outputs": [{ "id": "Desc_AluminaSolution_C", "rate": 240 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_SulfuricAcid_C",
+    "name": "Sulfuric Acid",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SulfuricAcid_C/name/Sulfuric+Acid",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_LiquidSulfuricAcid_Pipe_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Encased Uranium Cell",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_OreUranium_C", "rate": 50 },
+          { "id": "Desc_Cement_C", "rate": 15 },
+          { "id": "Desc_SulfuricAcid_C", "rate": 40 }
+        ],
+        "outputs": [
+          { "id": "Desc_UraniumCell_C", "rate": 25 },
+          { "id": "Desc_SulfuricAcid_C", "rate": 10 }
+        ]
+      },
+      {
+        "label": "Sulfuric Acid",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_Sulfur_C", "rate": 50 },
+          { "id": "Desc_Water_C", "rate": 50 }
+        ],
+        "outputs": [{ "id": "Desc_SulfuricAcid_C", "rate": 50 }]
+      },
+      {
+        "label": "Unpackage Sulfuric Acid",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedSulfuricAcid_C", "rate": 60 }],
+        "outputs": [
+          { "id": "Desc_SulfuricAcid_C", "rate": 60 },
+          { "id": "Desc_FluidCanister_C", "rate": 60 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Desc_NitricAcid_C",
+    "name": "Nitric Acid",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_NitricAcid_C/name/Nitric+Acid",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_NitricAcid_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Nitric Acid",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_NitrogenGas_C", "rate": 120 },
+          { "id": "Desc_Water_C", "rate": 30 },
+          { "id": "Desc_IronPlate_C", "rate": 10 }
+        ],
+        "outputs": [{ "id": "Desc_NitricAcid_C", "rate": 30 }]
+      },
+      {
+        "label": "Unpackage Nitric Acid",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedNitricAcid_C", "rate": 20 }],
+        "outputs": [
+          { "id": "Desc_NitricAcid_C", "rate": 20 },
+          { "id": "Desc_GasTank_C", "rate": 20 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Desc_NitrogenGas_C",
+    "name": "Nitrogen Gas",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_NitrogenGas_C/name/Nitrogen+Gas",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_NitricAcid_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Nitrogen Gas",
+        "machine": "resource well extractor",
+        "inputs": [{ "id": "Desc_NitrogenGas_C", "rate": 0 }],
+        "outputs": [{ "id": "Desc_NitrogenGas_C", "rate": 0 }]
+      },
+      {
+        "label": "Unpackage Nitrogen Gas",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedNitrogenGas_C", "rate": 60 }],
+        "outputs": [
+          { "id": "Desc_NitrogenGas_C", "rate": 240 },
+          { "id": "Desc_GasTank_C", "rate": 60 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Desc_IronRod_C",
+    "name": "Iron Rod",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_IronRod_C/name/Iron+Rod",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_IronRods_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Iron Rod",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_IronIngot_C", "rate": 15 }],
+        "outputs": [{ "id": "Desc_IronRod_C", "rate": 15 }]
+      },
+      {
+        "label": "Alternate: Steel Rod",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_SteelIngot_C", "rate": 12 }],
+        "outputs": [{ "id": "Desc_IronRod_C", "rate": 48 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_IronScrew_C",
+    "name": "Screw",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_IronScrew_C/name/Screw",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_IronScrews_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Screw",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_IronRod_C", "rate": 10 }],
+        "outputs": [{ "id": "Desc_IronScrew_C", "rate": 40 }]
+      },
+      {
+        "label": "Alternate: Cast Screw",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_IronIngot_C", "rate": 12.5 }],
+        "outputs": [{ "id": "Desc_IronScrew_C", "rate": 50 }]
+      },
+      {
+        "label": "Alternate: Steel Screw",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_SteelPlate_C", "rate": 5 }],
+        "outputs": [{ "id": "Desc_IronScrew_C", "rate": 260 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_IronPlate_C",
+    "name": "Iron Plate",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_IronPlate_C/name/Iron+Plate",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_IronPlates_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Iron Plate",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_IronIngot_C", "rate": 30 }],
+        "outputs": [{ "id": "Desc_IronPlate_C", "rate": 20 }]
+      },
+      {
+        "label": "Alternate: Coated Iron Plate",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_IronIngot_C", "rate": 50 },
+          { "id": "Desc_Plastic_C", "rate": 10 }
+        ],
+        "outputs": [{ "id": "Desc_IronPlate_C", "rate": 75 }]
+      },
+      {
+        "label": "Alternate: Steel Coated Plate",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_SteelIngot_C", "rate": 7.5 },
+          { "id": "Desc_Plastic_C", "rate": 5 }
+        ],
+        "outputs": [{ "id": "Desc_IronPlate_C", "rate": 45 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_IronPlateReinforced_C",
+    "name": "Reinforced Iron Plate",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_IronPlateReinforced_C/name/Reinforced+Iron+Plate",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_ReinforcedIronPlates_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Reinforced Iron Plate",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_IronPlate_C", "rate": 30 },
+          { "id": "Desc_IronScrew_C", "rate": 60 }
+        ],
+        "outputs": [{ "id": "Desc_IronPlateReinforced_C", "rate": 5 }]
+      },
+      {
+        "label": "Alternate: Adhered Iron Plate",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_IronPlate_C", "rate": 11.25 },
+          { "id": "Desc_Rubber_C", "rate": 3.75 }
+        ],
+        "outputs": [{ "id": "Desc_IronPlateReinforced_C", "rate": 3.75 }]
+      },
+      {
+        "label": "Alternate: Bolted Iron Plate",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_IronPlate_C", "rate": 90 },
+          { "id": "Desc_IronScrew_C", "rate": 250 }
+        ],
+        "outputs": [{ "id": "Desc_IronPlateReinforced_C", "rate": 15 }]
+      },
+      {
+        "label": "Alternate: Stitched Iron Plate",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_IronPlate_C", "rate": 18.75 },
+          { "id": "Desc_Wire_C", "rate": 37.5 }
+        ],
+        "outputs": [{ "id": "Desc_IronPlateReinforced_C", "rate": 5.63 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_CopperSheet_C",
+    "name": "Copper Sheet",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_CopperSheet_C/name/Copper+Sheet",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_CopperSheet_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Copper Sheet",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_CopperIngot_C", "rate": 20 }],
+        "outputs": [{ "id": "Desc_CopperSheet_C", "rate": 10 }]
+      },
+      {
+        "label": "Alternate: Steamed Copper Sheet",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_CopperIngot_C", "rate": 22.5 },
+          { "id": "Desc_Water_C", "rate": 22.5 }
+        ],
+        "outputs": [{ "id": "Desc_CopperSheet_C", "rate": 22.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_AluminumPlate_C",
+    "name": "Alclad Aluminum Sheet",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_AluminumPlate_C/name/Alclad+Aluminum+Sheet",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_AluminiumSheet_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Alclad Aluminum Sheet",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_AluminumIngot_C", "rate": 30 },
+          { "id": "Desc_CopperIngot_C", "rate": 10 }
+        ],
+        "outputs": [{ "id": "Desc_AluminumPlate_C", "rate": 30 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_AluminumCasing_C",
+    "name": "Aluminum Casing",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_AluminumCasing_C/name/Aluminum+Casing",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_AluminiumCasing_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Aluminum Casing",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_AluminumIngot_C", "rate": 90 }],
+        "outputs": [{ "id": "Desc_AluminumCasing_C", "rate": 60 }]
+      },
+      {
+        "label": "Alternate: Alclad Casing",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_AluminumIngot_C", "rate": 150 },
+          { "id": "Desc_CopperIngot_C", "rate": 75 }
+        ],
+        "outputs": [{ "id": "Desc_AluminumCasing_C", "rate": 112.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_SteelPipe_C",
+    "name": "Steel Pipe",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SteelPipe_C/name/Steel+Pipe",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_SteelPipe_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Steel Pipe",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_SteelIngot_C", "rate": 30 }],
+        "outputs": [{ "id": "Desc_SteelPipe_C", "rate": 20 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_SteelPlate_C",
+    "name": "Steel Beam",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SteelPlate_C/name/Steel+Beam",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_SteelBeam_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Steel Beam",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_SteelIngot_C", "rate": 60 }],
+        "outputs": [{ "id": "Desc_SteelPlate_C", "rate": 15 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_SteelPlateReinforced_C",
+    "name": "Encased Industrial Beam",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SteelPlateReinforced_C/name/Encased+Industrial+Beam",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_EncasedSteelBeam_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Encased Industrial Beam",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_SteelPlate_C", "rate": 24 },
+          { "id": "Desc_Cement_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_SteelPlateReinforced_C", "rate": 6 }]
+      },
+      {
+        "label": "Alternate: Encased Industrial Pipe",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_SteelPipe_C", "rate": 28 },
+          { "id": "Desc_Cement_C", "rate": 20 }
+        ],
+        "outputs": [{ "id": "Desc_SteelPlateReinforced_C", "rate": 4 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_ModularFrame_C",
+    "name": "Modular Frame",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_ModularFrame_C/name/Modular+Frame",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_ModularFrame_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Modular Frame",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_IronPlateReinforced_C", "rate": 3 },
+          { "id": "Desc_IronRod_C", "rate": 12 }
+        ],
+        "outputs": [{ "id": "Desc_ModularFrame_C", "rate": 2 }]
+      },
+      {
+        "label": "Alternate: Bolted Frame",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_IronPlateReinforced_C", "rate": 7.5 },
+          { "id": "Desc_IronScrew_C", "rate": 140 }
+        ],
+        "outputs": [{ "id": "Desc_ModularFrame_C", "rate": 5 }]
+      },
+      {
+        "label": "Alternate: Steeled Frame",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_IronPlateReinforced_C", "rate": 2 },
+          { "id": "Desc_SteelPipe_C", "rate": 10 }
+        ],
+        "outputs": [{ "id": "Desc_ModularFrame_C", "rate": 3 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_ModularFrameHeavy_C",
+    "name": "Heavy Modular Frame",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_ModularFrameHeavy_C/name/Heavy+Modular+Frame",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_ModularFrameHeavy_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Heavy Modular Frame",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_ModularFrame_C", "rate": 10 },
+          { "id": "Desc_SteelPipe_C", "rate": 30 },
+          { "id": "Desc_SteelPlateReinforced_C", "rate": 10 },
+          { "id": "Desc_IronScrew_C", "rate": 200 }
+        ],
+        "outputs": [{ "id": "Desc_ModularFrameHeavy_C", "rate": 2 }]
+      },
+      {
+        "label": "Alternate: Heavy Encased Frame",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_ModularFrame_C", "rate": 7.5 },
+          { "id": "Desc_SteelPlateReinforced_C", "rate": 9.38 },
+          { "id": "Desc_SteelPipe_C", "rate": 33.75 },
+          { "id": "Desc_Cement_C", "rate": 20.63 }
+        ],
+        "outputs": [{ "id": "Desc_ModularFrameHeavy_C", "rate": 2.81 }]
+      },
+      {
+        "label": "Alternate: Heavy Flexible Frame",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_ModularFrame_C", "rate": 18.75 },
+          { "id": "Desc_SteelPlateReinforced_C", "rate": 11.25 },
+          { "id": "Desc_Rubber_C", "rate": 75 },
+          { "id": "Desc_IronScrew_C", "rate": 390 }
+        ],
+        "outputs": [{ "id": "Desc_ModularFrameHeavy_C", "rate": 3.75 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_ModularFrameFused_C",
+    "name": "Fused Modular Frame",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_ModularFrameFused_C/name/Fused+Modular+Frame",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_FusedModularFrame_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Fused Modular Frame",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_ModularFrameHeavy_C", "rate": 1.5 },
+          { "id": "Desc_AluminumCasing_C", "rate": 75 },
+          { "id": "Desc_NitrogenGas_C", "rate": 37.5 }
+        ],
+        "outputs": [{ "id": "Desc_ModularFrameFused_C", "rate": 1.5 }]
+      },
+      {
+        "label": "Alternate: Heat-Fused Frame",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_ModularFrameHeavy_C", "rate": 3 },
+          { "id": "Desc_AluminumIngot_C", "rate": 150 },
+          { "id": "Desc_NitricAcid_C", "rate": 24 },
+          { "id": "Desc_LiquidFuel_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_ModularFrameFused_C", "rate": 3 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Fabric_C",
+    "name": "Fabric",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Fabric_C/name/Fabric",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Fabric_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Fabric",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_Mycelia_C", "rate": 15 },
+          { "id": "Desc_GenericBiomass_C", "rate": 75 }
+        ],
+        "outputs": [{ "id": "Desc_Fabric_C", "rate": 15 }]
+      },
+      {
+        "label": "Alternate: Polyester Fabric",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_PolymerResin_C", "rate": 30 },
+          { "id": "Desc_Water_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_Fabric_C", "rate": 30 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Plastic_C",
+    "name": "Plastic",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Plastic_C/name/Plastic",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Plastic_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Plastic",
+        "machine": "refinery",
+        "inputs": [{ "id": "Desc_LiquidOil_C", "rate": 30 }],
+        "outputs": [
+          { "id": "Desc_Plastic_C", "rate": 20 },
+          { "id": "Desc_HeavyOilResidue_C", "rate": 10 }
+        ]
+      },
+      {
+        "label": "Alternate: Recycled Plastic",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_Rubber_C", "rate": 30 },
+          { "id": "Desc_LiquidFuel_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_Plastic_C", "rate": 60 }]
+      },
+      {
+        "label": "Residual Plastic",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_PolymerResin_C", "rate": 60 },
+          { "id": "Desc_Water_C", "rate": 20 }
+        ],
+        "outputs": [{ "id": "Desc_Plastic_C", "rate": 20 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Rubber_C",
+    "name": "Rubber",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Rubber_C/name/Rubber",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Rubber_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Rubber",
+        "machine": "refinery",
+        "inputs": [{ "id": "Desc_LiquidOil_C", "rate": 30 }],
+        "outputs": [
+          { "id": "Desc_Rubber_C", "rate": 20 },
+          { "id": "Desc_HeavyOilResidue_C", "rate": 20 }
+        ]
+      },
+      {
+        "label": "Alternate: Recycled Rubber",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_Plastic_C", "rate": 30 },
+          { "id": "Desc_LiquidFuel_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_Rubber_C", "rate": 60 }]
+      },
+      {
+        "label": "Residual Rubber",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_PolymerResin_C", "rate": 40 },
+          { "id": "Desc_Water_C", "rate": 40 }
+        ],
+        "outputs": [{ "id": "Desc_Rubber_C", "rate": 20 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Rotor_C",
+    "name": "Rotor",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Rotor_C/name/Rotor",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Rotor_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Rotor",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_IronRod_C", "rate": 20 },
+          { "id": "Desc_IronScrew_C", "rate": 100 }
+        ],
+        "outputs": [{ "id": "Desc_Rotor_C", "rate": 4 }]
+      },
+      {
+        "label": "Alternate: Copper Rotor",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_CopperSheet_C", "rate": 22.5 },
+          { "id": "Desc_IronScrew_C", "rate": 195 }
+        ],
+        "outputs": [{ "id": "Desc_Rotor_C", "rate": 11.25 }]
+      },
+      {
+        "label": "Alternate: Steel Rotor",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_SteelPipe_C", "rate": 10 },
+          { "id": "Desc_Wire_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_Rotor_C", "rate": 5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Stator_C",
+    "name": "Stator",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Stator_C/name/Stator",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Stator_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Stator",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_SteelPipe_C", "rate": 15 },
+          { "id": "Desc_Wire_C", "rate": 40 }
+        ],
+        "outputs": [{ "id": "Desc_Stator_C", "rate": 5 }]
+      },
+      {
+        "label": "Alternate: Quickwire Stator",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_SteelPipe_C", "rate": 16 },
+          { "id": "Desc_HighSpeedWire_C", "rate": 60 }
+        ],
+        "outputs": [{ "id": "Desc_Stator_C", "rate": 8 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Battery_C",
+    "name": "Battery",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Battery_C/name/Battery",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Battery_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Battery",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_SulfuricAcid_C", "rate": 50 },
+          { "id": "Desc_AluminaSolution_C", "rate": 40 },
+          { "id": "Desc_AluminumCasing_C", "rate": 20 }
+        ],
+        "outputs": [
+          { "id": "Desc_Battery_C", "rate": 20 },
+          { "id": "Desc_Water_C", "rate": 30 }
+        ]
+      },
+      {
+        "label": "Alternate: Classic Battery",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_Sulfur_C", "rate": 45 },
+          { "id": "Desc_AluminumPlate_C", "rate": 52.5 },
+          { "id": "Desc_Plastic_C", "rate": 60 },
+          { "id": "Desc_Wire_C", "rate": 90 }
+        ],
+        "outputs": [{ "id": "Desc_Battery_C", "rate": 30 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Motor_C",
+    "name": "Motor",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Motor_C/name/Motor",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Engine_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Motor",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_Rotor_C", "rate": 10 },
+          { "id": "Desc_Stator_C", "rate": 10 }
+        ],
+        "outputs": [{ "id": "Desc_Motor_C", "rate": 5 }]
+      },
+      {
+        "label": "Alternate: Electric Motor",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_ElectromagneticControlRod_C", "rate": 3.75 },
+          { "id": "Desc_Rotor_C", "rate": 7.5 }
+        ],
+        "outputs": [{ "id": "Desc_Motor_C", "rate": 7.5 }]
+      },
+      {
+        "label": "Alternate: Rigour Motor",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_Rotor_C", "rate": 3.75 },
+          { "id": "Desc_Stator_C", "rate": 3.75 },
+          { "id": "Desc_CrystalOscillator_C", "rate": 1.25 }
+        ],
+        "outputs": [{ "id": "Desc_Motor_C", "rate": 7.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_AluminumPlateReinforced_C",
+    "name": "Heat Sink",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_AluminumPlateReinforced_C/name/Heat+Sink",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Heatsink_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Heat Sink",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_AluminumPlate_C", "rate": 37.5 },
+          { "id": "Desc_CopperSheet_C", "rate": 22.5 }
+        ],
+        "outputs": [{ "id": "Desc_AluminumPlateReinforced_C", "rate": 7.5 }]
+      },
+      {
+        "label": "Alternate: Heat Exchanger",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_AluminumCasing_C", "rate": 30 },
+          { "id": "Desc_Rubber_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_AluminumPlateReinforced_C", "rate": 10 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_CoolingSystem_C",
+    "name": "Cooling System",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_CoolingSystem_C/name/Cooling+System",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_CoolingSystem_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Cooling System",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_AluminumPlateReinforced_C", "rate": 12 },
+          { "id": "Desc_Rubber_C", "rate": 12 },
+          { "id": "Desc_Water_C", "rate": 30 },
+          { "id": "Desc_NitrogenGas_C", "rate": 150 }
+        ],
+        "outputs": [{ "id": "Desc_CoolingSystem_C", "rate": 6 }]
+      },
+      {
+        "label": "Alternate: Cooling Device",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_AluminumPlateReinforced_C", "rate": 9.38 },
+          { "id": "Desc_Motor_C", "rate": 1.88 },
+          { "id": "Desc_NitrogenGas_C", "rate": 45 }
+        ],
+        "outputs": [{ "id": "Desc_CoolingSystem_C", "rate": 3.75 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_MotorLightweight_C",
+    "name": "Turbo Motor",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_MotorLightweight_C/name/Turbo+Motor",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_TurboMotor_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Turbo Motor",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_CoolingSystem_C", "rate": 7.5 },
+          { "id": "Desc_ModularFrameLightweight_C", "rate": 3.75 },
+          { "id": "Desc_Motor_C", "rate": 7.5 },
+          { "id": "Desc_Rubber_C", "rate": 45 }
+        ],
+        "outputs": [{ "id": "Desc_MotorLightweight_C", "rate": 1.88 }]
+      },
+      {
+        "label": "Alternate: Turbo Electric Motor",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_Motor_C", "rate": 6.56 },
+          { "id": "Desc_ModularFrameLightweight_C", "rate": 8.44 },
+          { "id": "Desc_ElectromagneticControlRod_C", "rate": 4.69 },
+          { "id": "Desc_Rotor_C", "rate": 6.56 }
+        ],
+        "outputs": [{ "id": "Desc_MotorLightweight_C", "rate": 2.81 }]
+      },
+      {
+        "label": "Alternate: Turbo Pressure Motor",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_Motor_C", "rate": 7.5 },
+          { "id": "Desc_PressureConversionCube_C", "rate": 1.88 },
+          { "id": "Desc_PackagedNitrogenGas_C", "rate": 45 },
+          { "id": "Desc_Stator_C", "rate": 15 }
+        ],
+        "outputs": [{ "id": "Desc_MotorLightweight_C", "rate": 3.75 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Wire_C",
+    "name": "Wire",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Wire_C/name/Wire",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Wire_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Wire",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_CopperIngot_C", "rate": 15 }],
+        "outputs": [{ "id": "Desc_Wire_C", "rate": 30 }]
+      },
+      {
+        "label": "Alternate: Caterium Wire",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_GoldIngot_C", "rate": 15 }],
+        "outputs": [{ "id": "Desc_Wire_C", "rate": 120 }]
+      },
+      {
+        "label": "Alternate: Fused Wire",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_CopperIngot_C", "rate": 12 },
+          { "id": "Desc_GoldIngot_C", "rate": 3 }
+        ],
+        "outputs": [{ "id": "Desc_Wire_C", "rate": 90 }]
+      },
+      {
+        "label": "Alternate: Iron Wire",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_IronIngot_C", "rate": 12.5 }],
+        "outputs": [{ "id": "Desc_Wire_C", "rate": 22.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Cable_C",
+    "name": "Cable",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Cable_C/name/Cable",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Cables_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Cable",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_Wire_C", "rate": 60 }],
+        "outputs": [{ "id": "Desc_Cable_C", "rate": 30 }]
+      },
+      {
+        "label": "Alternate: Coated Cable",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_Wire_C", "rate": 37.5 },
+          { "id": "Desc_HeavyOilResidue_C", "rate": 15 }
+        ],
+        "outputs": [{ "id": "Desc_Cable_C", "rate": 67.5 }]
+      },
+      {
+        "label": "Alternate: Insulated Cable",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_Wire_C", "rate": 45 },
+          { "id": "Desc_Rubber_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_Cable_C", "rate": 100 }]
+      },
+      {
+        "label": "Alternate: Quickwire Cable",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_HighSpeedWire_C", "rate": 7.5 },
+          { "id": "Desc_Rubber_C", "rate": 5 }
+        ],
+        "outputs": [{ "id": "Desc_Cable_C", "rate": 27.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_HighSpeedWire_C",
+    "name": "Quickwire",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_HighSpeedWire_C/name/Quickwire",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Quickwire_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Quickwire",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_GoldIngot_C", "rate": 12 }],
+        "outputs": [{ "id": "Desc_HighSpeedWire_C", "rate": 60 }]
+      },
+      {
+        "label": "Alternate: Fused Quickwire",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_GoldIngot_C", "rate": 7.5 },
+          { "id": "Desc_CopperIngot_C", "rate": 37.5 }
+        ],
+        "outputs": [{ "id": "Desc_HighSpeedWire_C", "rate": 90 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_CircuitBoard_C",
+    "name": "Circuit Board",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_CircuitBoard_C/name/Circuit+Board",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_CircuitBoard_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Circuit Board",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_CopperSheet_C", "rate": 15 },
+          { "id": "Desc_Plastic_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_CircuitBoard_C", "rate": 7.5 }]
+      },
+      {
+        "label": "Alternate: Caterium Circuit Board",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_Plastic_C", "rate": 12.5 },
+          { "id": "Desc_HighSpeedWire_C", "rate": 37.5 }
+        ],
+        "outputs": [{ "id": "Desc_CircuitBoard_C", "rate": 8.75 }]
+      },
+      {
+        "label": "Alternate: Electrode Circuit Board",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_Rubber_C", "rate": 30 },
+          { "id": "Desc_PetroleumCoke_C", "rate": 45 }
+        ],
+        "outputs": [{ "id": "Desc_CircuitBoard_C", "rate": 5 }]
+      },
+      {
+        "label": "Alternate: Silicon Circuit Board",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_CopperSheet_C", "rate": 27.5 },
+          { "id": "Desc_Silica_C", "rate": 27.5 }
+        ],
+        "outputs": [{ "id": "Desc_CircuitBoard_C", "rate": 12.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_CircuitBoardHighSpeed_C",
+    "name": "AI Limiter",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_CircuitBoardHighSpeed_C/name/AI+Limiter",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_AILimiter_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "AI Limiter",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_CopperSheet_C", "rate": 25 },
+          { "id": "Desc_HighSpeedWire_C", "rate": 100 }
+        ],
+        "outputs": [{ "id": "Desc_CircuitBoardHighSpeed_C", "rate": 5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_HighSpeedConnector_C",
+    "name": "High-Speed Connector",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_HighSpeedConnector_C/name/High-Speed+Connector",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_HighSpeedConnector_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "High-Speed Connector",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_HighSpeedWire_C", "rate": 210 },
+          { "id": "Desc_Cable_C", "rate": 37.5 },
+          { "id": "Desc_CircuitBoard_C", "rate": 3.75 }
+        ],
+        "outputs": [{ "id": "Desc_HighSpeedConnector_C", "rate": 3.75 }]
+      },
+      {
+        "label": "Alternate: Silicon High-Speed Connector",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_HighSpeedWire_C", "rate": 90 },
+          { "id": "Desc_Silica_C", "rate": 37.5 },
+          { "id": "Desc_CircuitBoard_C", "rate": 3 }
+        ],
+        "outputs": [{ "id": "Desc_HighSpeedConnector_C", "rate": 3 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Computer_C",
+    "name": "Computer",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Computer_C/name/Computer",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Computer_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Computer",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_CircuitBoard_C", "rate": 25 },
+          { "id": "Desc_Cable_C", "rate": 22.5 },
+          { "id": "Desc_Plastic_C", "rate": 45 },
+          { "id": "Desc_IronScrew_C", "rate": 130 }
+        ],
+        "outputs": [{ "id": "Desc_Computer_C", "rate": 2.5 }]
+      },
+      {
+        "label": "Alternate: Caterium Computer",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_CircuitBoard_C", "rate": 26.25 },
+          { "id": "Desc_HighSpeedWire_C", "rate": 105 },
+          { "id": "Desc_Rubber_C", "rate": 45 }
+        ],
+        "outputs": [{ "id": "Desc_Computer_C", "rate": 3.75 }]
+      },
+      {
+        "label": "Alternate: Crystal Computer",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_CircuitBoard_C", "rate": 7.5 },
+          { "id": "Desc_CrystalOscillator_C", "rate": 2.81 }
+        ],
+        "outputs": [{ "id": "Desc_Computer_C", "rate": 2.81 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_ComputerSuper_C",
+    "name": "Supercomputer",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_ComputerSuper_C/name/Supercomputer",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_SuperComputer_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Supercomputer",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_Computer_C", "rate": 3.75 },
+          { "id": "Desc_CircuitBoardHighSpeed_C", "rate": 3.75 },
+          { "id": "Desc_HighSpeedConnector_C", "rate": 5.63 },
+          { "id": "Desc_Plastic_C", "rate": 52.5 }
+        ],
+        "outputs": [{ "id": "Desc_ComputerSuper_C", "rate": 1.88 }]
+      },
+      {
+        "label": "Alternate: OC Supercomputer",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_ModularFrameLightweight_C", "rate": 9 },
+          { "id": "Desc_CoolingSystem_C", "rate": 9 }
+        ],
+        "outputs": [{ "id": "Desc_ComputerSuper_C", "rate": 3 }]
+      },
+      {
+        "label": "Alternate: Super-State Computer",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_Computer_C", "rate": 3.6 },
+          { "id": "Desc_ElectromagneticControlRod_C", "rate": 2.4 },
+          { "id": "Desc_Battery_C", "rate": 24 },
+          { "id": "Desc_Wire_C", "rate": 54 }
+        ],
+        "outputs": [{ "id": "Desc_ComputerSuper_C", "rate": 2.4 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_ComputerQuantum_C",
+    "name": "Quantum Computer",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_ComputerQuantum_C/name/Quantum+Computer",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_QuantumComputer_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_ModularFrameLightweight_C",
+    "name": "Radio Control Unit",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_ModularFrameLightweight_C/name/Radio+Control+Unit",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_RadioControlUnit_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Radio Control Unit",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_AluminumCasing_C", "rate": 40 },
+          { "id": "Desc_CrystalOscillator_C", "rate": 1.25 },
+          { "id": "Desc_Computer_C", "rate": 1.25 }
+        ],
+        "outputs": [{ "id": "Desc_ModularFrameLightweight_C", "rate": 2.5 }]
+      },
+      {
+        "label": "Alternate: Radio Connection Unit",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_AluminumPlateReinforced_C", "rate": 15 },
+          { "id": "Desc_HighSpeedConnector_C", "rate": 7.5 },
+          { "id": "Desc_QuartzCrystal_C", "rate": 45 }
+        ],
+        "outputs": [{ "id": "Desc_ModularFrameLightweight_C", "rate": 3.75 }]
+      },
+      {
+        "label": "Alternate: Radio Control System",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_CrystalOscillator_C", "rate": 1.5 },
+          { "id": "Desc_CircuitBoard_C", "rate": 15 },
+          { "id": "Desc_AluminumCasing_C", "rate": 90 },
+          { "id": "Desc_Rubber_C", "rate": 45 }
+        ],
+        "outputs": [{ "id": "Desc_ModularFrameLightweight_C", "rate": 4.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_CrystalOscillator_C",
+    "name": "Crystal Oscillator",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_CrystalOscillator_C/name/Crystal+Oscillator",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_CrystalOscillator_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Crystal Oscillator",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_QuartzCrystal_C", "rate": 18 },
+          { "id": "Desc_Cable_C", "rate": 14 },
+          { "id": "Desc_IronPlateReinforced_C", "rate": 2.5 }
+        ],
+        "outputs": [{ "id": "Desc_CrystalOscillator_C", "rate": 1 }]
+      },
+      {
+        "label": "Alternate: Insulated Crystal Oscillator",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_QuartzCrystal_C", "rate": 18.75 },
+          { "id": "Desc_Rubber_C", "rate": 13.13 },
+          { "id": "Desc_CircuitBoardHighSpeed_C", "rate": 1.88 }
+        ],
+        "outputs": [{ "id": "Desc_CrystalOscillator_C", "rate": 1.88 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_QuantumOscillator_C",
+    "name": "Superposition Oscillator",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_QuantumOscillator_C/name/Superposition+Oscillator",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_SuperPositionOscillator_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_FluidCanister_C",
+    "name": "Empty Canister",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_FluidCanister_C/name/Empty+Canister",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_EmptyCannister_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Empty Canister",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_Plastic_C", "rate": 30 }],
+        "outputs": [{ "id": "Desc_FluidCanister_C", "rate": 60 }]
+      },
+      {
+        "label": "Unpackage Alumina Solution",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedAlumina_C", "rate": 120 }],
+        "outputs": [
+          { "id": "Desc_AluminaSolution_C", "rate": 120 },
+          { "id": "Desc_FluidCanister_C", "rate": 120 }
+        ]
+      },
+      {
+        "label": "Unpackage Fuel",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_Fuel_C", "rate": 60 }],
+        "outputs": [
+          { "id": "Desc_LiquidFuel_C", "rate": 60 },
+          { "id": "Desc_FluidCanister_C", "rate": 60 }
+        ]
+      },
+      {
+        "label": "Unpackage Heavy Oil Residue",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedOilResidue_C", "rate": 20 }],
+        "outputs": [
+          { "id": "Desc_HeavyOilResidue_C", "rate": 20 },
+          { "id": "Desc_FluidCanister_C", "rate": 20 }
+        ]
+      },
+      {
+        "label": "Unpackage Liquid Biofuel",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedBiofuel_C", "rate": 60 }],
+        "outputs": [
+          { "id": "Desc_LiquidBiofuel_C", "rate": 60 },
+          { "id": "Desc_FluidCanister_C", "rate": 60 }
+        ]
+      },
+      {
+        "label": "Unpackage Oil",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedOil_C", "rate": 60 }],
+        "outputs": [
+          { "id": "Desc_LiquidOil_C", "rate": 60 },
+          { "id": "Desc_FluidCanister_C", "rate": 60 }
+        ]
+      },
+      {
+        "label": "Unpackage Sulfuric Acid",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedSulfuricAcid_C", "rate": 60 }],
+        "outputs": [
+          { "id": "Desc_SulfuricAcid_C", "rate": 60 },
+          { "id": "Desc_FluidCanister_C", "rate": 60 }
+        ]
+      },
+      {
+        "label": "Unpackage Turbofuel",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_TurboFuel_C", "rate": 20 }],
+        "outputs": [
+          { "id": "Desc_LiquidTurboFuel_C", "rate": 20 },
+          { "id": "Desc_FluidCanister_C", "rate": 20 }
+        ]
+      },
+      {
+        "label": "Unpackage Water",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedWater_C", "rate": 120 }],
+        "outputs": [
+          { "id": "Desc_Water_C", "rate": 120 },
+          { "id": "Desc_FluidCanister_C", "rate": 120 }
+        ]
+      },
+      {
+        "label": "Alternate: Coated Iron Canister",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_IronPlate_C", "rate": 30 },
+          { "id": "Desc_CopperSheet_C", "rate": 15 }
+        ],
+        "outputs": [{ "id": "Desc_FluidCanister_C", "rate": 60 }]
+      },
+      {
+        "label": "Alternate: Steel Canister",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_SteelIngot_C", "rate": 60 }],
+        "outputs": [{ "id": "Desc_FluidCanister_C", "rate": 40 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_GasTank_C",
+    "name": "Empty Fluid Tank",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_GasTank_C/name/Empty+Fluid+Tank",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_PressureTank_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Empty Fluid Tank",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_AluminumIngot_C", "rate": 60 }],
+        "outputs": [{ "id": "Desc_GasTank_C", "rate": 60 }]
+      },
+      {
+        "label": "Unpackage Nitric Acid",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedNitricAcid_C", "rate": 20 }],
+        "outputs": [
+          { "id": "Desc_NitricAcid_C", "rate": 20 },
+          { "id": "Desc_GasTank_C", "rate": 20 }
+        ]
+      },
+      {
+        "label": "Unpackage Nitrogen Gas",
+        "machine": "packager",
+        "inputs": [{ "id": "Desc_PackagedNitrogenGas_C", "rate": 60 }],
+        "outputs": [
+          { "id": "Desc_NitrogenGas_C", "rate": 240 },
+          { "id": "Desc_GasTank_C", "rate": 60 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PressureConversionCube_C",
+    "name": "Pressure Conversion Cube",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PressureConversionCube_C/name/Pressure+Conversion+Cube",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_ConversionCube_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Pressure Conversion Cube",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_ModularFrameFused_C", "rate": 1 },
+          { "id": "Desc_ModularFrameLightweight_C", "rate": 2 }
+        ],
+        "outputs": [{ "id": "Desc_PressureConversionCube_C", "rate": 1 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PackagedWater_C",
+    "name": "Packaged Water",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PackagedWater_C/name/Packaged+Water",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_PackagedWater_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Packaged Water",
+        "machine": "packager",
+        "inputs": [
+          { "id": "Desc_Water_C", "rate": 60 },
+          { "id": "Desc_FluidCanister_C", "rate": 60 }
+        ],
+        "outputs": [{ "id": "Desc_PackagedWater_C", "rate": 60 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PackagedAlumina_C",
+    "name": "Packaged Alumina Solution",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PackagedAlumina_C/name/Packaged+Alumina+Solution",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_PackagedAluminaSolution_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Packaged Alumina Solution",
+        "machine": "packager",
+        "inputs": [
+          { "id": "Desc_AluminaSolution_C", "rate": 120 },
+          { "id": "Desc_FluidCanister_C", "rate": 120 }
+        ],
+        "outputs": [{ "id": "Desc_PackagedAlumina_C", "rate": 120 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PackagedSulfuricAcid_C",
+    "name": "Packaged Sulfuric Acid",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PackagedSulfuricAcid_C/name/Packaged+Sulfuric+Acid",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_PckagedSulphuricAcid_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Packaged Sulfuric Acid",
+        "machine": "packager",
+        "inputs": [
+          { "id": "Desc_SulfuricAcid_C", "rate": 40 },
+          { "id": "Desc_FluidCanister_C", "rate": 40 }
+        ],
+        "outputs": [{ "id": "Desc_PackagedSulfuricAcid_C", "rate": 40 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PackagedNitricAcid_C",
+    "name": "Packaged Nitric Acid",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PackagedNitricAcid_C/name/Packaged+Nitric+Acid",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_PackagedNitricAcid_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Packaged Nitric Acid",
+        "machine": "packager",
+        "inputs": [
+          { "id": "Desc_NitricAcid_C", "rate": 30 },
+          { "id": "Desc_GasTank_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_PackagedNitricAcid_C", "rate": 30 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PackagedNitrogenGas_C",
+    "name": "Packaged Nitrogen Gas",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PackagedNitrogenGas_C/name/Packaged+Nitrogen+Gas",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_PackagedNitrogen_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Packaged Nitrogen Gas",
+        "machine": "packager",
+        "inputs": [
+          { "id": "Desc_NitrogenGas_C", "rate": 240 },
+          { "id": "Desc_GasTank_C", "rate": 60 }
+        ],
+        "outputs": [{ "id": "Desc_PackagedNitrogenGas_C", "rate": 60 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Leaves_C",
+    "name": "Leaves",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Leaves_C/name/Leaves",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Leaves_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_Mycelia_C",
+    "name": "Mycelia",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Mycelia_C/name/Mycelia",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Mycelia_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_FlowerPetals_C",
+    "name": "Flower Petals",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_FlowerPetals_C/name/Flower+Petals",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/FlowerPetals_Final_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_Wood_C",
+    "name": "Wood",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Wood_C/name/Wood",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Wood_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_GenericBiomass_C",
+    "name": "Biomass",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_GenericBiomass_C/name/Biomass",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Biomass_Final_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Biomass (Alien Protein)",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_AlienProtein_C", "rate": 15 }],
+        "outputs": [{ "id": "Desc_GenericBiomass_C", "rate": 1 }]
+      },
+      {
+        "label": "Biomass (Leaves)",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_Leaves_C", "rate": 120 }],
+        "outputs": [{ "id": "Desc_GenericBiomass_C", "rate": 60 }]
+      },
+      {
+        "label": "Biomass (Mycelia)",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_Mycelia_C", "rate": 15 }],
+        "outputs": [{ "id": "Desc_GenericBiomass_C", "rate": 150 }]
+      },
+      {
+        "label": "Biomass (Wood)",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_Wood_C", "rate": 60 }],
+        "outputs": [{ "id": "Desc_GenericBiomass_C", "rate": 300 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_CompactedCoal_C",
+    "name": "Compacted Coal",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_CompactedCoal_C/name/Compacted+Coal",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_CompactedCoal_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Alternate: Compacted Coal",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_Coal_C", "rate": 25 },
+          { "id": "Desc_Sulfur_C", "rate": 25 }
+        ],
+        "outputs": [{ "id": "Desc_CompactedCoal_C", "rate": 25 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PackagedOil_C",
+    "name": "Packaged Oil",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PackagedOil_C/name/Packaged+Oil",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/Oil_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Packaged Oil",
+        "machine": "packager",
+        "inputs": [
+          { "id": "Desc_LiquidOil_C", "rate": 30 },
+          { "id": "Desc_FluidCanister_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_PackagedOil_C", "rate": 30 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PackagedOilResidue_C",
+    "name": "Packaged Heavy Oil Residue",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PackagedOilResidue_C/name/Packaged+Heavy+Oil+Residue",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/OilResidue_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Packaged Heavy Oil Residue",
+        "machine": "packager",
+        "inputs": [
+          { "id": "Desc_HeavyOilResidue_C", "rate": 30 },
+          { "id": "Desc_FluidCanister_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_PackagedOilResidue_C", "rate": 30 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Biofuel_C",
+    "name": "Solid Biofuel",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Biofuel_C/name/Solid+Biofuel",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_SolidBiofuel_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Solid Biofuel",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_GenericBiomass_C", "rate": 120 }],
+        "outputs": [{ "id": "Desc_Biofuel_C", "rate": 60 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Fuel_C",
+    "name": "Packaged Fuel",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Fuel_C/name/Packaged+Fuel",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Fuel_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Packaged Fuel",
+        "machine": "packager",
+        "inputs": [
+          { "id": "Desc_LiquidFuel_C", "rate": 40 },
+          { "id": "Desc_FluidCanister_C", "rate": 40 }
+        ],
+        "outputs": [{ "id": "Desc_Fuel_C", "rate": 40 }]
+      },
+      {
+        "label": "Alternate: Diluted Packaged Fuel",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_HeavyOilResidue_C", "rate": 30 },
+          { "id": "Desc_PackagedWater_C", "rate": 60 }
+        ],
+        "outputs": [{ "id": "Desc_Fuel_C", "rate": 60 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PackagedBiofuel_C",
+    "name": "Packaged Liquid Biofuel",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PackagedBiofuel_C/name/Packaged+Liquid+Biofuel",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_LiquidBiofuel_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Packaged Liquid Biofuel",
+        "machine": "packager",
+        "inputs": [
+          { "id": "Desc_LiquidBiofuel_C", "rate": 40 },
+          { "id": "Desc_FluidCanister_C", "rate": 40 }
+        ],
+        "outputs": [{ "id": "Desc_PackagedBiofuel_C", "rate": 40 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_TurboFuel_C",
+    "name": "Packaged Turbofuel",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_TurboFuel_C/name/Packaged+Turbofuel",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_TurboFuel_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Packaged Turbofuel",
+        "machine": "packager",
+        "inputs": [
+          { "id": "Desc_LiquidTurboFuel_C", "rate": 20 },
+          { "id": "Desc_FluidCanister_C", "rate": 20 }
+        ],
+        "outputs": [{ "id": "Desc_TurboFuel_C", "rate": 20 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_NuclearFuelRod_C",
+    "name": "Uranium Fuel Rod",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_NuclearFuelRod_C/name/Uranium+Fuel+Rod",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_NuclearFuelRod_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Uranium Fuel Rod",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_UraniumCell_C", "rate": 20 },
+          { "id": "Desc_SteelPlateReinforced_C", "rate": 1.2 },
+          { "id": "Desc_ElectromagneticControlRod_C", "rate": 2 }
+        ],
+        "outputs": [{ "id": "Desc_NuclearFuelRod_C", "rate": 0.4 }]
+      },
+      {
+        "label": "Alternate: Uranium Fuel Unit",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_UraniumCell_C", "rate": 20 },
+          { "id": "Desc_ElectromagneticControlRod_C", "rate": 2 },
+          { "id": "Desc_CrystalOscillator_C", "rate": 0.6 },
+          { "id": "BP_EquipmentDescriptorBeacon_C", "rate": 1.2 }
+        ],
+        "outputs": [{ "id": "Desc_NuclearFuelRod_C", "rate": 0.6 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PlutoniumFuelRod_C",
+    "name": "Plutonium Fuel Rod",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PlutoniumFuelRod_C/name/Plutonium+Fuel+Rod",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_PlutoniumFuelRod_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Plutonium Fuel Rod",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_PlutoniumCell_C", "rate": 7.5 },
+          { "id": "Desc_SteelPlate_C", "rate": 4.5 },
+          { "id": "Desc_ElectromagneticControlRod_C", "rate": 1.5 },
+          { "id": "Desc_AluminumPlateReinforced_C", "rate": 2.5 }
+        ],
+        "outputs": [{ "id": "Desc_PlutoniumFuelRod_C", "rate": 0.25 }]
+      },
+      {
+        "label": "Alternate: Plutonium Fuel Unit",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_PlutoniumCell_C", "rate": 10 },
+          { "id": "Desc_PressureConversionCube_C", "rate": 0.5 }
+        ],
+        "outputs": [{ "id": "Desc_PlutoniumFuelRod_C", "rate": 0.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Gunpowder_C",
+    "name": "Black Powder",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Gunpowder_C/name/Black+Powder",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Gunpowder_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Black Powder",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_Coal_C", "rate": 15 },
+          { "id": "Desc_Sulfur_C", "rate": 15 }
+        ],
+        "outputs": [{ "id": "Desc_Gunpowder_C", "rate": 30 }]
+      },
+      {
+        "label": "Alternate: Fine Black Powder",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_Sulfur_C", "rate": 7.5 },
+          { "id": "Desc_CompactedCoal_C", "rate": 3.75 }
+        ],
+        "outputs": [{ "id": "Desc_Gunpowder_C", "rate": 15 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_GunpowderMK2_C",
+    "name": "Smokeless Powder",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_GunpowderMK2_C/name/Smokeless+Powder",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_GunpowderMk2_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Smokeless Powder",
+        "machine": "refinery",
+        "inputs": [
+          { "id": "Desc_Gunpowder_C", "rate": 20 },
+          { "id": "Desc_HeavyOilResidue_C", "rate": 10 }
+        ],
+        "outputs": [{ "id": "Desc_GunpowderMK2_C", "rate": 20 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Filter_C",
+    "name": "Gas Filter",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Filter_C/name/Gas+Filter",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_GasMaskFilter_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Gas Filter",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_Coal_C", "rate": 37.5 },
+          { "id": "Desc_Rubber_C", "rate": 15 },
+          { "id": "Desc_Fabric_C", "rate": 15 }
+        ],
+        "outputs": [{ "id": "Desc_Filter_C", "rate": 7.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_ColorCartridge_C",
+    "name": "Color Cartridge",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_ColorCartridge_C/name/Color+Cartridge",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_ColorCartridge_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Color Cartridge",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_FlowerPetals_C", "rate": 50 }],
+        "outputs": [{ "id": "Desc_ColorCartridge_C", "rate": 100 }]
+      }
+    ]
+  },
+  {
+    "id": "BP_EquipmentDescriptorBeacon_C",
+    "name": "Beacon",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/BP_EquipmentDescriptorBeacon_C/name/Beacon",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Beacon_256.png?v=1668514885",
+    "recipes": [
+      {
+        "label": "Beacon",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_IronPlate_C", "rate": 22.5 },
+          { "id": "Desc_IronRod_C", "rate": 7.5 },
+          { "id": "Desc_Wire_C", "rate": 112.5 },
+          { "id": "Desc_Cable_C", "rate": 15 }
+        ],
+        "outputs": [{ "id": "BP_EquipmentDescriptorBeacon_C", "rate": 7.5 }]
+      },
+      {
+        "label": "Alternate: Crystal Beacon",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_SteelPlate_C", "rate": 2 },
+          { "id": "Desc_SteelPipe_C", "rate": 8 },
+          { "id": "Desc_CrystalOscillator_C", "rate": 0.5 }
+        ],
+        "outputs": [{ "id": "BP_EquipmentDescriptorBeacon_C", "rate": 10 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_HazmatFilter_C",
+    "name": "Iodine Infused Filter",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_HazmatFilter_C/name/Iodine+Infused+Filter",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_HazmatFilter_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Iodine Infused Filter",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_Filter_C", "rate": 3.75 },
+          { "id": "Desc_HighSpeedWire_C", "rate": 30 },
+          { "id": "Desc_AluminumCasing_C", "rate": 3.75 }
+        ],
+        "outputs": [{ "id": "Desc_HazmatFilter_C", "rate": 3.75 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_SpikedRebar_C",
+    "name": "Iron Rebar",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SpikedRebar_C/name/Iron+Rebar",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Rebar_256.png?v=1668514885",
+    "recipes": [
+      {
+        "label": "Iron Rebar",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_IronRod_C", "rate": 15 }],
+        "outputs": [{ "id": "Desc_SpikedRebar_C", "rate": 15 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Rebar_Stunshot_C",
+    "name": "Stun Rebar",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Rebar_Stunshot_C/name/Stun+Rebar",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_StunRebar_256.png?v=1668514885",
+    "recipes": [
+      {
+        "label": "Stun Rebar",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_SpikedRebar_C", "rate": 10 },
+          { "id": "Desc_HighSpeedWire_C", "rate": 50 }
+        ],
+        "outputs": [{ "id": "Desc_Rebar_Stunshot_C", "rate": 10 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Rebar_Spreadshot_C",
+    "name": "Shatter Rebar",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Rebar_Spreadshot_C/name/Shatter+Rebar",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_ScatterRebar_256.png?v=1668514885",
+    "recipes": [
+      {
+        "label": "Shatter Rebar",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_SpikedRebar_C", "rate": 10 },
+          { "id": "Desc_QuartzCrystal_C", "rate": 15 }
+        ],
+        "outputs": [{ "id": "Desc_Rebar_Spreadshot_C", "rate": 5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Rebar_Explosive_C",
+    "name": "Explosive Rebar",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Rebar_Explosive_C/name/Explosive+Rebar",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_ExpRebar_256.png?v=1668514885",
+    "recipes": [
+      {
+        "label": "Explosive Rebar",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_SpikedRebar_C", "rate": 10 },
+          { "id": "Desc_GunpowderMK2_C", "rate": 10 },
+          { "id": "Desc_SteelPipe_C", "rate": 10 }
+        ],
+        "outputs": [{ "id": "Desc_Rebar_Explosive_C", "rate": 5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_CartridgeStandard_C",
+    "name": "Rifle Ammo",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_CartridgeStandard_C/name/Rifle+Ammo",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Rifle_256.png?v=1668514885",
+    "recipes": [
+      {
+        "label": "Rifle Ammo",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_CopperSheet_C", "rate": 15 },
+          { "id": "Desc_GunpowderMK2_C", "rate": 10 }
+        ],
+        "outputs": [{ "id": "Desc_CartridgeStandard_C", "rate": 75 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_CartridgeSmartProjectile_C",
+    "name": "Homing Rifle Ammo",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_CartridgeSmartProjectile_C/name/Homing+Rifle+Ammo",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_HomingRifle_256.png?v=1668514885",
+    "recipes": [
+      {
+        "label": "Homing Rifle Ammo",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_CartridgeStandard_C", "rate": 50 },
+          { "id": "Desc_HighSpeedConnector_C", "rate": 2.5 }
+        ],
+        "outputs": [{ "id": "Desc_CartridgeSmartProjectile_C", "rate": 25 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_CartridgeChaos_C",
+    "name": "Turbo Rifle Ammo",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_CartridgeChaos_C/name/Turbo+Rifle+Ammo",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_TurboRifle_256.png?v=1668514885",
+    "recipes": [
+      {
+        "label": "Turbo Rifle Ammo",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_CartridgeStandard_C", "rate": 125 },
+          { "id": "Desc_AluminumCasing_C", "rate": 15 },
+          { "id": "Desc_TurboFuel_C", "rate": 15 }
+        ],
+        "outputs": [{ "id": "Desc_CartridgeChaos_C", "rate": 250 }]
+      },
+      {
+        "label": "Turbo Rifle Ammo",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_CartridgeStandard_C", "rate": 125 },
+          { "id": "Desc_AluminumCasing_C", "rate": 15 },
+          { "id": "Desc_LiquidTurboFuel_C", "rate": 15 }
+        ],
+        "outputs": [{ "id": "Desc_CartridgeChaos_C", "rate": 250 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_NobeliskExplosive_C",
+    "name": "Nobelisk",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_NobeliskExplosive_C/name/Nobelisk",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Explosive_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Nobelisk",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_Gunpowder_C", "rate": 20 },
+          { "id": "Desc_SteelPipe_C", "rate": 20 }
+        ],
+        "outputs": [{ "id": "Desc_NobeliskExplosive_C", "rate": 10 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_NobeliskGas_C",
+    "name": "Gas Nobelisk",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_NobeliskGas_C/name/Gas+Nobelisk",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Gas_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Gas Nobelisk",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_NobeliskExplosive_C", "rate": 5 },
+          { "id": "Desc_GenericBiomass_C", "rate": 50 }
+        ],
+        "outputs": [{ "id": "Desc_NobeliskGas_C", "rate": 5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_NobeliskShockwave_C",
+    "name": "Pulse Nobelisk",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_NobeliskShockwave_C/name/Pulse+Nobelisk",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Shock_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Pulse Nobelisk",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_NobeliskExplosive_C", "rate": 5 },
+          { "id": "Desc_CrystalOscillator_C", "rate": 1 }
+        ],
+        "outputs": [{ "id": "Desc_NobeliskShockwave_C", "rate": 5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_NobeliskCluster_C",
+    "name": "Cluster Nobelisk",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_NobeliskCluster_C/name/Cluster+Nobelisk",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Cluster_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Cluster Nobelisk",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_NobeliskExplosive_C", "rate": 7.5 },
+          { "id": "Desc_GunpowderMK2_C", "rate": 10 }
+        ],
+        "outputs": [{ "id": "Desc_NobeliskCluster_C", "rate": 2.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_NobeliskNuke_C",
+    "name": "Nuke Nobelisk",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_NobeliskNuke_C/name/Nuke+Nobelisk",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Nuke_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Nuke Nobelisk",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_NobeliskExplosive_C", "rate": 2.5 },
+          { "id": "Desc_UraniumCell_C", "rate": 10 },
+          { "id": "Desc_GunpowderMK2_C", "rate": 5 },
+          { "id": "Desc_CircuitBoardHighSpeed_C", "rate": 3 }
+        ],
+        "outputs": [{ "id": "Desc_NobeliskNuke_C", "rate": 0.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_ElectromagneticControlRod_C",
+    "name": "Electromagnetic Control Rod",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_ElectromagneticControlRod_C/name/Electromagnetic+Control+Rod",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_ElectromagneticControlRod_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Electromagnetic Control Rod",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_Stator_C", "rate": 6 },
+          { "id": "Desc_CircuitBoardHighSpeed_C", "rate": 4 }
+        ],
+        "outputs": [{ "id": "Desc_ElectromagneticControlRod_C", "rate": 4 }]
+      },
+      {
+        "label": "Alternate: Electromagnetic Connection Rod",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_Stator_C", "rate": 8 },
+          { "id": "Desc_HighSpeedConnector_C", "rate": 4 }
+        ],
+        "outputs": [{ "id": "Desc_ElectromagneticControlRod_C", "rate": 8 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_UraniumCell_C",
+    "name": "Encased Uranium Cell",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_UraniumCell_C/name/Encased+Uranium+Cell",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_NuclearCell_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Encased Uranium Cell",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_OreUranium_C", "rate": 50 },
+          { "id": "Desc_Cement_C", "rate": 15 },
+          { "id": "Desc_SulfuricAcid_C", "rate": 40 }
+        ],
+        "outputs": [
+          { "id": "Desc_UraniumCell_C", "rate": 25 },
+          { "id": "Desc_SulfuricAcid_C", "rate": 10 }
+        ]
+      },
+      {
+        "label": "Alternate: Infused Uranium Cell",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_OreUranium_C", "rate": 25 },
+          { "id": "Desc_Silica_C", "rate": 15 },
+          { "id": "Desc_Sulfur_C", "rate": 25 },
+          { "id": "Desc_HighSpeedWire_C", "rate": 75 }
+        ],
+        "outputs": [{ "id": "Desc_UraniumCell_C", "rate": 20 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_NonFissibleUranium_C",
+    "name": "Non-fissile Uranium",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_NonFissibleUranium_C/name/Non-fissile+Uranium",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_NonFissileUranium_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Non-fissile Uranium",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_NuclearWaste_C", "rate": 37.5 },
+          { "id": "Desc_Silica_C", "rate": 25 },
+          { "id": "Desc_NitricAcid_C", "rate": 15 },
+          { "id": "Desc_SulfuricAcid_C", "rate": 15 }
+        ],
+        "outputs": [
+          { "id": "Desc_NonFissibleUranium_C", "rate": 50 },
+          { "id": "Desc_Water_C", "rate": 15 }
+        ]
+      },
+      {
+        "label": "Alternate: Fertile Uranium",
+        "machine": "blender",
+        "inputs": [
+          { "id": "Desc_OreUranium_C", "rate": 25 },
+          { "id": "Desc_NuclearWaste_C", "rate": 25 },
+          { "id": "Desc_NitricAcid_C", "rate": 15 },
+          { "id": "Desc_SulfuricAcid_C", "rate": 25 }
+        ],
+        "outputs": [
+          { "id": "Desc_NonFissibleUranium_C", "rate": 100 },
+          { "id": "Desc_Water_C", "rate": 40 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PlutoniumPellet_C",
+    "name": "Plutonium Pellet",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PlutoniumPellet_C/name/Plutonium+Pellet",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_PlutoniumPellet_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Plutonium Pellet",
+        "machine": "particle accelerator",
+        "inputs": [
+          { "id": "Desc_NonFissibleUranium_C", "rate": 100 },
+          { "id": "Desc_NuclearWaste_C", "rate": 25 }
+        ],
+        "outputs": [{ "id": "Desc_PlutoniumPellet_C", "rate": 30 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PlutoniumCell_C",
+    "name": "Encased Plutonium Cell",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PlutoniumCell_C/name/Encased+Plutonium+Cell",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_EncasedPlutoniumCell_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Encased Plutonium Cell",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_PlutoniumPellet_C", "rate": 10 },
+          { "id": "Desc_Cement_C", "rate": 20 }
+        ],
+        "outputs": [{ "id": "Desc_PlutoniumCell_C", "rate": 5 }]
+      },
+      {
+        "label": "Alternate: Instant Plutonium Cell",
+        "machine": "particle accelerator",
+        "inputs": [
+          { "id": "Desc_NonFissibleUranium_C", "rate": 75 },
+          { "id": "Desc_AluminumCasing_C", "rate": 10 }
+        ],
+        "outputs": [{ "id": "Desc_PlutoniumCell_C", "rate": 10 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_NuclearWaste_C",
+    "name": "Uranium Waste",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_NuclearWaste_C/name/Uranium+Waste",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_NuclearWaste_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Uranium Waste",
+        "machine": "nuclear power plant",
+        "inputs": [{ "id": "Desc_NuclearFuelRod_C", "rate": 0.2 }],
+        "outputs": [{ "id": "Desc_NuclearWaste_C", "rate": 10 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_PlutoniumWaste_C",
+    "name": "Plutonium Waste",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_PlutoniumWaste_C/name/Plutonium+Waste",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_PlutoniumWaste_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Plutonium Waste",
+        "machine": "nuclear power plant",
+        "inputs": [{ "id": "Desc_PlutoniumFuelRod_C", "rate": 0.1 }],
+        "outputs": [{ "id": "Desc_PlutoniumWaste_C", "rate": 1 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_Crystal_C",
+    "name": "Blue Power Slug",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Crystal_C/name/Blue+Power+Slug",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/PowerSlugGreen_256.png?v=1668514885",
+    "recipes": []
+  },
+  {
+    "id": "Desc_Crystal_mk2_C",
+    "name": "Yellow Power Slug",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Crystal_mk2_C/name/Yellow+Power+Slug",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/PowerSlugYellow_256.png?v=1668514885",
+    "recipes": []
+  },
+  {
+    "id": "Desc_Crystal_mk3_C",
+    "name": "Purple Power Slug",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_Crystal_mk3_C/name/Purple+Power+Slug",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/PowerSlugPurple_256.png?v=1668514885",
+    "recipes": []
+  },
+  {
+    "id": "Desc_CrystalShard_C",
+    "name": "Power Shard",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_CrystalShard_C/name/Power+Shard",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/PowerShard_256.png?v=1668514885",
+    "recipes": [
+      {
+        "label": "Power Shard (1)",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_Crystal_C", "rate": 7.5 }],
+        "outputs": [{ "id": "Desc_CrystalShard_C", "rate": 7.5 }]
+      },
+      {
+        "label": "Power Shard (2)",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_Crystal_mk2_C", "rate": 5 }],
+        "outputs": [{ "id": "Desc_CrystalShard_C", "rate": 10 }]
+      },
+      {
+        "label": "Power Shard (5)",
+        "machine": "constructor",
+        "inputs": [{ "id": "Desc_Crystal_mk3_C", "rate": 2.5 }],
+        "outputs": [{ "id": "Desc_CrystalShard_C", "rate": 12.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_ResourceSinkCoupon_C",
+    "name": "FICSIT Coupon",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_ResourceSinkCoupon_C/name/FICSIT+Coupon",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Ficsit_Coupon_256.png?v=1668514886",
+    "recipes": []
+  },
+  {
+    "id": "Desc_SpaceElevatorPart_1_C",
+    "name": "Smart Plating",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SpaceElevatorPart_1_C/name/Smart+Plating",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_SpelevatorPart_1_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Smart Plating",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_IronPlateReinforced_C", "rate": 2 },
+          { "id": "Desc_Rotor_C", "rate": 2 }
+        ],
+        "outputs": [{ "id": "Desc_SpaceElevatorPart_1_C", "rate": 2 }]
+      },
+      {
+        "label": "Alternate: Plastic Smart Plating",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_IronPlateReinforced_C", "rate": 2.5 },
+          { "id": "Desc_Rotor_C", "rate": 2.5 },
+          { "id": "Desc_Plastic_C", "rate": 7.5 }
+        ],
+        "outputs": [{ "id": "Desc_SpaceElevatorPart_1_C", "rate": 5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_SpaceElevatorPart_2_C",
+    "name": "Versatile Framework",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SpaceElevatorPart_2_C/name/Versatile+Framework",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_SpelevatorPart_2_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Versatile Framework",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_ModularFrame_C", "rate": 2.5 },
+          { "id": "Desc_SteelPlate_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_SpaceElevatorPart_2_C", "rate": 5 }]
+      },
+      {
+        "label": "Alternate: Flexible Framework",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_ModularFrame_C", "rate": 3.75 },
+          { "id": "Desc_SteelPlate_C", "rate": 22.5 },
+          { "id": "Desc_Rubber_C", "rate": 30 }
+        ],
+        "outputs": [{ "id": "Desc_SpaceElevatorPart_2_C", "rate": 7.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_SpaceElevatorPart_3_C",
+    "name": "Automated Wiring",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SpaceElevatorPart_3_C/name/Automated+Wiring",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/SpelevatorPart_3_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Automated Wiring",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_Stator_C", "rate": 2.5 },
+          { "id": "Desc_Cable_C", "rate": 50 }
+        ],
+        "outputs": [{ "id": "Desc_SpaceElevatorPart_3_C", "rate": 2.5 }]
+      },
+      {
+        "label": "Alternate: Automated Speed Wiring",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_Stator_C", "rate": 3.75 },
+          { "id": "Desc_Wire_C", "rate": 75 },
+          { "id": "Desc_HighSpeedConnector_C", "rate": 1.88 }
+        ],
+        "outputs": [{ "id": "Desc_SpaceElevatorPart_3_C", "rate": 7.5 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_SpaceElevatorPart_4_C",
+    "name": "Modular Engine",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SpaceElevatorPart_4_C/name/Modular+Engine",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_SpelevatorPart_4_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Modular Engine",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_Motor_C", "rate": 2 },
+          { "id": "Desc_Rubber_C", "rate": 15 },
+          { "id": "Desc_SpaceElevatorPart_1_C", "rate": 2 }
+        ],
+        "outputs": [{ "id": "Desc_SpaceElevatorPart_4_C", "rate": 1 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_SpaceElevatorPart_5_C",
+    "name": "Adaptive Control Unit",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SpaceElevatorPart_5_C/name/Adaptive+Control+Unit",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_SpelevatorPart_5_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Adaptive Control Unit",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_SpaceElevatorPart_3_C", "rate": 7.5 },
+          { "id": "Desc_CircuitBoard_C", "rate": 5 },
+          { "id": "Desc_ModularFrameHeavy_C", "rate": 1 },
+          { "id": "Desc_Computer_C", "rate": 1 }
+        ],
+        "outputs": [{ "id": "Desc_SpaceElevatorPart_5_C", "rate": 1 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_SpaceElevatorPart_7_C",
+    "name": "Assembly Director System",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SpaceElevatorPart_7_C/name/Assembly+Director+System",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_AssemblyDirectorSystem_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Assembly Director System",
+        "machine": "assembler",
+        "inputs": [
+          { "id": "Desc_SpaceElevatorPart_5_C", "rate": 1.5 },
+          { "id": "Desc_ComputerSuper_C", "rate": 0.75 }
+        ],
+        "outputs": [{ "id": "Desc_SpaceElevatorPart_7_C", "rate": 0.75 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_SpaceElevatorPart_6_C",
+    "name": "Magnetic Field Generator",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SpaceElevatorPart_6_C/name/Magnetic+Field+Generator",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_MagneticFieldGenerator_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Magnetic Field Generator",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_SpaceElevatorPart_2_C", "rate": 2.5 },
+          { "id": "Desc_ElectromagneticControlRod_C", "rate": 1 },
+          { "id": "Desc_Battery_C", "rate": 5 }
+        ],
+        "outputs": [{ "id": "Desc_SpaceElevatorPart_6_C", "rate": 1 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_SpaceElevatorPart_8_C",
+    "name": "Thermal Propulsion Rocket",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SpaceElevatorPart_8_C/name/Thermal+Propulsion+Rocket",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_ThermalPropulsionRocket_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Thermal Propulsion Rocket",
+        "machine": "manufacturer",
+        "inputs": [
+          { "id": "Desc_SpaceElevatorPart_4_C", "rate": 2.5 },
+          { "id": "Desc_MotorLightweight_C", "rate": 1 },
+          { "id": "Desc_CoolingSystem_C", "rate": 3 },
+          { "id": "Desc_ModularFrameFused_C", "rate": 1 }
+        ],
+        "outputs": [{ "id": "Desc_SpaceElevatorPart_8_C", "rate": 1 }]
+      }
+    ]
+  },
+  {
+    "id": "Desc_SpaceElevatorPart_9_C",
+    "name": "Nuclear Pasta",
+    "url": "https://satisfactory-calculator.com/en/items/detail/id/Desc_SpaceElevatorPart_9_C/name/Nuclear+Pasta",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_NuclearPasta_256.png?v=1668514886",
+    "recipes": [
+      {
+        "label": "Nuclear Pasta",
+        "machine": "particle accelerator",
+        "inputs": [
+          { "id": "Desc_CopperDust_C", "rate": 100 },
+          { "id": "Desc_PressureConversionCube_C", "rate": 0.5 }
+        ],
+        "outputs": [{ "id": "Desc_SpaceElevatorPart_9_C", "rate": 0.5 }]
+      }
+    ]
+  }
+]
