@@ -1,0 +1,12 @@
+{
+  "name": "toolbox",
+  "version": "1.0.0",
+  "description": "A tool to quickly download information about machines",
+  "main": "index.js",
+  "scripts": {},
+  "license": "ISC",
+  "dependencies": {
+    "node-html-parser": "^6.1.13"
+  },
+  "type": "module"
+}
