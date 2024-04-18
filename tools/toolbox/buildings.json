@@ -1,0 +1,303 @@
+[
+  {
+    "id": "Build_MinerMk1_C",
+    "name": "Miner Mk.1",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_MinerMk1_C/name/Miner+Mk.1",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/MinerMk1_256.png?v=1662619375",
+    "power": { "value": 5, "type": "consumer" }
+  },
+  {
+    "id": "Build_MinerMk2_C",
+    "name": "Miner Mk.2",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_MinerMk2_C/name/Miner+Mk.2",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/MinerMk2_256.png?v=1662619375",
+    "power": { "value": 12, "type": "consumer" }
+  },
+  {
+    "id": "Build_MinerMk3_C",
+    "name": "Miner Mk.3",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_MinerMk3_C/name/Miner+Mk.3",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/MinerMk3_256.png?v=1662619375",
+    "power": { "value": 30, "type": "consumer" }
+  },
+  {
+    "id": "Build_OilPump_C",
+    "name": "Oil Extractor",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_OilPump_C/name/Oil+Extractor",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/OilPump_256.png?v=1668514885",
+    "power": { "value": 40, "type": "consumer" }
+  },
+  {
+    "id": "Build_WaterPump_C",
+    "name": "Water Extractor",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_WaterPump_C/name/Water+Extractor",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/Waterpump_256.png?v=1668514885",
+    "power": { "value": 20, "type": "consumer" }
+  },
+  {
+    "id": "Build_FrackingSmasher_C",
+    "name": "Resource Well Pressurizer",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_FrackingSmasher_C/name/Resource+Well+Pressurizer",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Smasher_256.png?v=1668514885",
+    "power": { "value": 150, "type": "consumer" }
+  },
+  {
+    "id": "Build_FrackingExtractor_C",
+    "name": "Resource Well Extractor",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_FrackingExtractor_C/name/Resource+Well+Extractor",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Extractor_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_SmelterMk1_C",
+    "name": "Smelter",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_SmelterMk1_C/name/Smelter",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/SmelterMk1_256.png?v=1662619375",
+    "power": { "value": 4, "type": "consumer" }
+  },
+  {
+    "id": "Build_FoundryMk1_C",
+    "name": "Foundry",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_FoundryMk1_C/name/Foundry",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/Foundry_256.png?v=1662619375",
+    "power": { "value": 16, "type": "consumer" }
+  },
+  {
+    "id": "Build_ConstructorMk1_C",
+    "name": "Constructor",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_ConstructorMk1_C/name/Constructor",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/ConstructorMk1_256.png?v=1662619375",
+    "power": { "value": 4, "type": "consumer" }
+  },
+  {
+    "id": "Build_AssemblerMk1_C",
+    "name": "Assembler",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_AssemblerMk1_C/name/Assembler",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/AssemblerMk1_256.png?v=1662619375",
+    "power": { "value": 15, "type": "consumer" }
+  },
+  {
+    "id": "Build_ManufacturerMk1_C",
+    "name": "Manufacturer",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_ManufacturerMk1_C/name/Manufacturer",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/Manufacturer_256.png?v=1662619375",
+    "power": { "value": 55, "type": "consumer" }
+  },
+  {
+    "id": "Build_OilRefinery_C",
+    "name": "Refinery",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_OilRefinery_C/name/Refinery",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_OilRefinery_256.png?v=1668514885",
+    "power": { "value": 30, "type": "consumer" }
+  },
+  {
+    "id": "Build_Packager_C",
+    "name": "Packager",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_Packager_C/name/Packager",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Packager_256.png?v=1668514885",
+    "power": { "value": 10, "type": "consumer" }
+  },
+  {
+    "id": "Build_Blender_C",
+    "name": "Blender",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_Blender_C/name/Blender",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_Blender_256.png?v=1668514885",
+    "power": { "value": 75, "type": "consumer" }
+  },
+  {
+    "id": "Build_HadronCollider_C",
+    "name": "Particle Accelerator",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_HadronCollider_C/name/Particle+Accelerator",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_HadronCollider_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_GeneratorBiomass_C",
+    "name": "Biomass Burner",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_GeneratorBiomass_C/name/Biomass+Burner",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_BiomassGenerator_256.png?v=1668514885",
+    "power": { "value": 30, "type": "generator" }
+  },
+  {
+    "id": "Build_GeneratorCoal_C",
+    "name": "Coal Generator",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_GeneratorCoal_C/name/Coal+Generator",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_CoalGenerator_256.png?v=1668514885",
+    "power": { "value": 75, "type": "generator" }
+  },
+  {
+    "id": "Build_GeneratorFuel_C",
+    "name": "Fuel Generator",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_GeneratorFuel_C/name/Fuel+Generator",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/FuelGenerator_256.png?v=1668514885",
+    "power": { "value": 150, "type": "generator" }
+  },
+  {
+    "id": "Build_GeneratorGeoThermal_C",
+    "name": "Geothermal Generator",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_GeneratorGeoThermal_C/name/Geothermal+Generator",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/GeoThermalPowerGenerator_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_GeneratorNuclear_C",
+    "name": "Nuclear Power Plant",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_GeneratorNuclear_C/name/Nuclear+Power+Plant",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/NuclearPowerplant_256.png?v=1668514885",
+    "power": { "value": 2500, "type": "generator" }
+  },
+  {
+    "id": "Build_PowerStorageMk1_C",
+    "name": "Power Storage",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_PowerStorageMk1_C/name/Power+Storage",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_PowerStorage_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_TradingPost_C",
+    "name": "The HUB",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_TradingPost_C/name/The+HUB",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/Hub_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_Mam_C",
+    "name": "MAM",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_Mam_C/name/MAM",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/MAM_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_SpaceElevator_C",
+    "name": "Space Elevator",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_SpaceElevator_C/name/Space+Elevator",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/SpaceElevator_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_BlueprintDesigner_C",
+    "name": "Blueprint Designer",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_BlueprintDesigner_C/name/Blueprint+Designer",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_BlueprintDesigner_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_ResourceSink_C",
+    "name": "AWESOME Sink",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_ResourceSink_C/name/AWESOME+Sink",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/ResourceSink_256.png?v=1668514885",
+    "power": { "value": 30, "type": "consumer" }
+  },
+  {
+    "id": "Build_ResourceSinkShop_C",
+    "name": "AWESOME Shop",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_ResourceSinkShop_C/name/AWESOME+Shop",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/ResourceSinkShop_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_WorkBench_C",
+    "name": "Craft Bench",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_WorkBench_C/name/Craft+Bench",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/Workbench_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_Workshop_C",
+    "name": "Equipment Workshop",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_Workshop_C/name/Equipment+Workshop",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/Workshop_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_StoragePlayer_C",
+    "name": "Personal Storage Box",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_StoragePlayer_C/name/Personal+Storage+Box",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/PlayerStorage_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_StorageMedkit_C",
+    "name": "Medical Storage Box",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_StorageMedkit_C/name/Medical+Storage+Box",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_StorageMedkit_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_StorageHazard_C",
+    "name": "Hazard Storage Box",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_StorageHazard_C/name/Hazard+Storage+Box",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_StorageHazard_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_StorageContainerMk1_C",
+    "name": "Storage Container",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_StorageContainerMk1_C/name/Storage+Container",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/StorageContainer_256.png?v=1662619375",
+    "power": null
+  },
+  {
+    "id": "Build_StorageContainerMk2_C",
+    "name": "Industrial Storage Container",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_StorageContainerMk2_C/name/Industrial+Storage+Container",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/StorageContainerMk2_256.png?v=1662619375",
+    "power": null
+  },
+  {
+    "id": "Build_PipeStorageTank_C",
+    "name": "Fluid Buffer",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_PipeStorageTank_C/name/Fluid+Buffer",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/FluidStorage_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_IndustrialTank_C",
+    "name": "Industrial Fluid Buffer",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_IndustrialTank_C/name/Industrial+Fluid+Buffer",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/FluidStorageIndustrial_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_TruckStation_C",
+    "name": "Truck Station",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_TruckStation_C/name/Truck+Station",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/TruckStation_256.png?v=1662619375",
+    "power": { "value": 20, "type": "consumer" }
+  },
+  {
+    "id": "Build_DroneStation_C",
+    "name": "Drone Port",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_DroneStation_C/name/Drone+Port",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_DronePort_256.png?v=1668514885",
+    "power": { "value": 100, "type": "consumer" }
+  },
+  {
+    "id": "Build_TrainDockingStation_C",
+    "name": "Freight Platform",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_TrainDockingStation_C/name/Freight+Platform",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_DockingStation_256.png?v=1668514885",
+    "power": { "value": 50, "type": "consumer" }
+  },
+  {
+    "id": "Build_TrainDockingStationLiquid_C",
+    "name": "Fluid Freight Platform",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_TrainDockingStationLiquid_C/name/Fluid+Freight+Platform",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/IconDesc_TrainDockingFluid_256.png?v=1668514885",
+    "power": { "value": 50, "type": "consumer" }
+  },
+  {
+    "id": "Build_LookoutTower_C",
+    "name": "Lookout Tower",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_LookoutTower_C/name/Lookout+Tower",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/LookOutTower_256.png?v=1668514885",
+    "power": null
+  },
+  {
+    "id": "Build_RadarTower_C",
+    "name": "Radar Tower",
+    "url": "https://satisfactory-calculator.com/en/buildings/detail/id/Build_RadarTower_C/name/Radar+Tower",
+    "img": "https://static.satisfactory-calculator.com/img/gameUpdate6/RadarTower_256.png?v=1668514885",
+    "power": { "value": 30, "type": "consumer" }
+  }
+]
