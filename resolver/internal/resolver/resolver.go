@@ -6,9 +6,20 @@ import (
 	"resolver/internal/recipe"
 )
 
+type Node struct {
+	item      item.Item
+	junctions []Junction
+}
+
 type Junction struct {
-	recipe     *recipe.Recipe
+	recipe *recipe.Recipe
+
+	nodes      []Node
 	multiplier float64
+}
+
+type Analyzable interface {
+	Analyze(r *Resolver, rate float64) []Analyzable
 }
 
 type Resolver struct {
@@ -24,24 +35,55 @@ func New(items []item.Item) Resolver {
 }
 
 func (resolver *Resolver) Analyze(itemId string, rate float64) {
+	var analyzables []Analyzable
+
 	node := resolver.nodes[itemId]
+	analyzables = append(analyzables, &node)
 
-	if node.End() {
-		// TODO: manage end node
-		return
-	}
-
-	for _, recipe := range node.item.Recipes {
-		junction := makeJunction(itemId, recipe, rate)
-		fmt.Println(junction.multiplier, junction.recipe)
+	for len(analyzables) > 0 {
+		element := analyzables[0]
+		newElements := element.Analyze(resolver, rate)
+		analyzables = append(analyzables[1:], newElements...)
 	}
 }
 
-func makeJunction(itemId string, recipe recipe.Recipe, rate float64) Junction {
-	for _, o := range recipe.Outputs {
+func (resolver *Resolver) makeJunction(itemId string, recipe recipe.Recipe, rate float64) Junction {
+	var multiplier float64
+	nodes := make([]Node, len(recipe.Outputs))
+
+	for i, o := range recipe.Outputs {
 		if o.ItemId == itemId {
-			return Junction{recipe: &recipe, multiplier: rate / o.Rate}
+			multiplier = rate / o.Rate
 		}
+		nodes[i] = resolver.nodes[o.ItemId]
 	}
-	panic(fmt.Sprint("resolver: could not make junction for '", itemId, "'"))
+
+	if multiplier == 0 {
+		panic(fmt.Sprint("resolver: could not make junction for '", itemId, "'"))
+	}
+
+	return Junction{recipe: &recipe, nodes: nodes, multiplier: multiplier}
+}
+
+func (n *Node) End() bool {
+	return len(n.item.Recipes) == 0
+}
+
+func (n *Node) Analyze(resolver *Resolver, rate float64) []Analyzable {
+	if n.End() {
+		return []Analyzable{}
+	}
+
+	var analyzables []Analyzable
+	for _, recipe := range n.item.Recipes {
+		junction := resolver.makeJunction(n.item.Id, recipe, rate)
+		n.junctions = append(n.junctions, junction)
+		analyzables = append(analyzables, &junction)
+	}
+
+	return analyzables
+}
+
+func (j *Junction) Analyze(resolver *Resolver, rate float64) []Analyzable {
+	return []Analyzable{}
 }
