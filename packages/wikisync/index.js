@@ -1,13 +1,24 @@
 import { parse } from "node-html-parser";
+import { writeFileSync } from "node:fs";
 
-const url =
-  "https://satisfactory.wiki.gg/wiki/Template:DocsItems.json?action=edit";
+const urls = {
+  items:
+    "https://satisfactory.wiki.gg/wiki/Template:DocsItems.json?action=edit",
+  recipes:
+    "https://satisfactory.wiki.gg/wiki/Template:DocsRecipes.json?action=edit",
+};
 
-const response = await fetch(url);
+const syncOption = process.argv[2];
+if (syncOption in urls === false) {
+  throw Error(`invalid sync option: '${syncOption}'`);
+}
+
+const response = await fetch(urls[syncOption]);
 const html = await response.text();
 
 const page = parse(html);
 const textarea = page.getElementById("wpTextbox1");
-const recipes = JSON.parse(textarea.innerText);
+const result = JSON.parse(textarea.innerText);
 
-process.stdout.write(JSON.stringify(recipes));
+const filepath = process.argv[3] ?? "output.json";
+writeFileSync(filepath, JSON.stringify(result));

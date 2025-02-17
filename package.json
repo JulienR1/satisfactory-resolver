@@ -1,0 +1,11 @@
+{
+    "name": "satisfactory-resolver",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "sync:items": "node packages/wikisync items res/items.json",
+        "sync:recipes": "node packages/wikisync recipes res/recipes.json",
+        "sync": "npm run sync:items && npm run sync:recipes"
+    }
+}
