@@ -1,0 +1,11 @@
+{
+    "name": "wikisync",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "node-html-parser": "^7.0.1"
+    },
+    "type": "module"
+}
