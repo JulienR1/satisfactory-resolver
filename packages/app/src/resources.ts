@@ -1,5 +1,6 @@
 import _recipes from "../../../res/recipes.json"
 import _items from "../../../res/items.json"
+import _icons from "../../../res/icons.json"
 
 export type ItemDescriptor = keyof typeof _items
 export type RecipeDescriptor = keyof typeof _recipes
@@ -45,8 +46,10 @@ export type Recipe = {
 
 const recipes = {} as Record<RecipeDescriptor, Recipe>
 for (const [recipe] of Object.values(_recipes)) {
-    // @ts-expect-error Cannot know which className is used to index this recipe
-    recipes[recipe.className] = recipe
+    if (recipe.inBuildGun === false) {
+        // @ts-expect-error Cannot know which className is used to index this recipe
+        recipes[recipe.className] = recipe
+    }
 }
 
 const items = {} as Record<ItemDescriptor, Item>
@@ -55,4 +58,6 @@ for (const [item] of Object.values(_items)) {
     items[item.className] = item
 }
 
-export { recipes, items }
+const icons = _icons as unknown as Record<ItemDescriptor, string>
+
+export { recipes, items, icons }
