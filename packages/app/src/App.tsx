@@ -12,11 +12,11 @@ import {
   NodeTypes,
   FinalConnectionState,
   Edge,
-  Position,
+  XYPosition,
 } from "@xyflow/react";
 import { Overlay } from "./Overlay";
-import { useCallback } from "react";
-import { Item, ItemDescriptor, items } from "./resources";
+import { useCallback, useState } from "react";
+import { Item, ItemDescriptor, items, Recipe } from "./resources";
 import { ItemNode } from "./components/ItemNode";
 import { RecipeNode } from "./components/RecipeNode";
 import { filterRecipes } from "./lib/recipes";
@@ -26,6 +26,12 @@ const NODE_TYPES: NodeTypes = { item: ItemNode, recipe: RecipeNode };
 function App() {
   const [nodes, setNodes, handleNodesChange] = useNodesState([] as Node[]);
   const [edges, setEdges, handleEdgesChange] = useEdgesState([] as Edge[]);
+
+  const [recipeOptions, setRecipeOptions] = useState<Recipe[]>([]);
+  const [nextNodePosition, setNextNodePosition] = useState<XYPosition>({
+    x: 0,
+    y: 0,
+  });
 
   const addNode = useCallback(
     (node: Node) => setNodes((n) => n.concat(node)),
@@ -44,23 +50,14 @@ function App() {
     [addNode],
   );
 
-  const onConnectEnd = useCallback(
-    (_: MouseEvent | TouchEvent, state: FinalConnectionState) => {
-      if (!state.fromNode) {
-        throw Error("`fromNode` is not defined on connection end");
-      }
-      if (!state.fromHandle) {
-        throw Error("`fromHandle` is not defined on connection end");
+  const handleRecipeSelected = useCallback(
+    function (recipe: Recipe | null) {
+      setRecipeOptions([]);
+      if (!recipe) {
+        return;
       }
 
-      const position = state.to ?? { x: 0, y: 0 };
-      const itemId = state.fromNode.id as ItemDescriptor;
-      const type = state.fromHandle?.type === "source" ? "input" : "output";
-
-      const recipes = filterRecipes(itemId, type);
-
-      // TODO: chose the recipe before continuing
-      const recipe = recipes[0];
+      const position = nextNodePosition;
 
       addNode({
         type: "recipe",
@@ -110,12 +107,36 @@ function App() {
         );
       }
     },
-    [nodes, addNode, setEdges],
+    [addNode, nextNodePosition, nodes, setEdges],
+  );
+
+  const onConnectEnd = useCallback(
+    (_: MouseEvent | TouchEvent, state: FinalConnectionState) => {
+      if (!state.fromNode) {
+        throw Error("`fromNode` is not defined on connection end");
+      }
+      if (!state.fromHandle) {
+        throw Error("`fromHandle` is not defined on connection end");
+      }
+
+      const position = state.to ?? { x: 0, y: 0 };
+      const itemId = state.fromNode.id as ItemDescriptor;
+      const type = state.fromHandle?.type === "source" ? "input" : "output";
+
+      setNextNodePosition(position);
+      setRecipeOptions(filterRecipes(itemId, type));
+    },
+    [],
   );
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      <Overlay prompt={nodes.length === 0} onNewItem={handleNewItem} />
+      <Overlay
+        recipes={recipeOptions}
+        prompt={nodes.length === 0}
+        onNewItem={handleNewItem}
+        onRecipeSelected={handleRecipeSelected}
+      />
 
       <ReactFlow
         nodeTypes={NODE_TYPES}

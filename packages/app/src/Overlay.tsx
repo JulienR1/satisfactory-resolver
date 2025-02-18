@@ -9,34 +9,51 @@ import {
   CommandGroup,
   CommandDialog,
 } from "@/components/ui/command";
-import { Item, items } from "./resources";
+import { Item, items, Recipe } from "./resources";
 
 const sortedItems = Object.values(items).sort((a, b) =>
   a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
 );
 
-type OverlayProps = { prompt?: boolean; onNewItem: (item: Item) => void };
+type OverlayProps = {
+  prompt?: boolean;
+  recipes?: Recipe[];
+  onNewItem: (item: Item) => void;
+  onRecipeSelected: (recipe: Recipe | null) => void;
+};
 
-export function Overlay({ prompt, onNewItem }: OverlayProps) {
-  const [menuOpen, setMenuOpen] = useState(false);
+export function Overlay({
+  prompt,
+  recipes,
+  onNewItem,
+  onRecipeSelected,
+}: OverlayProps) {
+  const [itemSelectorOpen, setItemSelectorOpen] = useState(false);
 
   useKeyboard(
     "Space",
-    useCallback(() => setMenuOpen(true), []),
+    useCallback(() => setItemSelectorOpen(true), []),
   );
   useKeyboard(
     "Escape",
-    useCallback(() => setMenuOpen(false), []),
+    useCallback(() => setItemSelectorOpen(false), []),
   );
 
-  const handleSelect = useCallback(
+  const handleItemSelect = useCallback(
     function (item: Item) {
       return () => {
         onNewItem(item);
-        setMenuOpen(false);
+        setItemSelectorOpen(false);
       };
     },
     [onNewItem],
+  );
+
+  const handleRecipeSelect = useCallback(
+    function (recipe: Recipe) {
+      return () => onRecipeSelected(recipe);
+    },
+    [onRecipeSelected],
   );
 
   return (
@@ -53,7 +70,7 @@ export function Overlay({ prompt, onNewItem }: OverlayProps) {
         </div>
       )}
 
-      <CommandDialog open={menuOpen} onOpenChange={setMenuOpen}>
+      <CommandDialog open={itemSelectorOpen} onOpenChange={setItemSelectorOpen}>
         <Command className="max-h-52 h-fit">
           <CommandInput placeholder="Add an element to the schema ..." />
           <CommandList>
@@ -62,11 +79,40 @@ export function Overlay({ prompt, onNewItem }: OverlayProps) {
               {sortedItems.map((item) => (
                 <CommandItem
                   key={item.className}
-                  onSelect={handleSelect(item)}
+                  onSelect={handleItemSelect(item)}
                   asChild
                 >
                   <button className="block w-full cursor-pointer">
                     {item.name}
+                  </button>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </CommandDialog>
+
+      <CommandDialog
+        open={recipes && recipes.length > 0}
+        onOpenChange={(open) => {
+          if (!open) {
+            onRecipeSelected(null);
+          }
+        }}
+      >
+        <Command className="max-h-52 h-fit">
+          <CommandInput placeholder="Select a recipe ..." />
+          <CommandList>
+            <CommandEmpty>No recipes found.</CommandEmpty>
+            <CommandGroup>
+              {(recipes ?? []).map((recipe) => (
+                <CommandItem
+                  key={recipe.className}
+                  onSelect={handleRecipeSelect(recipe)}
+                  asChild
+                >
+                  <button className="block w-full cursor-pointer">
+                    {recipe.name}
                   </button>
                 </CommandItem>
               ))}
