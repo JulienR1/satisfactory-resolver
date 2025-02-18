@@ -1,19 +1,28 @@
-import { Item } from "@/resources";
+import { Item, recipes } from "@/resources";
 import { Handle, Position } from "@xyflow/react";
 
 type ItemNodeProps = { data: { item: Item } };
 
 export function ItemNode({ data: { item } }: ItemNodeProps) {
+  const isBuildable = Object.values(recipes).some((recipe) =>
+    recipe.products.some((product) => product.item === item.className),
+  );
+  const isIngredient = Object.values(recipes).some((recipe) =>
+    recipe.ingredients.some((ingredient) => ingredient.item === item.className),
+  );
+
   return (
     <>
-      <Handle
-        id="input"
-        type="target"
-        position={Position.Top}
-        className="item-handle"
-        isConnectable
-        isConnectableEnd={false}
-      />
+      {isBuildable && (
+        <Handle
+          id="input"
+          type="target"
+          position={Position.Top}
+          className="item-handle"
+          isConnectable
+          isConnectableEnd={false}
+        />
+      )}
       <div className="flex gap-2 px-4 py-2 items-center bg-white border border-black rounded">
         <img
           className="block w-8 aspect-square"
@@ -22,14 +31,16 @@ export function ItemNode({ data: { item } }: ItemNodeProps) {
         />
         <p>{item.name}</p>
       </div>
-      <Handle
-        id="output"
-        type="source"
-        position={Position.Bottom}
-        className="item-handle"
-        isConnectableStart
-        isConnectableEnd={false}
-      />
+      {isIngredient && (
+        <Handle
+          id="output"
+          type="source"
+          position={Position.Bottom}
+          className="item-handle"
+          isConnectableStart
+          isConnectableEnd={false}
+        />
+      )}
     </>
   );
 }
