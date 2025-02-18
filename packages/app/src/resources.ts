@@ -23,6 +23,8 @@ export type Item = {
     unlockedBy: string
 }
 
+export type RecipeItem = { amount: number, item: ItemDescriptor }
+
 export type Recipe = {
     alternate: boolean,
     className: RecipeDescriptor,
@@ -32,13 +34,13 @@ export type Recipe = {
     inCraftBench: boolean,
     inCustomizer: boolean,
     inWorkshop: boolean,
-    ingredients: Array<{ amount: number, item: ItemDescriptor }>,
+    ingredients: RecipeItem[],
     manualCraftingMultiplier: number,
     maxPower: number | null,
     minPower: number | null,
     name: string,
     producedIn: string[],
-    products: Array<{ amount: number, item: ItemDescriptor }>,
+    products: RecipeItem[],
     seasons: Array<unknown>,
     stable: boolean,
     unlockedBy: string
