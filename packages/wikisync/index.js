@@ -11,6 +11,7 @@ const urls = {
   icons: [
     "https://satisfactory.wiki.gg/wiki/Category:Items",
     "https://satisfactory.wiki.gg/wiki/Category:Fluids",
+    "https://satisfactory.wiki.gg/wiki/Category:Buildings",
   ],
 };
 
