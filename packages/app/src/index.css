@@ -99,3 +99,12 @@
         @apply bg-background text-foreground;
     }
 }
+
+.item-handle {
+    @apply w-4;
+    @apply h-4;
+    @apply border-2;
+    @apply border-black;
+    @apply rounded;
+    @apply bg-white;
+}

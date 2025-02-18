@@ -31,7 +31,10 @@ export function Overlay({ prompt, onNewItem }: OverlayProps) {
 
   const handleSelect = useCallback(
     function (item: Item) {
-      return () => onNewItem(item);
+      return () => {
+        onNewItem(item);
+        setMenuOpen(false);
+      };
     },
     [onNewItem],
   );

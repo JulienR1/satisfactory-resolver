@@ -6,7 +6,14 @@ type ItemNodeProps = { data: { item: Item } };
 export function ItemNode({ data: { item } }: ItemNodeProps) {
   return (
     <>
-      <Handle type="source" position={Position.Top} />
+      <Handle
+        id="input"
+        type="target"
+        position={Position.Top}
+        className="item-handle"
+        isConnectable
+        isConnectableEnd={false}
+      />
       <div className="flex gap-2 px-4 py-2 items-center bg-white border border-black rounded">
         <img
           className="block w-8 aspect-square"
@@ -15,7 +22,14 @@ export function ItemNode({ data: { item } }: ItemNodeProps) {
         />
         <p>{item.name}</p>
       </div>
-      <Handle type="source" position={Position.Bottom} />
+      <Handle
+        id="output"
+        type="source"
+        position={Position.Bottom}
+        className="item-handle"
+        isConnectableStart
+        isConnectableEnd={false}
+      />
     </>
   );
 }
