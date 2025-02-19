@@ -9,12 +9,22 @@ import {
 } from "./ui/command";
 import { RecipeShowcase } from "./RecipeShowcase";
 import { useState } from "react";
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "./ui/context-menu";
+import { ListCollapse, Trash } from "lucide-react";
+import { useRemove } from "@/lib/use-remove";
 
 type RecipeNodeProps = { data: { recipe: Recipe } };
 
 export function RecipeNode({ data: { recipe } }: RecipeNodeProps) {
   const [showDetails, setShowDetails] = useState(false);
   const machine = recipe.producedIn[0] as ItemDescriptor;
+
+  const removeNode = useRemove(recipe.className);
 
   return (
     <>
@@ -32,20 +42,6 @@ export function RecipeNode({ data: { recipe } }: RecipeNodeProps) {
         />
       ))}
 
-      <div
-        className="flex gap-2 px-4 py-2 items-center bg-white border border-black rounded"
-        onDoubleClick={() => setShowDetails(true)}
-      >
-        {machine && (
-          <img
-            className="block w-8 aspect-square"
-            src={icons[machine]}
-            alt={machine}
-          />
-        )}
-        <p>{recipe.name}</p>
-      </div>
-
       {recipe.products.map((product, i) => (
         <Handle
           key={`${recipe.className}-out-${product.item}`}
@@ -59,6 +55,37 @@ export function RecipeNode({ data: { recipe } }: RecipeNodeProps) {
           }}
         />
       ))}
+
+      <ContextMenu>
+        <ContextMenuTrigger>
+          <div
+            className="flex gap-2 px-4 py-2 items-center bg-white border border-black rounded"
+            onDoubleClick={() => setShowDetails(true)}
+          >
+            {machine && (
+              <img
+                className="block w-8 aspect-square"
+                src={icons[machine]}
+                alt={machine}
+              />
+            )}
+            <p>{recipe.name}</p>
+          </div>
+        </ContextMenuTrigger>
+        <ContextMenuContent>
+          <ContextMenuItem
+            className="gap-2"
+            onSelect={() => setShowDetails(true)}
+          >
+            <ListCollapse size="16" />
+            <span>Show details</span>
+          </ContextMenuItem>
+          <ContextMenuItem className="gap-2" onSelect={removeNode}>
+            <Trash size="16" />
+            <span>Remove</span>
+          </ContextMenuItem>
+        </ContextMenuContent>
+      </ContextMenu>
 
       <CommandDialog open={showDetails} onOpenChange={setShowDetails}>
         <Command>
