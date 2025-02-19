@@ -10,6 +10,8 @@ import {
   CommandDialog,
 } from "@/components/ui/command";
 import { icons, Item, items, Recipe, RecipeItem } from "./resources";
+import { useSerialization } from "./lib/use-serialization";
+import { FileUp, FolderPen, Save, X } from "lucide-react";
 
 const sortedItems = Object.values(items).sort((a, b) =>
   a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
@@ -28,11 +30,15 @@ export function Overlay({
   onNewItem,
   onRecipeSelected,
 }: OverlayProps) {
+  const { load, save } = useSerialization();
   const [itemSelectorOpen, setItemSelectorOpen] = useState(false);
+
+  const [factoryNameOpen, setFactoryNameOpen] = useState(false);
+  const [factoryName, setFactoryName] = useState("");
 
   useKeyboard(
     "Space",
-    useCallback(() => setItemSelectorOpen(true), []),
+    useCallback(() => setItemSelectorOpen(!factoryNameOpen), [factoryNameOpen]),
   );
   useKeyboard(
     "Escape",
@@ -71,22 +77,90 @@ export function Overlay({
       )}
 
       <CommandDialog open={itemSelectorOpen} onOpenChange={setItemSelectorOpen}>
-        <Command className="max-h-52 h-fit">
+        <Command>
           <CommandInput placeholder="Add an element to the schema ..." />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup>
+            <CommandGroup heading="Use save files">
+              <CommandItem
+                onSelect={async () => {
+                  await load();
+                  setItemSelectorOpen(false);
+                }}
+                asChild
+              >
+                <button className="flex w-full items-center gap-2 cursor-pointer">
+                  <FileUp />
+                  <span>Load existing factory</span>
+                </button>
+              </CommandItem>
+              <CommandItem
+                onSelect={() => {
+                  setItemSelectorOpen(false);
+                  setFactoryNameOpen(true);
+                }}
+                disabled={prompt}
+                asChild
+              >
+                <button
+                  disabled={prompt}
+                  className="flex w-full items-center gap-2 cursor-pointer"
+                >
+                  <Save />
+                  <span>Save factory</span>
+                </button>
+              </CommandItem>
+            </CommandGroup>
+            <CommandGroup heading="Available items">
               {sortedItems.map((item) => (
                 <CommandItem
                   key={item.className}
                   onSelect={handleItemSelect(item)}
                   asChild
                 >
-                  <button className="block w-full cursor-pointer">
-                    {item.name}
+                  <button className="flex w-full cursor-pointer items-center">
+                    <img
+                      className="w-6 aspect-square overflow-hidden"
+                      src={icons[item.className]}
+                      alt={item.name}
+                    />
+                    <span>{item.name}</span>
                   </button>
                 </CommandItem>
               ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </CommandDialog>
+
+      <CommandDialog open={factoryNameOpen} onOpenChange={setFactoryNameOpen}>
+        <Command filter={() => 1}>
+          <CommandInput
+            icon={FolderPen}
+            value={factoryName}
+            onInput={(e) => setFactoryName(e.currentTarget.value)}
+            placeholder="Name your factory. (default: 'unnamed')"
+          />
+          <CommandList>
+            <CommandGroup>
+              <CommandItem
+                asChild
+                onSelect={() => {
+                  save(factoryName || "unnamed");
+                  setFactoryNameOpen(false);
+                }}
+              >
+                <button className="flex w-full items-center gap-2 cursor-pointer">
+                  <Save />
+                  <span>Save</span>
+                </button>
+              </CommandItem>
+              <CommandItem asChild onSelect={() => setFactoryNameOpen(false)}>
+                <button className="flex w-full items-center gap-2 cursor-pointer">
+                  <X />
+                  <span>Cancel</span>
+                </button>
+              </CommandItem>
             </CommandGroup>
           </CommandList>
         </Command>

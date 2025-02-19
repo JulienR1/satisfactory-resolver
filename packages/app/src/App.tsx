@@ -13,6 +13,7 @@ import {
   FinalConnectionState,
   Edge,
   XYPosition,
+  ReactFlowProvider,
 } from "@xyflow/react";
 import { Overlay } from "./Overlay";
 import { useCallback, useState } from "react";
@@ -155,4 +156,10 @@ function App() {
   );
 }
 
-export default App;
+export default function WrappedApp() {
+  return (
+    <ReactFlowProvider>
+      <App />
+    </ReactFlowProvider>
+  );
+}
