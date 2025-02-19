@@ -1,10 +1,21 @@
 import { icons, ItemDescriptor, Recipe } from "@/resources";
 import { Handle, Position } from "@xyflow/react";
+import {
+  Command,
+  CommandDialog,
+  CommandGroup,
+  CommandItem,
+  CommandList,
+} from "./ui/command";
+import { RecipeShowcase } from "./RecipeShowcase";
+import { useState } from "react";
 
 type RecipeNodeProps = { data: { recipe: Recipe } };
 
 export function RecipeNode({ data: { recipe } }: RecipeNodeProps) {
+  const [showDetails, setShowDetails] = useState(false);
   const machine = recipe.producedIn[0] as ItemDescriptor;
+
   return (
     <>
       {recipe.ingredients.map((ingredient, i) => (
@@ -21,7 +32,10 @@ export function RecipeNode({ data: { recipe } }: RecipeNodeProps) {
         />
       ))}
 
-      <div className="flex gap-2 px-4 py-2 items-center bg-white border border-black rounded">
+      <div
+        className="flex gap-2 px-4 py-2 items-center bg-white border border-black rounded"
+        onDoubleClick={() => setShowDetails(true)}
+      >
         {machine && (
           <img
             className="block w-8 aspect-square"
@@ -45,6 +59,18 @@ export function RecipeNode({ data: { recipe } }: RecipeNodeProps) {
           }}
         />
       ))}
+
+      <CommandDialog open={showDetails} onOpenChange={setShowDetails}>
+        <Command>
+          <CommandList>
+            <CommandGroup>
+              <CommandItem>
+                <RecipeShowcase {...recipe} />
+              </CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </CommandDialog>
     </>
   );
 }
