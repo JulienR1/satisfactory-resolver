@@ -9,7 +9,7 @@ import {
   CommandGroup,
   CommandDialog,
 } from "@/components/ui/command";
-import { icons, Item, items, Recipe, RecipeItem } from "./resources";
+import { icons, Item, items, Recipe } from "./resources";
 import { useSerialization } from "./lib/use-serialization";
 import { FileUp, FolderPen, Save, X } from "lucide-react";
 import { RecipeShowcase } from "./components/RecipeShowcase";

@@ -7,13 +7,12 @@ import {
   ContextMenuItem,
 } from "@/components/ui/context-menu";
 import { Trash } from "lucide-react";
-import { useRemove } from "@/lib/use-remove";
+import { useCallback, useEffect } from "react";
 
 type ItemNodeProps = { data: { item: Item } };
 
 export function ItemNode({ data: { item } }: ItemNodeProps) {
   const flow = useReactFlow();
-  const removeNode = useRemove(item.className);
 
   const isBuildable = Object.values(recipes).some((recipe) =>
     recipe.products.some((product) => product.item === item.className),
@@ -26,6 +25,15 @@ export function ItemNode({ data: { item } }: ItemNodeProps) {
     const linked = source === item.className || target === item.className;
     return linked ? sum + 1 : sum;
   }, 0);
+
+  const removeNode = useCallback(
+    () => flow.deleteElements({ nodes: [{ id: item.className }] }),
+    [flow, item.className],
+  );
+
+  useEffect(() => {
+    flow.updateNode(item.className, { deletable: edgeCount === 0 });
+  }, [flow, item.className, edgeCount]);
 
   return (
     <>

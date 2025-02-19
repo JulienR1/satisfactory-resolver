@@ -1,5 +1,5 @@
 import { icons, ItemDescriptor, Recipe } from "@/resources";
-import { Handle, Position } from "@xyflow/react";
+import { Handle, Position, useReactFlow } from "@xyflow/react";
 import {
   Command,
   CommandDialog,
@@ -8,7 +8,7 @@ import {
   CommandList,
 } from "./ui/command";
 import { RecipeShowcase } from "./RecipeShowcase";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import {
   ContextMenu,
   ContextMenuContent,
@@ -16,15 +16,19 @@ import {
   ContextMenuTrigger,
 } from "./ui/context-menu";
 import { ListCollapse, Trash } from "lucide-react";
-import { useRemove } from "@/lib/use-remove";
 
 type RecipeNodeProps = { data: { recipe: Recipe } };
 
 export function RecipeNode({ data: { recipe } }: RecipeNodeProps) {
+  const flow = useReactFlow();
+
   const [showDetails, setShowDetails] = useState(false);
   const machine = recipe.producedIn[0] as ItemDescriptor;
 
-  const removeNode = useRemove(recipe.className);
+  const removeNode = useCallback(
+    () => flow.deleteElements({ nodes: [{ id: recipe.className }] }),
+    [flow, recipe.className],
+  );
 
   return (
     <>
