@@ -35,7 +35,7 @@ export function ItemNode({ data: { item, production } }: ItemNodeProps) {
   const edges = useEdges<Edge>();
 
   const [showRequestInput, setShowRequestInput] = useState(false);
-  const [requestedAmount, setRequestedAmount] = useState(0);
+  const [requestedAmount, setRequestedAmount] = useState(production.requested);
 
   const isBuildable = Object.values(recipes).some((recipe) =>
     recipe.products.some((product) => product.item === item.className),

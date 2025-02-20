@@ -74,7 +74,12 @@ export function RecipeNode({ data: { recipe, production } }: RecipeNodeProps) {
                 alt={machine}
               />
             )}
-            <p>{recipe.name}</p>
+            <p className="flex items-center gap-2">
+              <span>{recipe.name}</span>
+              <span className="text-sm">
+                ({Math.round(1000 * production.requested) / 1000})
+              </span>
+            </p>
           </div>
         </ContextMenuTrigger>
         <ContextMenuContent>
