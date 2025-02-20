@@ -16,10 +16,11 @@ import {
   ContextMenuTrigger,
 } from "./ui/context-menu";
 import { ListCollapse, Trash } from "lucide-react";
+import { Production } from "@/lib/constants";
 
-type RecipeNodeProps = { data: { recipe: Recipe } };
+type RecipeNodeProps = { data: { recipe: Recipe; production: Production } };
 
-export function RecipeNode({ data: { recipe } }: RecipeNodeProps) {
+export function RecipeNode({ data: { recipe, production } }: RecipeNodeProps) {
   const flow = useReactFlow();
 
   const [showDetails, setShowDetails] = useState(false);
@@ -74,6 +75,7 @@ export function RecipeNode({ data: { recipe } }: RecipeNodeProps) {
               />
             )}
             <p>{recipe.name}</p>
+            <pre className="text-xs">{JSON.stringify(production, null, 2)}</pre>
           </div>
         </ContextMenuTrigger>
         <ContextMenuContent>

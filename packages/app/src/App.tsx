@@ -8,23 +8,24 @@ import {
   useEdgesState,
   addEdge,
   Connection,
-  Node,
-  NodeTypes,
   FinalConnectionState,
-  Edge,
   XYPosition,
   ReactFlowProvider,
+  useReactFlow,
 } from "@xyflow/react";
 import { Overlay } from "./Overlay";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Item, ItemDescriptor, items, Recipe } from "./resources";
-import { ItemNode } from "./components/ItemNode";
-import { RecipeNode } from "./components/RecipeNode";
 import { filterRecipes } from "./lib/recipes";
+import { calculateRates } from "./lib/rates";
+import { EDGE_TYPES, NODE_TYPES, Node, Edge } from "./lib/constants";
 
-const NODE_TYPES: NodeTypes = { item: ItemNode, recipe: RecipeNode };
+const SOME_RANDOM_VALUE = Math.random();
+
+type NewNode = Omit<Node, "data"> & { data: Omit<Node["data"], "production"> };
 
 function App() {
+  const flow = useReactFlow<Node, Edge>();
   const [nodes, setNodes, handleNodesChange] = useNodesState([] as Node[]);
   const [edges, setEdges, handleEdgesChange] = useEdgesState([] as Edge[]);
 
@@ -35,7 +36,11 @@ function App() {
   });
 
   const addNode = useCallback(
-    (node: Node) => setNodes((n) => n.concat(node)),
+    (n: NewNode) => {
+      const node = n as Node;
+      node.data.production = { requested: 0, available: 0 };
+      setNodes((n) => n.concat(node));
+    },
     [setNodes],
   );
 
@@ -88,6 +93,7 @@ function App() {
               target: recipe.className,
               sourceHandle: "output",
               targetHandle: `${recipe.className}-in-${item}`,
+              type: "rate",
             },
             e,
           ),
@@ -102,6 +108,7 @@ function App() {
               source: recipe.className,
               sourceHandle: `${recipe.className}-out-${item}`,
               targetHandle: "input",
+              type: "rate",
             },
             e,
           ),
@@ -130,6 +137,21 @@ function App() {
     [],
   );
 
+  const updateRates = useCallback(() => {
+    const graph = {
+      nodes: flow.getNodes(),
+      edges: flow.getEdges(),
+    };
+    const rates = calculateRates(graph);
+    // TODO: something with the results :)
+    setNodes(rates);
+  }, [flow, setNodes]);
+
+  useEffect(() => {
+    updateRates();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nodes.length, edges.length, SOME_RANDOM_VALUE]);
+
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <Overlay
@@ -141,6 +163,7 @@ function App() {
 
       <ReactFlow
         nodeTypes={NODE_TYPES}
+        edgeTypes={EDGE_TYPES}
         nodes={nodes}
         edges={edges}
         onConnect={onConnect}

@@ -1,25 +1,28 @@
 import { ItemDescriptor, items, RecipeDescriptor, recipes } from "@/resources";
-import {
-  Node,
-  Edge,
-  useNodes,
-  useEdges,
-  useReactFlow,
-  addEdge,
-} from "@xyflow/react";
+import { useNodes, useEdges, useReactFlow, addEdge } from "@xyflow/react";
 import { useCallback } from "react";
+import { NODE_TYPES, Node, Edge } from "./constants";
 
-type FactoryNode = { id: string; type: string; x: number; y: number };
+type FactoryNode = {
+  id: string;
+  type: keyof typeof NODE_TYPES;
+  x: number;
+  y: number;
+  requested?: number;
+};
 type FactoryEdge = { source: string; target: string };
 type Factory = { nodes: FactoryNode[]; edges: FactoryEdge[] };
 
 function saveFactory(nodes: Node[], edges: Edge[], name: string) {
   const contents: Factory = {
-    nodes: nodes.map(({ id, position, type = "item" }) => ({
+    nodes: nodes.map(({ id, position, type = "item", data }) => ({
       id,
       type,
       x: position.x,
       y: position.y,
+      ...(data.production.requested > 0 && data.production.isManual
+        ? { requested: data.production.requested }
+        : {}),
     })),
     edges: edges.map(({ source, target }) => ({ source, target })),
   };
@@ -53,19 +56,33 @@ async function loadFactory(): Promise<{
   input.click();
   const factory = await factoryPromise;
 
-  const nodes = factory.nodes.map(({ x, y, ...n }) => ({
-    ...n,
-    position: { x, y },
-    data: {
-      ...(n.type === "item"
-        ? { item: items[n.id as ItemDescriptor] }
-        : { recipe: recipes[n.id as RecipeDescriptor] }),
-    },
-  }));
+  const nodes = factory.nodes.map(
+    ({ x, y, ...n }) =>
+      ({
+        ...n,
+        position: { x, y },
+        data: {
+          ...(n.type === "item"
+            ? { item: items[n.id as ItemDescriptor] }
+            : { recipe: recipes[n.id as RecipeDescriptor] }),
+          production: {
+            requested: n.requested ?? 0,
+            isManual: (n.requested ?? 0) > 0,
+            available: 0,
+          },
+        },
+      }) as Node,
+  );
 
   let edges: Edge[] = [];
   for (const { source, target } of factory.edges) {
-    const edge = { source, target, targetHandle: "", sourceHandle: "" };
+    const edge = {
+      source,
+      target,
+      type: "rate",
+      targetHandle: "",
+      sourceHandle: "",
+    };
     if (Object.keys(items).some((item) => target === item)) {
       edge.targetHandle = "input";
       edge.sourceHandle = `${source}-out-${target}`;
@@ -74,16 +91,16 @@ async function loadFactory(): Promise<{
       edge.sourceHandle = "output";
     }
 
-    edges = addEdge(edge, edges);
+    edges = addEdge<Edge>(edge, edges);
   }
 
   return { nodes, edges };
 }
 
 export function useSerialization() {
-  const flow = useReactFlow();
-  const nodes = useNodes();
-  const edges = useEdges();
+  const flow = useReactFlow<Node, Edge>();
+  const nodes = useNodes<Node>();
+  const edges = useEdges<Edge>();
 
   const load = useCallback(
     () =>
