@@ -1,4 +1,4 @@
-import { Node, Edge, Production } from "./constants.ts";
+import { Node, Edge } from "./constants.ts";
 import { assert } from "./utils.ts";
 
 type Graph = {
@@ -66,7 +66,6 @@ export function calculateRates(graph: Graph): Node[] {
         continue;
       }
 
-      let required = 0;
       for (const successsor of successors(node.id)) {
         assert(
           successsor.type === "recipe",
@@ -81,11 +80,9 @@ export function calculateRates(graph: Graph): Node[] {
           `ingredient (${successsor.id}) could not be found in recipe ('${node.id}') `,
         );
 
-        required += successsor.data.production.requested * ingredient.amount;
+        node.data.production.requested +=
+          successsor.data.production.requested * ingredient.amount;
       }
-
-      node.data.production.requested =
-        required - node.data.production.available;
     } else if (node.type === "recipe") {
       let multiplier = 0;
       for (const successor of successors(node.id)) {

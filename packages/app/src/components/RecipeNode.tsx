@@ -18,7 +18,7 @@ import {
 import { ListCollapse, Trash } from "lucide-react";
 import { Production } from "@/lib/constants";
 
-type RecipeNodeProps = { data: { recipe: Recipe; production: Production } };
+type RecipeNodeProps = { data: { recipe: Recipe } & Production };
 
 export function RecipeNode({ data: { recipe, production } }: RecipeNodeProps) {
   const flow = useReactFlow();
@@ -75,7 +75,6 @@ export function RecipeNode({ data: { recipe, production } }: RecipeNodeProps) {
               />
             )}
             <p>{recipe.name}</p>
-            <pre className="text-xs">{JSON.stringify(production, null, 2)}</pre>
           </div>
         </ContextMenuTrigger>
         <ContextMenuContent>

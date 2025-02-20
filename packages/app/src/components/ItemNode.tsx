@@ -14,11 +14,21 @@ import {
   CommandInput,
   CommandItem,
 } from "@/components/ui/command";
-import { ChefHat, PenLine, Trash, X } from "lucide-react";
+import {
+  ArrowBigDown,
+  ArrowBigUp,
+  Check,
+  ChefHat,
+  PenLine,
+  Trash,
+  X,
+} from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { Node, Edge, Production } from "@/lib/constants";
+import { cn } from "@/lib/utils";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 
-type ItemNodeProps = { data: { item: Item; production: Production } };
+type ItemNodeProps = { data: { item: Item } & Production };
 
 export function ItemNode({ data: { item, production } }: ItemNodeProps) {
   const flow = useReactFlow<Node, Edge>();
@@ -62,6 +72,19 @@ export function ItemNode({ data: { item, production } }: ItemNodeProps) {
     flow.updateNode(item.className, { deletable: edgeCount === 0 });
   }, [flow, item.className, edgeCount]);
 
+  useEffect(() => {
+    const edges = flow.getEdges();
+    const incoming = edges.filter((edge) => edge.target === item.className);
+    const outgoing = edges.filter((edge) => edge.source === item.className);
+
+    for (const edge of incoming) {
+      flow.updateEdgeData(edge.id, { rate: production.available });
+    }
+    for (const edge of outgoing) {
+      flow.updateEdgeData(edge.id, { rate: production.requested });
+    }
+  }, [flow, item, production.requested, production.available]);
+
   return (
     <>
       {isBuildable && (
@@ -87,18 +110,61 @@ export function ItemNode({ data: { item, production } }: ItemNodeProps) {
 
       <ContextMenu>
         <ContextMenuTrigger>
-          <div className="flex gap-2 px-4 py-2 items-center bg-white border border-black rounded">
-            <img
-              className="block w-8 aspect-square"
-              src={icons[item.className]}
-              alt={item.name}
-            />
-            <p>{item.name}</p>
-            {requestedAmount > 0 && (
-              <p className="text-sm">({requestedAmount})</p>
-            )}
-            <pre className="text-xs">{JSON.stringify(production, null, 2)}</pre>
-          </div>
+          <HoverCard>
+            <HoverCardTrigger>
+              <div
+                className={cn([
+                  "flex gap-2 px-4 py-2 items-center bg-white border border-black rounded",
+                  production.requested > production.available &&
+                    "border-rose-400 border-3",
+                  production.isManual &&
+                    "bg-sky-500/10 border-sky-500 border-3",
+                  production.requested < production.available &&
+                    "border-amber-400 border-3",
+                ])}
+              >
+                <img
+                  className="block w-8 aspect-square"
+                  src={icons[item.className]}
+                  alt={item.name}
+                />
+                <p>{item.name}</p>
+                {requestedAmount > 0 && (
+                  <p className="text-sm">({requestedAmount})</p>
+                )}
+              </div>
+            </HoverCardTrigger>
+            <HoverCardContent>
+              <p className="flex gap-2 items-center">
+                {production.available === production.requested && (
+                  <>
+                    <Check size="20" />
+                    <span>Properly balanced.</span>
+                  </>
+                )}
+                {production.available > production.requested && (
+                  <>
+                    <ArrowBigUp size="20" />
+                    <span>
+                      Item overflow: (+
+                      {(production.available - production.requested).toFixed(3)}
+                      )
+                    </span>
+                  </>
+                )}
+                {production.available < production.requested && (
+                  <>
+                    <ArrowBigDown size="20" />
+                    <span>
+                      Item underflow: (
+                      {(production.available - production.requested).toFixed(3)}
+                      )
+                    </span>
+                  </>
+                )}
+              </p>
+            </HoverCardContent>
+          </HoverCard>
         </ContextMenuTrigger>
         <ContextMenuContent>
           <ContextMenuItem

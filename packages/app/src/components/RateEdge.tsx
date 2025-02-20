@@ -26,13 +26,14 @@ export function RateEdge({
       {data && (
         <EdgeLabelRenderer>
           <p
-            className="nodrag nopan"
+            className="nodrag nopan bg-white px-2 py-1 border border-slate-300 rounded-sm"
             style={{
               position: "absolute",
               transform: `translate(-50%, -50%) translate(${labelX}px, ${labelY}px)`,
+              pointerEvents: "all",
             }}
           >
-            {data.rate}
+            <span>{Math.round(data.rate * 1000) / 1000}</span>
           </p>
         </EdgeLabelRenderer>
       )}
