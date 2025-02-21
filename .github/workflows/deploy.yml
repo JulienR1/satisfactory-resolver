@@ -42,7 +42,7 @@ jobs:
           files: ./res/resources.zip
 
       - run: npm ci
-      - run: npm run build
+      - run: npm run build -- --base /satisfactory-resolver/
 
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
