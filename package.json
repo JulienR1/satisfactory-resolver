@@ -7,6 +7,7 @@
         "sync:items": "node packages/wikisync items res/items.json",
         "sync:recipes": "node packages/wikisync recipes res/recipes.json",
         "sync:icons": "node packages/wikisync icons res/icons.json",
-        "sync": "npm run sync:items && npm run sync:recipes && npm run sync:icons"
+        "sync": "npm run sync:items && npm run sync:recipes && npm run sync:icons",
+        "sync:mock": "cd res && echo {\"mock-item\":[]} > items.json && echo {\"mock-recipe\":[]} > recipes.json && echo {} > icons.json"
     }
 }
