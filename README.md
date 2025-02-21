@@ -1,19 +1,38 @@
 # Satisfactory Resolver
 
 An attempt to automate recipe optimisation in [Satisfactory](https://www.satisfactorygame.com/).<br>
-Made with [SolidJS](https://www.solidjs.com/).
+Made with [ReactJS](https://react.dev/) and [React Flow](https://reactflow.dev/).
 
 ## Setup
 
-### `npm install`
+#### Install packages
+
+```sh
+npm --prefix packages/wikisync install
+npm --prefix packages/app install
+```
+
+#### Sync resources from wiki
+
+```sh
+npm run sync
+ls ./res     # 'items.json', 'recipes.json', 'icons.json' should be present
+```
 
 ## Usage
 
-### `npm run dev` or `npm start`
+#### Development mode
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```sh
+npm run --prefix packages/app dev
+```
 
-### `npm run build`
+Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
-Builds the app for production to the `dist` folder.<br>
+#### Build an archive
+
+```sh
+npm run --prefix packages/app build
+```
+
+Builds the app for production to the `dist` folder.
