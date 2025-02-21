@@ -28,8 +28,9 @@ jobs:
         with:
           node-version: "20.x"
 
+      - run: npm ci
+        working-directory: ./packages/wikisync
       - name: Sync from wiki
-        working-directory: .
         run: npm run sync
 
       - run: npm ci
