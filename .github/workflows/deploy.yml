@@ -34,12 +34,19 @@ jobs:
         working-directory: .
         run: npm run sync
 
+      - run: zip resources.zip items.json recipes.json icons.json
+        working-directory: ./res
+      - uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: ./res/resources.zip
+
       - run: npm ci
       - run: npm run build
 
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./packages/app/dist
       - uses: actions/deploy-pages@v4
         id: deployment
