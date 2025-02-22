@@ -162,10 +162,10 @@ describe("rates", function () {
     const rates = calculateRates({ nodes: nodes as Node[], edges });
 
     const p = production<typeof nodes>;
-    expect(p(rates, "Desc_DissolvedSilica_C")).toContainEqual({ requested: 60, available: 0 });
-    expect(p(rates, "Desc_Stone_C")).toContainEqual({ requested: 55, available: 0 });
-    expect(p(rates, "Recipe_Alternate_Silica_Distilled_C")).toContainEqual({ requested: 11, available: 0 });
-    expect(p(rates, "Desc_Water_C")).toContainEqual({ requested: 110, available: 88 });
-    expect(p(rates, "Desc_Silica_C")).toContainEqual({ requested: 297, available: 297, isManual: true });
+    expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 297, available: 297, isManual: true });
+    expect(p(rates, "Recipe_Alternate_Silica_Distilled_C")).toMatchObject({ requested: 11, available: 0 });
+    expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 110, available: 88 });
+    expect(p(rates, "Desc_DissolvedSilica_C")).toMatchObject({ requested: 132, available: 0 });
+    expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 55, available: 0 });
   });
 });

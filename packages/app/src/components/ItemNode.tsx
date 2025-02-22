@@ -83,8 +83,8 @@ export function ItemNode({ data: { item, production } }: ItemNodeProps) {
               <div
                 className={cn([
                   "flex gap-2 px-4 py-2 items-center bg-white border border-black rounded",
-                  production.requested > production.available && "border-rose-400 border-3",
                   production.isManual && "bg-sky-500/10 border-sky-500 border-3",
+                  production.requested > production.available && "border-rose-400 border-3",
                   production.requested < production.available && "border-amber-400 border-3",
                 ])}
               >

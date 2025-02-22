@@ -13,10 +13,8 @@ export function calculateRates(graph: Graph): Node[] {
   const adjacencyList = getAdjacencyList(graph);
   const reverseAdjacencyList = getAdjacencyList(graph, "backward");
 
-  const successors = (nodeId: string) =>
-    adjacencyList[nodeId].map(({ target }) => nodes[target]);
-  const predecessors = (nodeId: string) =>
-    reverseAdjacencyList[nodeId].map(({ target }) => nodes[target]);
+  const successors = (nodeId: string) => adjacencyList[nodeId].map(({ target }) => nodes[target]);
+  const predecessors = (nodeId: string) => reverseAdjacencyList[nodeId].map(({ target }) => nodes[target]);
 
   const orders: Record<Node["id"], number> = Object.keys(nodes).reduce(
     (orders, nodeId) => ({ ...orders, [nodeId]: adjacencyList[nodeId].length }),
@@ -38,6 +36,7 @@ export function calculateRates(graph: Graph): Node[] {
 
   while (queue.length > 0) {
     const node = nodes[queue.shift()!];
+    console.log(node.id);
 
     for (const predecessor of predecessors(node.id)) {
       orders[predecessor.id]--;
@@ -47,35 +46,23 @@ export function calculateRates(graph: Graph): Node[] {
     }
 
     if (node.type === "item") {
-      if (node.data.production.isManual) {
-        continue;
-      }
+      if (!node.data.production.isManual) {
+        for (const successsor of successors(node.id)) {
+          assert(successsor.type === "recipe", `item ('${node.id}') successor is not a recipe ('${successsor.id}')`);
 
-      for (const successsor of successors(node.id)) {
-        assert(
-          successsor.type === "recipe",
-          `item ('${node.id}') successor is not a recipe ('${successsor.id}')`,
-        );
+          const ingredient = successsor.data.recipe.ingredients.find((ingredient) => ingredient.item === node.id);
+          assert(
+            ingredient !== undefined,
+            `ingredient (${successsor.id}) could not be found in recipe ('${node.id}') `,
+          );
 
-        const ingredient = successsor.data.recipe.ingredients.find(
-          (ingredient) => ingredient.item === node.id,
-        );
-        assert(
-          ingredient !== undefined,
-          `ingredient (${successsor.id}) could not be found in recipe ('${node.id}') `,
-        );
-
-        node.data.production.requested +=
-          successsor.data.production.requested * ingredient.amount;
+          node.data.production.requested += successsor.data.production.requested * ingredient.amount;
+        }
       }
 
       for (const predecessor of predecessors(node.id)) {
         for (const neighbor of successors(predecessor.id)) {
-          if (
-            neighbor.id !== node.id &&
-            node.data.production.requested > 0 &&
-            adjacencyList[neighbor.id].length > 0
-          ) {
+          if (neighbor.id !== node.id && node.data.production.requested > 0 && adjacencyList[neighbor.id].length > 0) {
             orders[predecessor.id]--;
             if (orders[predecessor.id] === 0) {
               queue.push(predecessor.id);
@@ -86,24 +73,16 @@ export function calculateRates(graph: Graph): Node[] {
     } else if (node.type === "recipe") {
       let multiplier = 0;
       for (const successor of successors(node.id)) {
-        assert(
-          successor.type === "item",
-          `recipe has an invalid successor node (type: '${successor.type}')`,
-        );
+        assert(successor.type === "item", `recipe has an invalid successor node (type: '${successor.type}')`);
 
-        const product = node.data.recipe.products.find(
-          (p) => p.item === successor.data.item.className,
-        );
+        const product = node.data.recipe.products.find((p) => p.item === successor.data.item.className);
         assert(
           product !== undefined,
           `could not find successor (${successor.id}) in recipe (${node.className}) product list.`,
         );
 
         const { requested, available } = successor.data.production;
-        multiplier = Math.max(
-          Math.max(0, requested - available) / product.amount,
-          multiplier,
-        );
+        multiplier = Math.max(Math.max(0, requested - available) / product.amount, multiplier);
       }
 
       node.data.production.requested += multiplier;
@@ -111,12 +90,9 @@ export function calculateRates(graph: Graph): Node[] {
       // TODO: This is ugly, find a better way to propagate the factor applied to the recipe to the successors.
       for (const successor of successors(node.id)) {
         const product = node.data.recipe.products.find(
-          (p) =>
-            successor.type === "item" &&
-            p.item === successor.data.item.className,
+          (p) => successor.type === "item" && p.item === successor.data.item.className,
         )!;
-        successor.data.production.available +=
-          node.data.production.requested * product.amount;
+        successor.data.production.available += node.data.production.requested * product.amount;
       }
     } else {
       throw Error("unknown node type: '" + node.type + "'.");
@@ -127,30 +103,18 @@ export function calculateRates(graph: Graph): Node[] {
 }
 
 function getNodes({ nodes }: Graph) {
-  return nodes.reduce(
-    (nodes, n) => ({ ...nodes, [n.id]: n }),
-    {} as Record<Node["id"], Node>,
-  );
+  return nodes.reduce((nodes, n) => ({ ...nodes, [n.id]: n }), {} as Record<Node["id"], Node>);
 }
 
-function getAdjacencyList(
-  { nodes, edges }: Graph,
-  direction: "forward" | "backward" = "forward",
-): AdjacencyList {
+function getAdjacencyList({ nodes, edges }: Graph, direction: "forward" | "backward" = "forward"): AdjacencyList {
   const source = direction === "forward" ? "source" : "target";
   const target = direction === "forward" ? "target" : "source";
 
-  const emptyList: AdjacencyList = Object.values(nodes).reduce(
-    (acc, { id }) => ({ ...acc, [id]: [] }),
-    {},
-  );
+  const emptyList: AdjacencyList = Object.values(nodes).reduce((acc, { id }) => ({ ...acc, [id]: [] }), {});
   return edges.reduce(
     (list, edge) => ({
       ...list,
-      [edge[source]]: [
-        ...(list[edge[source]] ?? []),
-        { id: edge.id, target: edge[target] },
-      ],
+      [edge[source]]: [...(list[edge[source]] ?? []), { id: edge.id, target: edge[target] }],
     }),
     emptyList,
   );
