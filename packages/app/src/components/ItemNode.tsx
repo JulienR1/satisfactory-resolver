@@ -1,34 +1,13 @@
 import { icons, Item, recipes } from "@/resources";
 import { Handle, Position, useEdges, useReactFlow } from "@xyflow/react";
-import {
-  ContextMenu,
-  ContextMenuTrigger,
-  ContextMenuContent,
-  ContextMenuItem,
-} from "@/components/ui/context-menu";
-import {
-  CommandDialog,
-  Command,
-  CommandGroup,
-  CommandList,
-  CommandInput,
-  CommandItem,
-} from "@/components/ui/command";
-import {
-  ArrowBigDown,
-  ArrowBigUp,
-  Check,
-  ChefHat,
-  PenLine,
-  Trash,
-  X,
-} from "lucide-react";
+import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem } from "@/components/ui/context-menu";
+import { CommandDialog, Command, CommandGroup, CommandList, CommandInput, CommandItem } from "@/components/ui/command";
+import { ArrowBigDown, ArrowBigUp, Check, ChefHat, PenLine, Trash, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { Node, Edge, Production } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import { DEBUG } from "@/lib/debug";
-import { prefetchDNS } from "react-dom";
 
 type ItemNodeProps = { data: { item: Item } & Production };
 
@@ -74,19 +53,6 @@ export function ItemNode({ data: { item, production } }: ItemNodeProps) {
     flow.updateNode(item.className, { deletable: edgeCount === 0 });
   }, [flow, item.className, edgeCount]);
 
-  useEffect(() => {
-    const edges = flow.getEdges();
-    const incoming = edges.filter((edge) => edge.target === item.className);
-    const outgoing = edges.filter((edge) => edge.source === item.className);
-
-    for (const edge of incoming) {
-      flow.updateEdgeData(edge.id, { rate: production.available });
-    }
-    for (const edge of outgoing) {
-      flow.updateEdgeData(edge.id, { rate: production.requested });
-    }
-  }, [flow, item, production.requested, production.available]);
-
   return (
     <>
       {isBuildable && (
@@ -117,28 +83,15 @@ export function ItemNode({ data: { item, production } }: ItemNodeProps) {
               <div
                 className={cn([
                   "flex gap-2 px-4 py-2 items-center bg-white border border-black rounded",
-                  production.requested > production.available &&
-                    "border-rose-400 border-3",
-                  production.isManual &&
-                    "bg-sky-500/10 border-sky-500 border-3",
-                  production.requested < production.available &&
-                    "border-amber-400 border-3",
+                  production.requested > production.available && "border-rose-400 border-3",
+                  production.isManual && "bg-sky-500/10 border-sky-500 border-3",
+                  production.requested < production.available && "border-amber-400 border-3",
                 ])}
               >
-                <img
-                  className="block w-8 aspect-square"
-                  src={icons[item.className]}
-                  alt={item.name}
-                />
+                <img className="block w-8 aspect-square" src={icons[item.className]} alt={item.name} />
                 <p>{item.name}</p>
-                {requestedAmount > 0 && (
-                  <p className="text-sm">({requestedAmount})</p>
-                )}
-                {DEBUG && (
-                  <pre className="text-xs">
-                    {JSON.stringify(production, null, 2)}
-                  </pre>
-                )}
+                {requestedAmount > 0 && <p className="text-sm">({requestedAmount})</p>}
+                {DEBUG && <pre className="text-xs">{JSON.stringify(production, null, 2)}</pre>}
               </div>
             </HoverCardTrigger>
             <HoverCardContent>
@@ -154,19 +107,14 @@ export function ItemNode({ data: { item, production } }: ItemNodeProps) {
                     <ArrowBigUp size="20" />
                     <span>
                       Item overflow: (+
-                      {(production.available - production.requested).toFixed(3)}
-                      )
+                      {(production.available - production.requested).toFixed(3)})
                     </span>
                   </>
                 )}
                 {production.available < production.requested && (
                   <>
                     <ArrowBigDown size="20" />
-                    <span>
-                      Item underflow: (
-                      {(production.available - production.requested).toFixed(3)}
-                      )
-                    </span>
+                    <span>Item underflow: ({(production.available - production.requested).toFixed(3)})</span>
                   </>
                 )}
               </p>
@@ -174,19 +122,11 @@ export function ItemNode({ data: { item, production } }: ItemNodeProps) {
           </HoverCard>
         </ContextMenuTrigger>
         <ContextMenuContent>
-          <ContextMenuItem
-            className="gap-2"
-            onSelect={removeNode}
-            disabled={edgeCount > 0}
-          >
+          <ContextMenuItem className="gap-2" onSelect={removeNode} disabled={edgeCount > 0}>
             <Trash size="16" />
             <span>Remove</span>
           </ContextMenuItem>
-          <ContextMenuItem
-            className="gap-2"
-            disabled={outgoing > 0}
-            onSelect={() => setShowRequestInput(true)}
-          >
+          <ContextMenuItem className="gap-2" disabled={outgoing > 0} onSelect={() => setShowRequestInput(true)}>
             <ChefHat size="16" />
             <span>Request amount</span>
           </ContextMenuItem>

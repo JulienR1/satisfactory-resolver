@@ -1,20 +1,9 @@
 import { icons, ItemDescriptor, Recipe } from "@/resources";
 import { Handle, Position, useReactFlow } from "@xyflow/react";
-import {
-  Command,
-  CommandDialog,
-  CommandGroup,
-  CommandItem,
-  CommandList,
-} from "./ui/command";
+import { Command, CommandDialog, CommandGroup, CommandItem, CommandList } from "./ui/command";
 import { RecipeShowcase } from "./RecipeShowcase";
-import { useCallback, useState } from "react";
-import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuTrigger,
-} from "./ui/context-menu";
+import { useCallback, useEffect, useState } from "react";
+import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "./ui/context-menu";
 import { ListCollapse, Trash } from "lucide-react";
 import { Production } from "@/lib/constants";
 import { DEBUG } from "@/lib/debug";
@@ -31,6 +20,21 @@ export function RecipeNode({ data: { recipe, production } }: RecipeNodeProps) {
     () => flow.deleteElements({ nodes: [{ id: recipe.className }] }),
     [flow, recipe.className],
   );
+
+  useEffect(() => {
+    const edges = flow.getEdges();
+    const ingredients = edges.filter((edge) => edge.target === recipe.className);
+    const products = edges.filter((edge) => edge.source === recipe.className);
+
+    for (const edge of ingredients) {
+      const ingredient = recipe.ingredients.find((ingredient) => ingredient.item === edge.source)!;
+      flow.updateEdgeData(edge.id, { rate: production.requested * ingredient.amount });
+    }
+    for (const edge of products) {
+      const product = recipe.products.find((product) => product.item === edge.target)!;
+      flow.updateEdgeData(edge.id, { rate: production.requested * product.amount });
+    }
+  }, [flow, recipe, production.requested, production.available]);
 
   return (
     <>
@@ -68,31 +72,16 @@ export function RecipeNode({ data: { recipe, production } }: RecipeNodeProps) {
             className="flex gap-2 px-4 py-2 items-center bg-white border border-black rounded"
             onDoubleClick={() => setShowDetails(true)}
           >
-            {machine && (
-              <img
-                className="block w-8 aspect-square"
-                src={icons[machine]}
-                alt={machine}
-              />
-            )}
+            {machine && <img className="block w-8 aspect-square" src={icons[machine]} alt={machine} />}
             <p className="flex items-center gap-2">
               <span>{recipe.name}</span>
-              <span className="text-sm">
-                ({Math.round(1000 * production.requested) / 1000})
-              </span>
+              <span className="text-sm">({Math.round(1000 * production.requested) / 1000})</span>
             </p>
-            {DEBUG && (
-              <pre className="text-xs">
-                {JSON.stringify(production, null, 2)}
-              </pre>
-            )}
+            {DEBUG && <pre className="text-xs">{JSON.stringify(production, null, 2)}</pre>}
           </div>
         </ContextMenuTrigger>
         <ContextMenuContent>
-          <ContextMenuItem
-            className="gap-2"
-            onSelect={() => setShowDetails(true)}
-          >
+          <ContextMenuItem className="gap-2" onSelect={() => setShowDetails(true)}>
             <ListCollapse size="16" />
             <span>Show details</span>
           </ContextMenuItem>
