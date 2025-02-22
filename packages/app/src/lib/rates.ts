@@ -36,7 +36,6 @@ export function calculateRates(graph: Graph): Node[] {
 
   while (queue.length > 0) {
     const node = nodes[queue.shift()!];
-    console.log(node.id);
 
     for (const predecessor of predecessors(node.id)) {
       orders[predecessor.id]--;
