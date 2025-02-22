@@ -27,6 +27,8 @@ import { useCallback, useEffect, useState } from "react";
 import { Node, Edge, Production } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
+import { DEBUG } from "@/lib/debug";
+import { prefetchDNS } from "react-dom";
 
 type ItemNodeProps = { data: { item: Item } & Production };
 
@@ -131,6 +133,11 @@ export function ItemNode({ data: { item, production } }: ItemNodeProps) {
                 <p>{item.name}</p>
                 {requestedAmount > 0 && (
                   <p className="text-sm">({requestedAmount})</p>
+                )}
+                {DEBUG && (
+                  <pre className="text-xs">
+                    {JSON.stringify(production, null, 2)}
+                  </pre>
                 )}
               </div>
             </HoverCardTrigger>

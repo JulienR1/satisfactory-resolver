@@ -17,6 +17,7 @@ import {
 } from "./ui/context-menu";
 import { ListCollapse, Trash } from "lucide-react";
 import { Production } from "@/lib/constants";
+import { DEBUG } from "@/lib/debug";
 
 type RecipeNodeProps = { data: { recipe: Recipe } & Production };
 
@@ -80,6 +81,11 @@ export function RecipeNode({ data: { recipe, production } }: RecipeNodeProps) {
                 ({Math.round(1000 * production.requested) / 1000})
               </span>
             </p>
+            {DEBUG && (
+              <pre className="text-xs">
+                {JSON.stringify(production, null, 2)}
+              </pre>
+            )}
           </div>
         </ContextMenuTrigger>
         <ContextMenuContent>

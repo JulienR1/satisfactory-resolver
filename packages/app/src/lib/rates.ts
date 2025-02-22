@@ -47,21 +47,6 @@ export function calculateRates(graph: Graph): Node[] {
     }
 
     if (node.type === "item") {
-      for (const predecessor of predecessors(node.id)) {
-        for (const neighbor of successors(predecessor.id)) {
-          if (
-            neighbor.id !== node.id &&
-            node.data.production.requested > 0 &&
-            adjacencyList[neighbor.id].length > 0
-          ) {
-            orders[predecessor.id]--;
-            if (orders[predecessor.id] === 0) {
-              queue.push(predecessor.id);
-            }
-          }
-        }
-      }
-
       if (node.data.production.isManual) {
         continue;
       }
@@ -82,6 +67,21 @@ export function calculateRates(graph: Graph): Node[] {
 
         node.data.production.requested +=
           successsor.data.production.requested * ingredient.amount;
+      }
+
+      for (const predecessor of predecessors(node.id)) {
+        for (const neighbor of successors(predecessor.id)) {
+          if (
+            neighbor.id !== node.id &&
+            node.data.production.requested > 0 &&
+            adjacencyList[neighbor.id].length > 0
+          ) {
+            orders[predecessor.id]--;
+            if (orders[predecessor.id] === 0) {
+              queue.push(predecessor.id);
+            }
+          }
+        }
       }
     } else if (node.type === "recipe") {
       let multiplier = 0;
