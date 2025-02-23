@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/command";
 import { icons, Item, items, Recipe } from "./resources";
 import { useSerialization } from "./lib/use-serialization";
-import { FileUp, FolderPen, Save, X } from "lucide-react";
+import { Eraser, FileUp, FolderPen, Save, X } from "lucide-react";
 import { RecipeShowcase } from "./components/RecipeShowcase";
 import { useReactFlow } from "@xyflow/react";
 
@@ -74,7 +74,7 @@ export function Overlay({ prompt, recipes, onNewItem, onRecipeSelected }: Overla
           <CommandInput placeholder="Add an element to the schema ..." />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup heading="Use save files">
+            <CommandGroup heading="Factory controls">
               <CommandItem
                 onSelect={async () => {
                   await load();
@@ -99,6 +99,20 @@ export function Overlay({ prompt, recipes, onNewItem, onRecipeSelected }: Overla
                 <button disabled={prompt} className="flex w-full items-center gap-2 cursor-pointer">
                   <Save />
                   <span>Save factory</span>
+                </button>
+              </CommandItem>
+              <CommandItem
+                onSelect={() => {
+                  setItemSelectorOpen(false);
+                  flow.setNodes([]);
+                  flow.setEdges([]);
+                }}
+                disabled={prompt}
+                asChild
+              >
+                <button disabled={prompt} className="flex w-full items-center gap-2 cursor-pointer">
+                  <Eraser />
+                  <span>Clear factory</span>
                 </button>
               </CommandItem>
             </CommandGroup>
