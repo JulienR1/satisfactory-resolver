@@ -11,6 +11,8 @@ import { DEBUG } from "@/lib/debug";
 
 type ItemNodeProps = { data: { item: Item } & Production };
 
+const epsilon = 1e-6;
+
 export function ItemNode({ data: { item, production } }: ItemNodeProps) {
   const flow = useReactFlow<Node, Edge>();
   const edges = useEdges<Edge>();
@@ -84,8 +86,8 @@ export function ItemNode({ data: { item, production } }: ItemNodeProps) {
                 className={cn([
                   "flex gap-2 px-4 py-2 items-center bg-white border border-black rounded",
                   production.isManual && "bg-sky-500/10 border-sky-500 border-3",
-                  production.requested > production.available && "border-rose-400 border-3",
-                  production.requested < production.available && "border-amber-400 border-3",
+                  production.requested - production.available > epsilon && "border-rose-400 border-3",
+                  production.requested - production.available < -epsilon && "border-amber-400 border-3",
                 ])}
               >
                 <img className="block w-8 aspect-square" src={icons[item.className]} alt={item.name} />
@@ -96,13 +98,13 @@ export function ItemNode({ data: { item, production } }: ItemNodeProps) {
             </HoverCardTrigger>
             <HoverCardContent>
               <p className="flex gap-2 items-center">
-                {production.available === production.requested && (
+                {Math.abs(production.available - production.requested) <= epsilon && (
                   <>
                     <Check size="20" />
                     <span>Properly balanced.</span>
                   </>
                 )}
-                {production.available > production.requested && (
+                {production.available - production.requested > epsilon && (
                   <>
                     <ArrowBigUp size="20" />
                     <span>
@@ -111,7 +113,7 @@ export function ItemNode({ data: { item, production } }: ItemNodeProps) {
                     </span>
                   </>
                 )}
-                {production.available < production.requested && (
+                {production.available - production.requested < -epsilon && (
                   <>
                     <ArrowBigDown size="20" />
                     <span>Item underflow: ({(production.available - production.requested).toFixed(3)})</span>
