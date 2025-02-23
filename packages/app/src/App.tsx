@@ -12,6 +12,7 @@ import {
   XYPosition,
   ReactFlowProvider,
   useReactFlow,
+  useStoreApi,
 } from "@xyflow/react";
 import { Overlay } from "./Overlay";
 import { useCallback, useEffect, useState } from "react";
@@ -24,16 +25,15 @@ const SOME_RANDOM_VALUE = Math.random();
 
 type NewNode = Omit<Node, "data"> & { data: Omit<Node["data"], "production"> };
 
+let nextNodePosition: XYPosition = { x: 0, y: 0 };
+
 function App() {
   const flow = useReactFlow<Node, Edge>();
+  const { getState } = useStoreApi();
   const [nodes, setNodes, handleNodesChange] = useNodesState([] as Node[]);
   const [edges, setEdges, handleEdgesChange] = useEdgesState([] as Edge[]);
 
   const [recipeOptions, setRecipeOptions] = useState<Recipe[]>([]);
-  const [nextNodePosition, setNextNodePosition] = useState<XYPosition>({
-    x: 0,
-    y: 0,
-  });
 
   const addNode = useCallback(
     (n: NewNode) => {
@@ -44,16 +44,18 @@ function App() {
     [setNodes],
   );
 
-  const onConnect = useCallback(
-    (params: Connection) => setEdges((e) => addEdge(params, e)),
-    [setEdges],
-  );
+  const onConnect = useCallback((params: Connection) => setEdges((e) => addEdge(params, e)), [setEdges]);
 
   const handleNewItem = useCallback(
-    (item: Item, position = { x: 0, y: 0 }) => {
-      addNode({ type: "item", id: item.className, data: { item }, position });
+    (item: Item) => {
+      const viewport = getState().domNode!.getBoundingClientRect()!;
+      const position = flow.screenToFlowPosition({
+        x: viewport.x + viewport.width / 2,
+        y: viewport.y + viewport.height / 2,
+      });
+      addNode({ type: "item", id: item.className, data: { item }, position, origin: [0.5, 0] });
     },
-    [addNode],
+    [addNode, flow, getState],
   );
 
   const handleRecipeSelected = useCallback(
@@ -70,6 +72,7 @@ function App() {
         id: recipe.className,
         data: { recipe },
         position,
+        origin: [0.5, 0],
       });
 
       const missingItems = recipe.ingredients
@@ -82,6 +85,7 @@ function App() {
           type: "item",
           data: { item: items[item] },
           position, // TODO: use a better placement to nodes are not overlapping
+          origin: [0.5, 0],
         });
       }
 
@@ -115,11 +119,11 @@ function App() {
         );
       }
     },
-    [addNode, nextNodePosition, nodes, setEdges],
+    [addNode, nodes, setEdges],
   );
 
   const onConnectEnd = useCallback(
-    (_: MouseEvent | TouchEvent, state: FinalConnectionState) => {
+    (e: MouseEvent | TouchEvent, state: FinalConnectionState) => {
       if (!state.fromNode) {
         throw Error("`fromNode` is not defined on connection end");
       }
@@ -127,14 +131,14 @@ function App() {
         throw Error("`fromHandle` is not defined on connection end");
       }
 
-      const position = state.to ?? { x: 0, y: 0 };
+      const { clientX, clientY } = "changedTouches" in e ? e.changedTouches[0] : e;
+      nextNodePosition = flow.screenToFlowPosition({ x: clientX, y: clientY });
       const itemId = state.fromNode.id as ItemDescriptor;
       const type = state.fromHandle?.type === "source" ? "input" : "output";
 
-      setNextNodePosition(position);
       setRecipeOptions(filterRecipes(itemId, type));
     },
-    [],
+    [flow],
   );
 
   const updateRates = useCallback(() => {
