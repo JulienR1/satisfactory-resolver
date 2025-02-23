@@ -13,10 +13,9 @@ import { icons, Item, items, Recipe } from "./resources";
 import { useSerialization } from "./lib/use-serialization";
 import { FileUp, FolderPen, Save, X } from "lucide-react";
 import { RecipeShowcase } from "./components/RecipeShowcase";
+import { useReactFlow } from "@xyflow/react";
 
-const sortedItems = Object.values(items).sort((a, b) =>
-  a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
-);
+const sortedItems = Object.values(items).sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 
 type OverlayProps = {
   prompt?: boolean;
@@ -25,12 +24,8 @@ type OverlayProps = {
   onRecipeSelected: (recipe: Recipe | null) => void;
 };
 
-export function Overlay({
-  prompt,
-  recipes,
-  onNewItem,
-  onRecipeSelected,
-}: OverlayProps) {
+export function Overlay({ prompt, recipes, onNewItem, onRecipeSelected }: OverlayProps) {
+  const flow = useReactFlow();
   const { load, save } = useSerialization();
   const [itemSelectorOpen, setItemSelectorOpen] = useState(false);
 
@@ -68,11 +63,8 @@ export function Overlay({
       {prompt && (
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <p className="font-semibold text-lg opacity-75 text-slate-900">
-            Press{" "}
-            <span className="text-base font-mono bg-slate-900 text-white p-1 px-2 rounded">
-              &lt;space&gt;
-            </span>{" "}
-            to start planning a factory.
+            Press <span className="text-base font-mono bg-slate-900 text-white p-1 px-2 rounded">&lt;space&gt;</span> to
+            start planning a factory.
           </p>
         </div>
       )}
@@ -87,6 +79,7 @@ export function Overlay({
                 onSelect={async () => {
                   await load();
                   setItemSelectorOpen(false);
+                  flow.fitView();
                 }}
                 asChild
               >
@@ -103,10 +96,7 @@ export function Overlay({
                 disabled={prompt}
                 asChild
               >
-                <button
-                  disabled={prompt}
-                  className="flex w-full items-center gap-2 cursor-pointer"
-                >
+                <button disabled={prompt} className="flex w-full items-center gap-2 cursor-pointer">
                   <Save />
                   <span>Save factory</span>
                 </button>
@@ -114,17 +104,9 @@ export function Overlay({
             </CommandGroup>
             <CommandGroup heading="Available items">
               {sortedItems.map((item) => (
-                <CommandItem
-                  key={item.className}
-                  onSelect={handleItemSelect(item)}
-                  asChild
-                >
+                <CommandItem key={item.className} onSelect={handleItemSelect(item)} asChild>
                   <button className="flex w-full cursor-pointer items-center">
-                    <img
-                      className="w-6 aspect-square overflow-hidden"
-                      src={icons[item.className]}
-                      alt={item.name}
-                    />
+                    <img className="w-6 aspect-square overflow-hidden" src={icons[item.className]} alt={item.name} />
                     <span>{item.name}</span>
                   </button>
                 </CommandItem>
@@ -182,11 +164,7 @@ export function Overlay({
             <CommandEmpty>No recipes found.</CommandEmpty>
             <CommandGroup>
               {(recipes ?? []).map((recipe) => (
-                <CommandItem
-                  key={recipe.className}
-                  onSelect={handleRecipeSelect(recipe)}
-                  asChild
-                >
+                <CommandItem key={recipe.className} onSelect={handleRecipeSelect(recipe)} asChild>
                   <button className="block w-full cursor-pointer py-2">
                     <RecipeShowcase {...recipe} />
                   </button>
