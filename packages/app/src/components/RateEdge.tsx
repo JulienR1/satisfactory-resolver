@@ -50,7 +50,7 @@ export function RateEdge({ id, sourceX, sourceY, targetX, targetY, data }: RateE
   return (
     <>
       <BaseEdge id={id + "-a"} path={data?.midpoint ? manualPath : path} />
-      {data && (
+      {typeof data?.rate === "number" && (
         <EdgeLabelRenderer>
           <p
             onMouseDown={handleMouseDown}

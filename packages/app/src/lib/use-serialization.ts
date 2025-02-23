@@ -1,5 +1,5 @@
 import { ItemDescriptor, items, RecipeDescriptor, recipes } from "@/resources";
-import { useNodes, useEdges, useReactFlow, addEdge } from "@xyflow/react";
+import { useNodes, useEdges, useReactFlow, addEdge, XYPosition } from "@xyflow/react";
 import { useCallback } from "react";
 import { NODE_TYPES, Node, Edge } from "./constants";
 
@@ -10,7 +10,7 @@ type FactoryNode = {
   y: number;
   requested?: number;
 };
-type FactoryEdge = { source: string; target: string };
+type FactoryEdge = { source: string; target: string; midpoint?: XYPosition };
 type Factory = { nodes: FactoryNode[]; edges: FactoryEdge[] };
 
 function saveFactory(nodes: Node[], edges: Edge[], name: string) {
@@ -20,11 +20,13 @@ function saveFactory(nodes: Node[], edges: Edge[], name: string) {
       type,
       x: position.x,
       y: position.y,
-      ...(data.production.requested > 0 && data.production.isManual
-        ? { requested: data.production.requested }
-        : {}),
+      ...(data.production.requested > 0 && data.production.isManual ? { requested: data.production.requested } : {}),
     })),
-    edges: edges.map(({ source, target }) => ({ source, target })),
+    edges: edges.map(({ source, target, data }) => ({
+      source,
+      target,
+      ...(data?.midpoint ? { midpoint: data?.midpoint } : {}),
+    })),
   };
 
   const anchor = document.createElement("a");
@@ -75,7 +77,7 @@ async function loadFactory(): Promise<{
   );
 
   let edges: Edge[] = [];
-  for (const { source, target } of factory.edges) {
+  for (const { source, target, ...e } of factory.edges) {
     const edge = {
       source,
       target,
@@ -92,6 +94,9 @@ async function loadFactory(): Promise<{
     }
 
     edges = addEdge<Edge>(edge, edges);
+    if (e.midpoint) {
+      edges[edges.length - 1].data = { midpoint: e.midpoint };
+    }
   }
 
   return { nodes, edges };
@@ -111,10 +116,7 @@ export function useSerialization() {
     [flow],
   );
 
-  const save = useCallback(
-    (name: string) => saveFactory(nodes, edges, name),
-    [nodes, edges],
-  );
+  const save = useCallback((name: string) => saveFactory(nodes, edges, name), [nodes, edges]);
 
   return { load, save };
 }
