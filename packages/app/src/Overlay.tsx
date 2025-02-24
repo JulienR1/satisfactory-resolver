@@ -79,7 +79,7 @@ export function Overlay({ prompt, recipes, onNewItem, onRecipeSelected }: Overla
                 onSelect={async () => {
                   await load();
                   setItemSelectorOpen(false);
-                  flow.fitView();
+                  setTimeout(flow.fitView, 200);
                 }}
                 asChild
               >

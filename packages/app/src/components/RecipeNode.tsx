@@ -38,10 +38,10 @@ export function RecipeNode({ data: { recipe, production } }: RecipeNodeProps) {
 
   return (
     <>
-      {recipe.ingredients.map((ingredient, i) => (
+      {recipe.ingredients.map((_, i) => (
         <Handle
-          key={`${recipe.className}-in-${ingredient.item}`}
-          id={`${recipe.className}-in-${ingredient.item}`}
+          key={`handle-${i}`}
+          id={`handle-${i}`}
           type="target"
           className="item-handle"
           position={Position.Top}
@@ -52,10 +52,10 @@ export function RecipeNode({ data: { recipe, production } }: RecipeNodeProps) {
         />
       ))}
 
-      {recipe.products.map((product, i) => (
+      {recipe.products.map((_, i) => (
         <Handle
-          key={`${recipe.className}-out-${product.item}`}
-          id={`${recipe.className}-out-${product.item}`}
+          key={`handle-${i}`}
+          id={`handle-${i}`}
           type="source"
           className="item-handle"
           position={Position.Bottom}

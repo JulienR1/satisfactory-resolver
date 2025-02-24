@@ -1,5 +1,5 @@
 import { icons, Item, recipes } from "@/resources";
-import { Handle, Position, useEdges, useReactFlow } from "@xyflow/react";
+import { getIncomers, getOutgoers, Handle, Position, useEdges, useReactFlow } from "@xyflow/react";
 import { ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem } from "@/components/ui/context-menu";
 import { CommandDialog, Command, CommandGroup, CommandList, CommandInput, CommandItem } from "@/components/ui/command";
 import { ArrowBigDown, ArrowBigUp, Check, ChefHat, PenLine, Trash, X } from "lucide-react";
@@ -9,11 +9,21 @@ import { cn } from "@/lib/utils";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import { DEBUG } from "@/lib/debug";
 
-type ItemNodeProps = { data: { item: Item } & Production };
+type ItemNodeProps = {
+  id: string;
+  positionAbsoluteX: number;
+  positionAbsoluteY: number;
+  data: { item: Item } & Production;
+};
 
 const epsilon = 1e-6;
 
-export function ItemNode({ data: { item, production } }: ItemNodeProps) {
+export function ItemNode({
+  id,
+  positionAbsoluteX: x,
+  positionAbsoluteY: y,
+  data: { item, production },
+}: ItemNodeProps) {
   const flow = useReactFlow<Node, Edge>();
   const edges = useEdges<Edge>();
 
@@ -54,6 +64,28 @@ export function ItemNode({ data: { item, production } }: ItemNodeProps) {
   useEffect(() => {
     flow.updateNode(item.className, { deletable: edgeCount === 0 });
   }, [flow, item.className, edgeCount]);
+
+  useEffect(() => {
+    const n = flow.getNodes();
+    const e = flow.getEdges();
+
+    const incomingRecipes = getIncomers({ id }, n, e).filter((n) => n.type === "recipe");
+    const outgoingRecipes = getOutgoers({ id }, n, e).filter((n) => n.type === "recipe");
+
+    for (const recipeNode of incomingRecipes) {
+      getOutgoers(recipeNode, n, e)
+        .sort((a, b) => a.position.x - b.position.x)
+        .map((neighbor) => `${recipeNode.id}-${neighbor.id}`)
+        .forEach((edge, i) => flow.updateEdgeData(edge, { handleIndex: i }));
+    }
+
+    for (const recipeNode of outgoingRecipes) {
+      getIncomers(recipeNode, n, e)
+        .sort((a, b) => a.position.x - b.position.x)
+        .map((neighbor) => `${neighbor.id}-${recipeNode.id}`)
+        .forEach((edge, i) => flow.updateEdgeData(edge, { handleIndex: i }));
+    }
+  }, [id, flow, edges.length, x, y]);
 
   return (
     <>

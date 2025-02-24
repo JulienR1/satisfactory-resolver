@@ -15,13 +15,15 @@ type Factory = { nodes: FactoryNode[]; edges: FactoryEdge[] };
 
 function saveFactory(nodes: Node[], edges: Edge[], name: string) {
   const contents: Factory = {
-    nodes: nodes.map(({ id, position, type = "item", data }) => ({
-      id,
-      type,
-      x: position.x,
-      y: position.y,
-      ...(data.production.requested > 0 && data.production.isManual ? { requested: data.production.requested } : {}),
-    })),
+    nodes: nodes
+      .sort((a, b) => a.position.x - b.position.x)
+      .map(({ id, position, type = "item", data }) => ({
+        id,
+        type,
+        x: position.x,
+        y: position.y,
+        ...(data.production.requested > 0 && data.production.isManual ? { requested: data.production.requested } : {}),
+      })),
     edges: edges.map(({ source, target, data }) => ({
       source,
       target,
@@ -63,6 +65,7 @@ async function loadFactory(): Promise<{
       ({
         ...n,
         position: { x, y },
+        origin: [0.5, 0],
         data: {
           ...(n.type === "item"
             ? { item: items[n.id as ItemDescriptor] }
@@ -77,26 +80,26 @@ async function loadFactory(): Promise<{
   );
 
   let edges: Edge[] = [];
+  const handleIndices: Record<string, number> = {};
   for (const { source, target, ...e } of factory.edges) {
-    const edge = {
-      source,
-      target,
-      type: "rate",
-      targetHandle: "",
-      sourceHandle: "",
-    };
-    if (Object.keys(items).some((item) => target === item)) {
-      edge.targetHandle = "input";
-      edge.sourceHandle = `${source}-out-${target}`;
-    } else {
-      edge.targetHandle = `${target}-in-${source}`;
-      edge.sourceHandle = "output";
-    }
+    const indexKey =
+      nodes.find((n) => (n.id === source || n.id === target) && n.type === "recipe")!.id === source
+        ? `${source}-src`
+        : `${target}-target`;
+    handleIndices[indexKey] ??= 0;
 
-    edges = addEdge<Edge>(edge, edges);
-    if (e.midpoint) {
-      edges[edges.length - 1].data = { midpoint: e.midpoint };
-    }
+    edges = addEdge<Edge>(
+      {
+        id: `${source}-${target}`,
+        source,
+        target,
+        type: "rate",
+        data: { handleIndex: handleIndices[indexKey], midpoint: e.midpoint },
+      },
+      edges,
+    );
+
+    handleIndices[indexKey]++;
   }
 
   return { nodes, edges };

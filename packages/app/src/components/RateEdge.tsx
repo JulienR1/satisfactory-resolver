@@ -1,21 +1,33 @@
 import { getSpline } from "@/lib/bezier";
 import { BaseEdge, EdgeLabelRenderer, getBezierPath, useReactFlow, XYPosition } from "@xyflow/react";
 import { useCallback, useRef, useEffect } from "react";
+import { Node, Edge } from "./../lib/constants";
 
 type RateEdgeProps = {
   id: string;
+  source: string;
+  target: string;
   sourceY: number;
   sourceX: number;
   targetX: number;
   targetY: number;
-  data?: { rate: number; midpoint?: XYPosition };
+  data?: { rate: number; midpoint?: XYPosition; handleIndex?: number };
 };
 
-export function RateEdge({ id, sourceX, sourceY, targetX, targetY, data }: RateEdgeProps) {
-  const flow = useReactFlow();
+export function RateEdge({ id, source, target, sourceY, sourceX, targetX, targetY, data }: RateEdgeProps) {
+  const flow = useReactFlow<Node, Edge>();
   const activeRef = useRef(false);
 
-  const [path, labelX, labelY] = getBezierPath({ sourceX, sourceY, targetX, targetY });
+  const params = { sourceX, sourceY, targetX, targetY };
+  const type = flow.getNode(source)!.type === "recipe" ? "source" : "target";
+
+  const recipe = flow.getInternalNode(type === "source" ? source : target)!;
+  const handles = recipe.internals.handleBounds?.[type];
+  const handle = handles?.[data?.handleIndex ?? 0] ?? { type, x: 0, y: 0, width: 0, height: 0 };
+  params[`${type}X`] = handle.x + recipe.internals.positionAbsolute.x + handle.width / 2;
+  params[`${type}Y`] = handle.y + recipe.internals.positionAbsolute.y + handle.height / 2;
+
+  const [path, labelX, labelY] = getBezierPath(params);
 
   const labelPosition = data?.midpoint ?? { x: labelX, y: labelY };
   const manualPath = getSpline([{ x: sourceX, y: sourceY }, labelPosition, { x: targetX, y: targetY }]);

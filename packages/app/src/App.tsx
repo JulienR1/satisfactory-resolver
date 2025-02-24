@@ -89,30 +89,30 @@ function App() {
         });
       }
 
-      for (const { item } of recipe.ingredients) {
+      for (const [i, { item }] of recipe.ingredients.entries()) {
         setEdges((e) =>
           addEdge(
             {
+              id: `${item}-${recipe.className}`,
               source: item,
               target: recipe.className,
-              sourceHandle: "output",
-              targetHandle: `${recipe.className}-in-${item}`,
               type: "rate",
+              data: { handleIndex: i },
             },
             e,
           ),
         );
       }
 
-      for (const { item } of recipe.products) {
+      for (const [i, { item }] of recipe.products.entries()) {
         setEdges((e) =>
           addEdge(
             {
+              id: `${recipe.className}-${item}`,
               target: item,
               source: recipe.className,
-              sourceHandle: `${recipe.className}-out-${item}`,
-              targetHandle: "input",
               type: "rate",
+              data: { handleIndex: i },
             },
             e,
           ),
