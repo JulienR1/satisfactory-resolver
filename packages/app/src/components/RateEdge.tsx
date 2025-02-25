@@ -30,7 +30,11 @@ export function RateEdge({ id, source, target, sourceY, sourceX, targetX, target
   const [path, labelX, labelY] = getBezierPath(params);
 
   const labelPosition = data?.midpoint ?? { x: labelX, y: labelY };
-  const manualPath = getSpline([{ x: sourceX, y: sourceY }, labelPosition, { x: targetX, y: targetY }]);
+  const manualPath = getSpline([
+    { x: params.sourceX, y: params.sourceY },
+    labelPosition,
+    { x: params.targetX, y: params.targetY },
+  ]);
 
   const handleMouseDown = useCallback(() => (activeRef.current = true), []);
   const handleMouseUp = useCallback(() => (activeRef.current = false), []);
