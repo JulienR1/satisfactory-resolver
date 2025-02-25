@@ -10,6 +10,7 @@ import {
   ContextMenuItem,
 } from "./ui/context-menu";
 import { Locate, ShieldMinus, ShieldPlus } from "lucide-react";
+import { throttle } from "@/lib/utils";
 
 type RateEdgeProps = {
   id: string;
@@ -50,8 +51,14 @@ export function RateEdge({ id, source, target, sourceY, sourceX, targetX, target
   const handleMouseMove = useCallback(
     (e: { clientX: number; clientY: number }) => {
       if (activeRef.current) {
-        const position = flow.screenToFlowPosition({ x: e.clientX, y: e.clientY });
-        flow.updateEdgeData(id, (edge) => ({ ...edge, midpoint: position }));
+        throttle(
+          "rate-edge-mouse-move",
+          function () {
+            const position = flow.screenToFlowPosition({ x: e.clientX, y: e.clientY });
+            flow.updateEdgeData(id, (edge) => ({ ...edge, midpoint: position }));
+          },
+          25,
+        );
       }
     },
     [flow, id],
