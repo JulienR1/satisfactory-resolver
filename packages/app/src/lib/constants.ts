@@ -14,5 +14,7 @@ export const EDGE_TYPES = { rate: RateEdge } satisfies EdgeTypes;
 export type Production = {
   production: { available: number; requested: number; isManual?: boolean };
 };
-export type Node = _Node<{ item: Item } & Production, "item"> | _Node<{ recipe: Recipe } & Production, "recipe">;
+export type Node =
+  | _Node<{ item: Item } & Production, "item">
+  | _Node<{ recipe: Recipe; priority?: boolean } & Production, "recipe">;
 export type Edge = _Edge<{ midpoint?: XYPosition; handleIndex?: number }, keyof typeof EDGE_TYPES>;

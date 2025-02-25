@@ -1,17 +1,18 @@
 import { icons, ItemDescriptor, Recipe } from "@/resources";
-import { Handle, Position, useReactFlow } from "@xyflow/react";
+import { getIncomers, getOutgoers, Handle, Position, useNodes, useReactFlow } from "@xyflow/react";
 import { Command, CommandDialog, CommandGroup, CommandItem, CommandList } from "./ui/command";
 import { RecipeShowcase } from "./RecipeShowcase";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "./ui/context-menu";
-import { ListCollapse, Trash } from "lucide-react";
+import { ListCollapse, Star, Trash } from "lucide-react";
 import { Production } from "@/lib/constants";
 import { DEBUG } from "@/lib/debug";
 
-type RecipeNodeProps = { data: { recipe: Recipe } & Production };
+type RecipeNodeProps = { id: string; data: { recipe: Recipe; priority?: boolean } & Production };
 
-export function RecipeNode({ data: { recipe, production } }: RecipeNodeProps) {
+export function RecipeNode({ id, data: { recipe, production, priority } }: RecipeNodeProps) {
   const flow = useReactFlow();
+  const nodes = useNodes();
 
   const [showDetails, setShowDetails] = useState(false);
   const machine = recipe.producedIn[0] as ItemDescriptor;
@@ -35,6 +36,19 @@ export function RecipeNode({ data: { recipe, production } }: RecipeNodeProps) {
       flow.updateEdgeData(edge.id, { rate: production.requested * product.amount });
     }
   }, [flow, recipe, production.requested, production.available]);
+
+  const canBePrioritized = useMemo(() => {
+    const edges = flow.getEdges();
+    const products = getOutgoers({ id }, nodes, edges);
+    return products.some((product) => getIncomers(product, nodes, edges).length > 1);
+  }, [id, flow, nodes]);
+
+  const markAsPriority = useCallback(() => {
+    const edges = flow.getEdges();
+    const products = getOutgoers({ id }, nodes, edges);
+    const recipeIds = new Set(products.flatMap((p) => getIncomers(p, nodes, edges).map(({ id }) => id)));
+    recipeIds.forEach((recipeId) => flow.updateNodeData(recipeId, { priority: recipeId === id }));
+  }, [id, flow, nodes]);
 
   return (
     <>
@@ -89,6 +103,12 @@ export function RecipeNode({ data: { recipe, production } }: RecipeNodeProps) {
             <Trash size="16" />
             <span>Remove</span>
           </ContextMenuItem>
+          {
+            <ContextMenuItem className="gap-2" onSelect={markAsPriority} disabled={!canBePrioritized || priority}>
+              <Star size="16" />
+              <span>{priority ? "Marked as priority" : "Mark as priority"}</span>
+            </ContextMenuItem>
+          }
         </ContextMenuContent>
       </ContextMenu>
 
