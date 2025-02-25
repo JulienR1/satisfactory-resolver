@@ -37,7 +37,7 @@ export function calculateRates(graph: Graph): Node[] {
   while (queue.length > 0) {
     const node = nodes[queue.shift()!];
 
-    for (const predecessor of predecessors(node.id)) {
+    for (const predecessor of predecessors(node.id).sort((a) => (a.type === "recipe" && a.data.priority ? -1 : 0))) {
       orders[predecessor.id]--;
       if (orders[predecessor.id] === 0) {
         queue.push(predecessor.id);
@@ -59,7 +59,7 @@ export function calculateRates(graph: Graph): Node[] {
         }
       }
 
-      for (const predecessor of predecessors(node.id)) {
+      for (const predecessor of predecessors(node.id).sort((a) => (a.type === "recipe" && a.data.priority ? -1 : 0))) {
         for (const neighbor of successors(predecessor.id)) {
           if (neighbor.id !== node.id && node.data.production.requested > 0 && adjacencyList[neighbor.id].length > 0) {
             orders[predecessor.id]--;

@@ -9,6 +9,7 @@ type FactoryNode = {
   x: number;
   y: number;
   requested?: number;
+  priority?: boolean;
 };
 type FactoryEdge = { source: string; target: string; midpoint?: XYPosition };
 type Factory = { nodes: FactoryNode[]; edges: FactoryEdge[] };
@@ -23,6 +24,7 @@ function saveFactory(nodes: Node[], edges: Edge[], name: string) {
         x: position.x,
         y: position.y,
         ...(data.production.requested > 0 && data.production.isManual ? { requested: data.production.requested } : {}),
+        ...("priority" in data && data.priority ? { priority: true } : {}),
       })),
     edges: edges.map(({ source, target, data }) => ({
       source,
@@ -75,6 +77,7 @@ async function loadFactory(): Promise<{
             isManual: (n.requested ?? 0) > 0,
             available: 0,
           },
+          ...(n.priority ? { priority: true } : {}),
         },
       }) as Node,
   );

@@ -19,6 +19,7 @@ function asNodes(
     data: {
       [node.type]: { ...(node.data ?? {}), className: node.id },
       production: { requested: node.requested ?? 0, available: 0 },
+      priority: false,
     },
   }));
 }
@@ -167,5 +168,93 @@ describe("rates", function () {
     expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 110, available: 88 });
     expect(p(rates, "Desc_DissolvedSilica_C")).toMatchObject({ requested: 132, available: 0 });
     expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 55, available: 0 });
+  });
+
+  test("item priority selection - iron ingots", function () {
+    const nodes = asNodes([
+      {
+        id: "Recipe_IngotIron_C",
+        type: "recipe",
+        data: {
+          ingredients: [{ item: "Desc_OreIron_C", amount: 1 }],
+          products: [{ item: "Desc_IronIngot_C", amount: 1 }],
+        },
+      },
+      {
+        id: "Recipe_Alternate_IronIngot_Basic_C",
+        type: "recipe",
+        data: {
+          ingredients: [
+            { item: "Desc_OreIron_C", amount: 5 },
+            { item: "Desc_Stone_C", amount: 8 },
+          ],
+          products: [{ item: "Desc_IronIngot_C", amount: 10 }],
+        },
+      },
+      {
+        id: "Recipe_Alternate_PureIronIngot_C",
+        type: "recipe",
+        data: {
+          ingredients: [
+            { item: "Desc_OreIron_C", amount: 7 },
+            { item: "Desc_Water_C", amount: 4 },
+          ],
+          products: [{ item: "Desc_IronIngot_C", amount: 13 }],
+        },
+      },
+      { id: "Desc_Stone_C", type: "item" },
+      { id: "Desc_OreIron_C", type: "item" },
+      { id: "Desc_Water_C", type: "item" },
+      { id: "Desc_IronIngot_C", type: "item", requested: 130 },
+    ]);
+
+    const edges = asEdges([
+      { source: "Desc_OreIron_C", target: "Recipe_IngotIron_C" },
+      { source: "Recipe_IngotIron_C", target: "Desc_IronIngot_C" },
+      { source: "Desc_OreIron_C", target: "Recipe_Alternate_IronIngot_Basic_C" },
+      { source: "Desc_Stone_C", target: "Recipe_Alternate_IronIngot_Basic_C" },
+      { source: "Recipe_Alternate_IronIngot_Basic_C", target: "Desc_IronIngot_C" },
+      { source: "Desc_OreIron_C", target: "Recipe_Alternate_PureIronIngot_C" },
+      { source: "Desc_Water_C", target: "Recipe_Alternate_PureIronIngot_C" },
+      { source: "Recipe_Alternate_PureIronIngot_C", target: "Desc_IronIngot_C" },
+    ]);
+
+    const p = production<typeof nodes>;
+
+    nodes.find((n) => n.id === "Recipe_IngotIron_C")!.data.priority = true;
+    let rates = calculateRates({ nodes: nodes as Node[], edges });
+    nodes.find((n) => n.id === "Recipe_IngotIron_C")!.data.priority = false;
+
+    expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 0, available: 0 });
+    expect(p(rates, "Recipe_Alternate_IronIngot_Basic_C")).toMatchObject({ requested: 0, available: 0 });
+    expect(p(rates, "Desc_OreIron_C")).toMatchObject({ requested: 130, available: 0 });
+    expect(p(rates, "Recipe_IngotIron_C")).toMatchObject({ requested: 130, available: 0 });
+    expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 0, available: 0 });
+    expect(p(rates, "Recipe_Alternate_PureIronIngot_C")).toMatchObject({ requested: 0, available: 0 });
+    expect(p(rates, "Desc_IronIngot_C")).toMatchObject({ requested: 130, available: 130, isManual: true });
+
+    nodes.find((n) => n.id === "Recipe_Alternate_IronIngot_Basic_C")!.data.priority = true;
+    rates = calculateRates({ nodes: nodes as Node[], edges });
+    nodes.find((n) => n.id === "Recipe_Alternate_IronIngot_Basic_C")!.data.priority = false;
+
+    expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 104, available: 0 });
+    expect(p(rates, "Recipe_Alternate_IronIngot_Basic_C")).toMatchObject({ requested: 13, available: 0 });
+    expect(p(rates, "Desc_OreIron_C")).toMatchObject({ requested: 65, available: 0 });
+    expect(p(rates, "Recipe_IngotIron_C")).toMatchObject({ requested: 0, available: 0 });
+    expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 0, available: 0 });
+    expect(p(rates, "Recipe_Alternate_PureIronIngot_C")).toMatchObject({ requested: 0, available: 0 });
+    expect(p(rates, "Desc_IronIngot_C")).toMatchObject({ requested: 130, available: 130, isManual: true });
+
+    nodes.find((n) => n.id === "Recipe_Alternate_PureIronIngot_C")!.data.priority = true;
+    rates = calculateRates({ nodes: nodes as Node[], edges });
+    nodes.find((n) => n.id === "Recipe_Alternate_PureIronIngot_C")!.data.priority = false;
+
+    expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 0, available: 0 });
+    expect(p(rates, "Recipe_Alternate_IronIngot_Basic_C")).toMatchObject({ requested: 0, available: 0 });
+    expect(p(rates, "Desc_OreIron_C")).toMatchObject({ requested: 70, available: 0 });
+    expect(p(rates, "Recipe_IngotIron_C")).toMatchObject({ requested: 0, available: 0 });
+    expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 40, available: 0 });
+    expect(p(rates, "Recipe_Alternate_PureIronIngot_C")).toMatchObject({ requested: 10, available: 0 });
+    expect(p(rates, "Desc_IronIngot_C")).toMatchObject({ requested: 130, available: 130, isManual: true });
   });
 });
