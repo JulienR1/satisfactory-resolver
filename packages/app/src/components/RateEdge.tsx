@@ -45,7 +45,11 @@ export function RateEdge({ id, source, target, sourceY, sourceX, targetX, target
     { x: params.targetX, y: params.targetY },
   ]);
 
-  const handleMouseDown = useCallback(() => (activeRef.current = true), []);
+  const handleMouseDown = useCallback((e: { button: number }) => {
+    if (e.button === 0) {
+      activeRef.current = true;
+    }
+  }, []);
   const handleMouseUp = useCallback(() => (activeRef.current = false), []);
 
   const handleMouseMove = useCallback(
