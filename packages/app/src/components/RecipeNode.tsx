@@ -8,6 +8,7 @@ import { BadgeAlert, BadgeCheck, ListCollapse, Star, Trash } from "lucide-react"
 import { DEBUG } from "@/lib/debug";
 import { Production } from "@/lib/constants";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
+import { cn } from "@/lib/utils";
 
 type RecipeNodeProps = { id: string; data: { recipe: Recipe; priority?: boolean } & Production };
 
@@ -55,6 +56,8 @@ export function RecipeNode({ id, data: { recipe, production, priority } }: Recip
     recipeIds.forEach((recipeId) => flow.updateNodeData(recipeId, { priority: recipeId === id }));
   }, [id, flow, nodes]);
 
+  const opacity = production.requested === 0 ? "60%" : "100%";
+
   return (
     <>
       {recipe.ingredients.map((_, i) => (
@@ -67,6 +70,7 @@ export function RecipeNode({ id, data: { recipe, production, priority } }: Recip
           isConnectable={false}
           style={{
             transform: `translate(${(i - recipe.ingredients.length / 2) * 125}%, -50%)`,
+            opacity,
           }}
         />
       ))}
@@ -81,6 +85,7 @@ export function RecipeNode({ id, data: { recipe, production, priority } }: Recip
           isConnectable={false}
           style={{
             transform: `translate(${(i - recipe.products.length / 2) * 125}%, 50%)`,
+            opacity,
           }}
         />
       ))}
@@ -100,6 +105,7 @@ export function RecipeNode({ id, data: { recipe, production, priority } }: Recip
               <div
                 className="flex gap-2 px-4 py-2 items-center bg-white border border-black rounded"
                 onDoubleClick={() => setShowDetails(true)}
+                style={{ opacity }}
               >
                 {machine && <img className="block w-8 aspect-square" src={icons[machine]} alt={machine} />}
                 <p className="flex items-center gap-2">

@@ -87,6 +87,8 @@ export function ItemNode({
     }
   }, [id, flow, edges.length, x, y]);
 
+  const opacity = production.requested + production.available === 0 ? "60%" : "100%";
+
   return (
     <>
       {isBuildable && (
@@ -97,6 +99,7 @@ export function ItemNode({
           className="item-handle"
           isConnectable
           isConnectableEnd={false}
+          style={{ opacity }}
         />
       )}
       {isIngredient && (
@@ -107,6 +110,7 @@ export function ItemNode({
           className="item-handle"
           isConnectableStart
           isConnectableEnd={false}
+          style={{ opacity }}
         />
       )}
 
@@ -121,6 +125,7 @@ export function ItemNode({
                   production.requested - production.available > epsilon && "border-rose-400 border-3",
                   production.requested - production.available < -epsilon && "border-amber-400 border-3",
                 ])}
+                style={{ opacity }}
               >
                 <img className="block w-8 aspect-square" src={icons[item.className]} alt={item.name} />
                 <p>{item.name}</p>
