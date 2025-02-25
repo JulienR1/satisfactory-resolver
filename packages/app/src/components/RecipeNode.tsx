@@ -4,9 +4,10 @@ import { Command, CommandDialog, CommandGroup, CommandItem, CommandList } from "
 import { RecipeShowcase } from "./RecipeShowcase";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "./ui/context-menu";
-import { ListCollapse, Star, Trash } from "lucide-react";
-import { Production } from "@/lib/constants";
+import { BadgeAlert, BadgeCheck, ListCollapse, Star, Trash } from "lucide-react";
 import { DEBUG } from "@/lib/debug";
+import { Production } from "@/lib/constants";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 
 type RecipeNodeProps = { id: string; data: { recipe: Recipe; priority?: boolean } & Production };
 
@@ -37,10 +38,14 @@ export function RecipeNode({ id, data: { recipe, production, priority } }: Recip
     }
   }, [flow, recipe, production.requested, production.available]);
 
-  const canBePrioritized = useMemo(() => {
+  const { canBePrioritized, shouldBePrioritized } = useMemo(() => {
     const edges = flow.getEdges();
     const products = getOutgoers({ id }, nodes, edges);
-    return products.some((product) => getIncomers(product, nodes, edges).length > 1);
+    const recipeNodes = products.map((p) => getIncomers(p, nodes, edges));
+
+    const canBePrioritized = recipeNodes.some((n) => n.length > 1);
+    const shouldBePrioritized = canBePrioritized && !recipeNodes.flat().some((n) => n.data.priority === true);
+    return { canBePrioritized, shouldBePrioritized };
   }, [id, flow, nodes]);
 
   const markAsPriority = useCallback(() => {
@@ -80,19 +85,46 @@ export function RecipeNode({ id, data: { recipe, production, priority } }: Recip
         />
       ))}
 
+      <span className="absolute right-0 top-0 translate-x-1/3 -translate-y-1/3">
+        {shouldBePrioritized ? (
+          <BadgeAlert className="stroke-red-700 fill-rose-300" size="20" />
+        ) : priority ? (
+          <BadgeCheck className="stroke-green-700 fill-lime-300" size="20" />
+        ) : null}
+      </span>
+
       <ContextMenu>
         <ContextMenuTrigger>
-          <div
-            className="flex gap-2 px-4 py-2 items-center bg-white border border-black rounded"
-            onDoubleClick={() => setShowDetails(true)}
-          >
-            {machine && <img className="block w-8 aspect-square" src={icons[machine]} alt={machine} />}
-            <p className="flex items-center gap-2">
-              <span>{recipe.name}</span>
-              <span className="text-sm">({Math.round(1000 * production.requested) / 1000})</span>
-            </p>
-            {DEBUG && <pre className="text-xs">{JSON.stringify(production, null, 2)}</pre>}
-          </div>
+          <HoverCard>
+            <HoverCardTrigger>
+              <div
+                className="flex gap-2 px-4 py-2 items-center bg-white border border-black rounded"
+                onDoubleClick={() => setShowDetails(true)}
+              >
+                {machine && <img className="block w-8 aspect-square" src={icons[machine]} alt={machine} />}
+                <p className="flex items-center gap-2">
+                  <span>{recipe.name}</span>
+                  <span className="text-sm">({Math.round(1000 * production.requested) / 1000})</span>
+                </p>
+                {DEBUG && <pre className="text-xs">{JSON.stringify(production, null, 2)}</pre>}
+              </div>
+            </HoverCardTrigger>
+            {shouldBePrioritized ? (
+              <HoverCardContent>
+                <p className="flex gap-2 items-center">
+                  <BadgeAlert className="stroke-red-700 fill-rose-300 shrink-0" size="20" />
+                  <span>Cannot define which recipe to prioritize.</span>
+                </p>
+              </HoverCardContent>
+            ) : priority ? (
+              <HoverCardContent>
+                <p className="flex gap-2 items-center">
+                  <BadgeCheck className="stroke-green-700 fill-lime-300 shrink-0" size="20" />
+                  <span>'{recipe.name}' is being prioritized.</span>
+                </p>
+              </HoverCardContent>
+            ) : null}
+          </HoverCard>
         </ContextMenuTrigger>
         <ContextMenuContent>
           <ContextMenuItem className="gap-2" onSelect={() => setShowDetails(true)}>
