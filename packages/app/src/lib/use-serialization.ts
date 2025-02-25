@@ -97,7 +97,7 @@ async function loadFactory(): Promise<{
         source,
         target,
         type: "rate",
-        data: { handleIndex: handleIndices[indexKey], midpoint: e.midpoint },
+        data: { handleIndex: handleIndices[indexKey], midpoint: e.midpoint, rate: 0 },
       },
       edges,
     );

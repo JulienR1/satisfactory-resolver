@@ -20,6 +20,6 @@ export type Node =
   | _Node<{ recipe: Recipe; priority?: boolean } & Production, "recipe">;
 
 export type Edge = _Edge<
-  { midpoint?: XYPosition; handleIndex?: number; consumeOverflow?: boolean },
+  { midpoint?: XYPosition; handleIndex?: number; consumeOverflow?: boolean; rate: number },
   keyof typeof EDGE_TYPES
 >;
