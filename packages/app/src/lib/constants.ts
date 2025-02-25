@@ -18,4 +18,8 @@ export type Production = {
 export type Node =
   | _Node<{ item: Item } & Production, "item">
   | _Node<{ recipe: Recipe; priority?: boolean } & Production, "recipe">;
-export type Edge = _Edge<{ midpoint?: XYPosition; handleIndex?: number }, keyof typeof EDGE_TYPES>;
+
+export type Edge = _Edge<
+  { midpoint?: XYPosition; handleIndex?: number; consumeOverflow?: boolean },
+  keyof typeof EDGE_TYPES
+>;

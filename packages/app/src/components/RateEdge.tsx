@@ -2,6 +2,14 @@ import { getSpline } from "@/lib/bezier";
 import { BaseEdge, EdgeLabelRenderer, getBezierPath, useReactFlow, XYPosition } from "@xyflow/react";
 import { useCallback, useRef, useEffect } from "react";
 import { Node, Edge } from "./../lib/constants";
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuTrigger,
+  ContextMenuGroup,
+  ContextMenuItem,
+} from "./ui/context-menu";
+import { ShieldMinus, ShieldPlus } from "lucide-react";
 
 type RateEdgeProps = {
   id: string;
@@ -11,7 +19,7 @@ type RateEdgeProps = {
   sourceX: number;
   targetX: number;
   targetY: number;
-  data?: { rate: number; midpoint?: XYPosition; handleIndex?: number };
+  data?: { rate: number; midpoint?: XYPosition; handleIndex?: number; consumeOverflow?: boolean };
 };
 
 export function RateEdge({ id, source, target, sourceY, sourceX, targetX, targetY, data }: RateEdgeProps) {
@@ -54,6 +62,10 @@ export function RateEdge({ id, source, target, sourceY, sourceX, targetX, target
     flow.updateEdgeData(id, (edge) => ({ ...edge, midpoint: undefined }));
   }, [flow, id]);
 
+  const handleOverflowToggle = useCallback(() => {
+    flow.updateEdgeData(id, (prev) => ({ consumeOverflow: !prev.data?.consumeOverflow }));
+  }, [id, flow]);
+
   useEffect(() => {
     document.addEventListener("mouseup", handleMouseUp);
     document.addEventListener("mousemove", handleMouseMove);
@@ -65,21 +77,52 @@ export function RateEdge({ id, source, target, sourceY, sourceX, targetX, target
 
   return (
     <>
-      <BaseEdge id={id + "-a"} path={data?.midpoint ? manualPath : path} />
+      <BaseEdge
+        id={id + "-a"}
+        path={data?.midpoint ? manualPath : path}
+        style={{ strokeWidth: data?.consumeOverflow ? 2 : 1 }}
+      />
       {typeof data?.rate === "number" && (
         <EdgeLabelRenderer>
-          <p
-            onMouseDown={handleMouseDown}
-            onDoubleClick={handleResetDrag}
-            className="nopan bg-white px-2 py-1 border border-slate-300 rounded-sm"
-            style={{
-              position: "absolute",
-              transform: `translate(-50%, -50%) translate(${labelPosition.x}px, ${labelPosition.y}px)`,
-              pointerEvents: "all",
-            }}
-          >
-            <span>{Math.round(data.rate * 1000) / 1000}</span>
-          </p>
+          <ContextMenu>
+            <ContextMenuTrigger>
+              <p
+                onMouseDown={handleMouseDown}
+                onDoubleClick={handleResetDrag}
+                className="nopan bg-white px-2 py-1 border border-slate-300 rounded-sm"
+                style={{
+                  position: "absolute",
+                  transform: `translate(-50%, -50%) translate(${labelPosition.x}px, ${labelPosition.y}px)`,
+                  pointerEvents: "all",
+                }}
+              >
+                <span>{Math.round(data.rate * 1000) / 1000}</span>
+                {data?.consumeOverflow && (
+                  <ShieldPlus
+                    size="16"
+                    className="absolute top-0 right-0 translate-x-1/2 fill-white -translate-y-1/3 stroke-indigo-800"
+                  />
+                )}
+              </p>
+            </ContextMenuTrigger>
+            <ContextMenuContent>
+              <ContextMenuGroup>
+                <ContextMenuItem className="flex items-center gap-2" onSelect={handleOverflowToggle}>
+                  {data?.consumeOverflow ? (
+                    <>
+                      <ShieldMinus size="20" />
+                      <span>Release overflow</span>
+                    </>
+                  ) : (
+                    <>
+                      <ShieldPlus size="20" />
+                      <span>Consume overflow</span>
+                    </>
+                  )}
+                </ContextMenuItem>
+              </ContextMenuGroup>
+            </ContextMenuContent>
+          </ContextMenu>
         </EdgeLabelRenderer>
       )}
     </>
