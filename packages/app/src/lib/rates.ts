@@ -35,6 +35,9 @@ export function calculateRates(graph: Graph): Node[] {
     .map(([nodeId]) => nodeId);
 
   while (queue.length > 0) {
+    queue.sort((a, b) =>
+      nodes[a].type !== nodes[b].type ? 0 : nodes[a].type === "recipe" && nodes[a].data.priority ? -1 : 0,
+    );
     const node = nodes[queue.shift()!];
 
     for (const predecessor of predecessors(node.id).sort((a) => (a.type === "recipe" && a.data.priority ? -1 : 0))) {

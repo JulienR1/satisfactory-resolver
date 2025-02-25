@@ -257,4 +257,129 @@ describe("rates", function () {
     expect(p(rates, "Recipe_Alternate_PureIronIngot_C")).toMatchObject({ requested: 10, available: 0 });
     expect(p(rates, "Desc_IronIngot_C")).toMatchObject({ requested: 130, available: 130, isManual: true });
   });
+
+  describe("recipe selection w/ item loop", function () {
+    const getNodes = () =>
+      asNodes([
+        {
+          id: "Recipe_Alternate_Silica_Distilled_C",
+          type: "recipe",
+          data: {
+            ingredients: [
+              { item: "Desc_DissolvedSilica_C", amount: 12 },
+              { item: "Desc_Stone_C", amount: 5 },
+              { item: "Desc_Water_C", amount: 10 },
+            ],
+            products: [
+              { item: "Desc_Silica_C", amount: 27 },
+              { item: "Desc_Water_C", amount: 8 },
+            ],
+          },
+        },
+        {
+          id: "Recipe_AluminaSolution_C",
+          type: "recipe",
+          data: {
+            ingredients: [
+              { item: "Desc_OreBauxite_C", amount: 12 },
+              { item: "Desc_Water_C", amount: 18 },
+            ],
+            products: [
+              { item: "Desc_AluminaSolution_C", amount: 12 },
+              { item: "Desc_Silica_C", amount: 5 },
+            ],
+          },
+        },
+        { id: "Desc_Stone_C", type: "item" },
+        { id: "Desc_Silica_C", type: "item" },
+        { id: "Desc_DissolvedSilica_C", type: "item" },
+        { id: "Desc_Water_C", type: "item" },
+        { id: "Desc_AluminaSolution_C", type: "item" },
+        { id: "Desc_OreBauxite_C", type: "item" },
+      ]);
+
+    const edges = asEdges([
+      { source: "Desc_OreBauxite_C", target: "Recipe_AluminaSolution_C" },
+      { source: "Desc_Water_C", target: "Recipe_AluminaSolution_C" },
+      { source: "Recipe_AluminaSolution_C", target: "Desc_AluminaSolution_C" },
+      { source: "Recipe_AluminaSolution_C", target: "Desc_Silica_C" },
+      { source: "Desc_DissolvedSilica_C", target: "Recipe_Alternate_Silica_Distilled_C" },
+      { source: "Desc_Stone_C", target: "Recipe_Alternate_Silica_Distilled_C" },
+      { source: "Desc_Water_C", target: "Recipe_Alternate_Silica_Distilled_C" },
+      { source: "Recipe_Alternate_Silica_Distilled_C", target: "Desc_Silica_C" },
+      { source: "Recipe_Alternate_Silica_Distilled_C", target: "Desc_Water_C" },
+    ]);
+
+    const p = production<ReturnType<typeof getNodes>>;
+
+    test("request silica w/ priority", function () {
+      const nodes = getNodes();
+      nodes.find((n) => n.id === "Desc_Silica_C")!.data.production.requested = 135;
+      nodes.find((n) => n.id === "Recipe_Alternate_Silica_Distilled_C")!.data.priority = true;
+
+      const rates = calculateRates({ nodes: nodes as Node[], edges });
+
+      expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 25, available: 0 });
+      expect(p(rates, "Desc_DissolvedSilica_C")).toMatchObject({ requested: 60, available: 0 });
+      expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 50, available: 40 });
+      expect(p(rates, "Desc_OreBauxite_C")).toMatchObject({ requested: 0, available: 0 });
+      expect(p(rates, "Recipe_Alternate_Silica_Distilled_C")).toMatchObject({ requested: 5, available: 0 });
+      expect(p(rates, "Recipe_AluminaSolution_C")).toMatchObject({ requested: 0, available: 0 });
+      expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 135, available: 135 });
+      expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 0, available: 0 });
+    });
+
+    test("request silica w/o priority", function () {
+      const nodes = getNodes();
+      nodes.find((n) => n.id === "Desc_Silica_C")!.data.production.requested = 135;
+      nodes.find((n) => n.id === "Recipe_AluminaSolution_C")!.data.priority = true;
+
+      const rates = calculateRates({ nodes: nodes as Node[], edges });
+
+      expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 0, available: 0 });
+      expect(p(rates, "Desc_DissolvedSilica_C")).toMatchObject({ requested: 0, available: 0 });
+      expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 486, available: 0 });
+      expect(p(rates, "Desc_OreBauxite_C")).toMatchObject({ requested: 324, available: 0 });
+      expect(p(rates, "Recipe_Alternate_Silica_Distilled_C")).toMatchObject({ requested: 0, available: 0 });
+      expect(p(rates, "Recipe_AluminaSolution_C")).toMatchObject({ requested: 27, available: 0 });
+      expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 135, available: 135, isManual: true });
+      expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 0, available: 324 });
+    });
+
+    test("request silica and solution w/ priority on silica", function () {
+      const nodes = getNodes();
+      nodes.find((n) => n.id === "Desc_Silica_C")!.data.production.requested = 135;
+      nodes.find((n) => n.id === "Desc_AluminaSolution_C")!.data.production.requested = 12;
+      nodes.find((n) => n.id === "Recipe_Alternate_Silica_Distilled_C")!.data.priority = true;
+
+      const rates = calculateRates({ nodes: nodes as Node[], edges });
+
+      expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 25, available: 0 });
+      expect(p(rates, "Desc_DissolvedSilica_C")).toMatchObject({ requested: 60, available: 0 });
+      expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 68, available: 40 });
+      expect(p(rates, "Desc_OreBauxite_C")).toMatchObject({ requested: 12, available: 0 });
+      expect(p(rates, "Recipe_Alternate_Silica_Distilled_C")).toMatchObject({ requested: 5, available: 0 });
+      expect(p(rates, "Recipe_AluminaSolution_C")).toMatchObject({ requested: 1, available: 0 });
+      expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 135, available: 140, isManual: true });
+      expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 12, available: 12 });
+    });
+
+    test("request silica and solution w/o priority on silica", function () {
+      const nodes = getNodes();
+      nodes.find((n) => n.id === "Desc_Silica_C")!.data.production.requested = 135;
+      nodes.find((n) => n.id === "Desc_AluminaSolution_C")!.data.production.requested = 12;
+      nodes.find((n) => n.id === "Recipe_AluminaSolution_C")!.data.priority = true;
+
+      const rates = calculateRates({ nodes: nodes as Node[], edges });
+
+      expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 0, available: 0 });
+      expect(p(rates, "Desc_DissolvedSilica_C")).toMatchObject({ requested: 0, available: 0 });
+      expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 486, available: 0 });
+      expect(p(rates, "Desc_OreBauxite_C")).toMatchObject({ requested: 324, available: 0 });
+      expect(p(rates, "Recipe_Alternate_Silica_Distilled_C")).toMatchObject({ requested: 0, available: 0 });
+      expect(p(rates, "Recipe_AluminaSolution_C")).toMatchObject({ requested: 27, available: 0 });
+      expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 135, available: 135, isManual: true });
+      expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 12, available: 324 });
+    });
+  });
 });
