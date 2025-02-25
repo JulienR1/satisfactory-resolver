@@ -9,7 +9,7 @@ import {
   ContextMenuGroup,
   ContextMenuItem,
 } from "./ui/context-menu";
-import { ShieldMinus, ShieldPlus } from "lucide-react";
+import { Locate, ShieldMinus, ShieldPlus } from "lucide-react";
 
 type RateEdgeProps = {
   id: string;
@@ -119,6 +119,14 @@ export function RateEdge({ id, source, target, sourceY, sourceX, targetX, target
                       <span>Consume overflow</span>
                     </>
                   )}
+                </ContextMenuItem>
+                <ContextMenuItem
+                  className="flex items-center gap-2"
+                  onSelect={handleResetDrag}
+                  disabled={!data.midpoint}
+                >
+                  <Locate size="20" />
+                  <span>Reset handle position</span>
                 </ContextMenuItem>
               </ContextMenuGroup>
             </ContextMenuContent>
