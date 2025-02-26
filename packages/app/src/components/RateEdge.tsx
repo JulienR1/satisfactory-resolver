@@ -11,6 +11,7 @@ import {
 } from "./ui/context-menu";
 import { Locate, ShieldMinus, ShieldPlus } from "lucide-react";
 import { throttle } from "@/lib/utils";
+import { useStore } from "@/lib/store";
 
 type RateEdgeProps = {
   id: string;
@@ -24,6 +25,7 @@ type RateEdgeProps = {
 };
 
 export function RateEdge({ id, source, target, sourceY, sourceX, targetX, targetY, data }: RateEdgeProps) {
+  const { calculateRates } = useStore();
   const flow = useReactFlow<Node, Edge>();
   const activeRef = useRef(false);
 
@@ -79,7 +81,8 @@ export function RateEdge({ id, source, target, sourceY, sourceX, targetX, target
     if (canBeOverflowed) {
       flow.updateEdgeData(id, (prev) => ({ consumeOverflow: !prev.data?.consumeOverflow }));
     }
-  }, [id, flow, canBeOverflowed]);
+    setTimeout(calculateRates);
+  }, [id, flow, canBeOverflowed, calculateRates]);
 
   useEffect(() => {
     document.addEventListener("mouseup", handleMouseUp);

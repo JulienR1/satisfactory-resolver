@@ -8,10 +8,12 @@ import { BadgeAlert, BadgeCheck, ListCollapse, Star, Trash } from "lucide-react"
 import { DEBUG } from "@/lib/debug";
 import { Production } from "@/lib/constants";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
+import { useStore } from "@/lib/store";
 
 type RecipeNodeProps = { id: string; data: { recipe: Recipe; priority?: boolean } & Production };
 
 export function RecipeNode({ id, data: { recipe, production, priority } }: RecipeNodeProps) {
+  const { calculateRates } = useStore();
   const flow = useReactFlow();
   const nodes = useNodes();
 
@@ -53,7 +55,8 @@ export function RecipeNode({ id, data: { recipe, production, priority } }: Recip
     const products = getOutgoers({ id }, nodes, edges);
     const recipeIds = new Set(products.flatMap((p) => getIncomers(p, nodes, edges).map(({ id }) => id)));
     recipeIds.forEach((recipeId) => flow.updateNodeData(recipeId, { priority: recipeId === id }));
-  }, [id, flow, nodes]);
+    setTimeout(calculateRates);
+  }, [id, flow, nodes, calculateRates]);
 
   const opacity = production.requested === 0 ? "60%" : "100%";
 

@@ -8,6 +8,7 @@ import { Node, Edge, Production } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import { DEBUG } from "@/lib/debug";
+import { useStore } from "@/lib/store";
 
 type ItemNodeProps = {
   id: string;
@@ -24,6 +25,7 @@ export function ItemNode({
   positionAbsoluteY: y,
   data: { item, production },
 }: ItemNodeProps) {
+  const { calculateRates } = useStore();
   const flow = useReactFlow<Node, Edge>();
   const edges = useEdges<Edge>();
 
@@ -58,8 +60,8 @@ export function ItemNode({
     flow.updateNodeData(item.className, (n) => ({
       production: { ...n.data.production, isManual: requestedAmount > 0, requested: requestedAmount },
     }));
-    // TODO: propagate event through graph to recalculate
-  }, [flow, item.className, requestedAmount]);
+    setTimeout(calculateRates);
+  }, [flow, item.className, requestedAmount, calculateRates]);
 
   useEffect(() => {
     flow.updateNode(item.className, { deletable: edgeCount === 0 });

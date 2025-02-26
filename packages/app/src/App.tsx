@@ -20,14 +20,15 @@ import { Item, ItemDescriptor, items, Recipe } from "./resources";
 import { filterRecipes } from "./lib/recipes";
 import { calculateRates } from "./lib/rates";
 import { EDGE_TYPES, NODE_TYPES, Node, Edge } from "./lib/constants";
-
-const SOME_RANDOM_VALUE = Math.random();
+import { useStore } from "./lib/store";
 
 type NewNode = Omit<Node, "data"> & { data: Omit<Node["data"], "production"> };
 
 let nextNodePosition: XYPosition = { x: 0, y: 0 };
 
 function App() {
+  const { setCalculateRates } = useStore();
+
   const flow = useReactFlow<Node, Edge>();
   const { getState } = useStoreApi();
   const [nodes, setNodes, handleNodesChange] = useNodesState([] as Node[]);
@@ -142,19 +143,12 @@ function App() {
   );
 
   const updateRates = useCallback(() => {
-    const graph = {
-      nodes: flow.getNodes(),
-      edges: flow.getEdges(),
-    };
-    const rates = calculateRates(graph);
-    // TODO: something with the results :)
-    setNodes(rates);
+    const graph = { nodes: flow.getNodes(), edges: flow.getEdges() };
+    setNodes(calculateRates(graph));
   }, [flow, setNodes]);
 
-  useEffect(() => {
-    updateRates();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nodes.length, edges.length, SOME_RANDOM_VALUE]);
+  useEffect(() => setCalculateRates(updateRates), [setCalculateRates, updateRates]);
+  useEffect(updateRates, [updateRates, nodes.length, edges.length]);
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
