@@ -8,7 +8,6 @@ import { BadgeAlert, BadgeCheck, ListCollapse, Star, Trash } from "lucide-react"
 import { DEBUG } from "@/lib/debug";
 import { Production } from "@/lib/constants";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
-import { cn } from "@/lib/utils";
 
 type RecipeNodeProps = { id: string; data: { recipe: Recipe; priority?: boolean } & Production };
 
