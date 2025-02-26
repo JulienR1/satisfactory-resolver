@@ -56,7 +56,7 @@ export function ItemNode({
   const handleRequestCount = useCallback(() => {
     setShowRequestInput(false);
     flow.updateNodeData(item.className, (n) => ({
-      production: { ...n.data.production, requested: requestedAmount },
+      production: { ...n.data.production, isManual: requestedAmount > 0, requested: requestedAmount },
     }));
     // TODO: propagate event through graph to recalculate
   }, [flow, item.className, requestedAmount]);

@@ -22,11 +22,10 @@ export function calculateRates(graph: Graph): Node[] {
   );
 
   for (const node of Object.values(nodes)) {
-    const isManual = orders[node.id] === 0;
     node.data.production = {
-      isManual,
       available: 0,
-      requested: isManual ? node.data.production.requested : 0,
+      isManual: node.data.production.isManual,
+      requested: node.data.production.isManual ? node.data.production.requested : 0,
     };
   }
 
@@ -48,7 +47,7 @@ export function calculateRates(graph: Graph): Node[] {
     }
 
     if (node.type === "item") {
-      if (!node.data.production.isManual) {
+      if (adjacencyList[node.id].length > 0) {
         for (const successsor of successors(node.id)) {
           assert(successsor.type === "recipe", `item ('${node.id}') successor is not a recipe ('${successsor.id}')`);
 
@@ -98,6 +97,55 @@ export function calculateRates(graph: Graph): Node[] {
       }
     } else {
       throw Error("unknown node type: '" + node.type + "'.");
+    }
+  }
+
+  const overflowedNodes = graph.edges
+    .filter((e) => e.data?.consumeOverflow)
+    .map((e) => ({ source: nodes[e.source], target: nodes[e.target] }))
+    .filter(({ source }) => source.data.production.available > source.data.production.requested);
+
+  for (const { source, target } of overflowedNodes) {
+    source.data.production.requested = source.data.production.available;
+
+    const overflowQueue = [target];
+    while (overflowQueue.length > 0) {
+      const node = overflowQueue.shift()!;
+
+      if (node.type === "item") {
+        if (node.id === source.id) {
+          continue;
+        }
+
+        // TODO: finish this feature at some point, it is not working for many layers at this point
+      } else if (node.type === "recipe") {
+        // should probably not be nested loops
+        let drivingItem: Node | undefined = undefined;
+        const items = node.data.recipe.ingredients.concat(node.data.recipe.products);
+
+        for (const item of items) {
+          const currentItemAmount = item.amount * node.data.production.requested;
+          drivingItem = predecessors(node.id).find(
+            (p) => p.data.production.requested !== currentItemAmount && p.id === item.item,
+          );
+          if (drivingItem) {
+            const missingFromOverflow = drivingItem.data.production.requested - currentItemAmount;
+            node.data.production.requested += missingFromOverflow / item.amount;
+            break;
+          }
+        }
+
+        if (drivingItem) {
+          for (const item of items) {
+            if (item.item === drivingItem.id) {
+              continue;
+            }
+
+            const key = node.data.recipe.ingredients.includes(item) ? "requested" : "available";
+            nodes[item.item].data.production[key] += item.amount * node.data.production.requested;
+          }
+        }
+      }
     }
   }
 

@@ -1,12 +1,13 @@
 import { describe, expect, test } from "vitest";
 import { calculateRates } from "./rates";
-import { Node } from "./constants";
+import { Edge, Node } from "./constants";
 
 function asNodes(
   partials: Array<{
     id: string;
     type: "recipe" | "item";
     requested?: number;
+    isManual?: boolean;
     data?: {
       ingredients: Array<{ item: string; amount: number }>;
       products: Array<{ item: string; amount: number }>;
@@ -18,14 +19,14 @@ function asNodes(
     position: { x: 0, y: 0 },
     data: {
       [node.type]: { ...(node.data ?? {}), className: node.id },
-      production: { requested: node.requested ?? 0, available: 0 },
+      production: { requested: node.requested ?? 0, available: 0, isManual: (node.requested ?? 0) > 0 },
       priority: false,
     },
   }));
 }
 
-function asEdges(partials: Array<{ source: string; target: string }>) {
-  return partials.map((edge, id) => ({ ...edge, id: id.toString() }));
+function asEdges(partials: Array<{ source: string; target: string; data?: { consumeOverflow?: boolean } }>) {
+  return partials.map((edge, id) => ({ ...edge, id: id.toString() }) as Edge);
 }
 
 function production<N extends Array<{ id: string }>>(rates: Node[], id: N[number]["id"]) {
@@ -314,7 +315,9 @@ describe("rates", function () {
 
     test("request silica w/ priority", function () {
       const nodes = getNodes();
-      nodes.find((n) => n.id === "Desc_Silica_C")!.data.production.requested = 135;
+      const silica = nodes.find((n) => n.id === "Desc_Silica_C")!;
+      silica.data.production.requested = 135;
+      silica.data.production.isManual = true;
       nodes.find((n) => n.id === "Recipe_Alternate_Silica_Distilled_C")!.data.priority = true;
 
       const rates = calculateRates({ nodes: nodes as Node[], edges });
@@ -331,7 +334,9 @@ describe("rates", function () {
 
     test("request silica w/o priority", function () {
       const nodes = getNodes();
-      nodes.find((n) => n.id === "Desc_Silica_C")!.data.production.requested = 135;
+      const silica = nodes.find((n) => n.id === "Desc_Silica_C")!;
+      silica.data.production.requested = 135;
+      silica.data.production.isManual = true;
       nodes.find((n) => n.id === "Recipe_AluminaSolution_C")!.data.priority = true;
 
       const rates = calculateRates({ nodes: nodes as Node[], edges });
@@ -348,8 +353,12 @@ describe("rates", function () {
 
     test("request silica and solution w/ priority on silica", function () {
       const nodes = getNodes();
-      nodes.find((n) => n.id === "Desc_Silica_C")!.data.production.requested = 135;
-      nodes.find((n) => n.id === "Desc_AluminaSolution_C")!.data.production.requested = 12;
+      const silica = nodes.find((n) => n.id === "Desc_Silica_C")!;
+      silica.data.production.requested = 135;
+      silica.data.production.isManual = true;
+      const solution = nodes.find((n) => n.id === "Desc_AluminaSolution_C")!;
+      solution.data.production.requested = 12;
+      solution.data.production.isManual = true;
       nodes.find((n) => n.id === "Recipe_Alternate_Silica_Distilled_C")!.data.priority = true;
 
       const rates = calculateRates({ nodes: nodes as Node[], edges });
@@ -366,8 +375,13 @@ describe("rates", function () {
 
     test("request silica and solution w/o priority on silica", function () {
       const nodes = getNodes();
-      nodes.find((n) => n.id === "Desc_Silica_C")!.data.production.requested = 135;
-      nodes.find((n) => n.id === "Desc_AluminaSolution_C")!.data.production.requested = 12;
+
+      const silica = nodes.find((n) => n.id === "Desc_Silica_C")!;
+      silica.data.production.requested = 135;
+      silica.data.production.isManual = true;
+      const solution = nodes.find((n) => n.id === "Desc_AluminaSolution_C")!;
+      solution.data.production.requested = 12;
+      solution.data.production.isManual = true;
       nodes.find((n) => n.id === "Recipe_AluminaSolution_C")!.data.priority = true;
 
       const rates = calculateRates({ nodes: nodes as Node[], edges });
@@ -381,5 +395,63 @@ describe("rates", function () {
       expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 135, available: 135, isManual: true });
       expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 12, available: 324 });
     });
+  });
+
+  test("overflow resources into side tree", function () {
+    const nodes = asNodes([
+      {
+        id: "Recipe_AluminaSolution_C",
+        type: "recipe",
+        data: {
+          ingredients: [
+            { item: "Desc_OreBauxite_C", amount: 12 },
+            { item: "Desc_Water_C", amount: 18 },
+          ],
+          products: [
+            { item: "Desc_AluminaSolution_C", amount: 12 },
+            { item: "Desc_Silica_C", amount: 5 },
+          ],
+        },
+      },
+      {
+        id: "Recipe_Alternate_Concrete_C",
+        type: "recipe",
+        data: {
+          ingredients: [
+            { item: "Desc_Silica_C", amount: 3 },
+            { item: "Desc_Stone_C", amount: 12 },
+          ],
+          products: [{ item: "Desc_Cement_C", amount: 10 }],
+        },
+      },
+      { id: "Desc_AluminaSolution_C", type: "item", requested: 36 },
+      { id: "Desc_OreBauxite_C", type: "item" },
+      { id: "Desc_Water_C", type: "item" },
+      { id: "Desc_Silica_C", type: "item" },
+      { id: "Desc_Cement_C", type: "item" },
+      { id: "Desc_Stone_C", type: "item" },
+    ]);
+
+    const edges = asEdges([
+      { source: "Desc_OreBauxite_C", target: "Recipe_AluminaSolution_C" },
+      { source: "Desc_Water_C", target: "Recipe_AluminaSolution_C" },
+      { source: "Recipe_AluminaSolution_C", target: "Desc_AluminaSolution_C" },
+      { source: "Recipe_AluminaSolution_C", target: "Desc_Silica_C" },
+      { source: "Desc_Silica_C", target: "Recipe_Alternate_Concrete_C", data: { consumeOverflow: true } },
+      { source: "Desc_Stone_C", target: "Recipe_Alternate_Concrete_C" },
+      { source: "Recipe_Alternate_Concrete_C", target: "Desc_Cement_C" },
+    ]);
+
+    const rates = calculateRates({ nodes: nodes as Node[], edges });
+
+    const p = production<typeof nodes>;
+    expect(p(rates, "Desc_OreBauxite_C")).toMatchObject({ requested: 36, available: 0 });
+    expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 54, available: 0 });
+    expect(p(rates, "Recipe_AluminaSolution_C")).toMatchObject({ requested: 3, available: 0 });
+    expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 36, available: 36, isManual: true });
+    expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 15, available: 15 });
+    expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 60, available: 0 });
+    expect(p(rates, "Recipe_Alternate_Concrete_C")).toMatchObject({ requested: 5, available: 0 });
+    expect(p(rates, "Desc_Cement_C")).toMatchObject({ requested: 0, available: 50, isManual: false });
   });
 });

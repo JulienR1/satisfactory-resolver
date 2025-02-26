@@ -1,6 +1,6 @@
 import { getSpline } from "@/lib/bezier";
 import { BaseEdge, EdgeLabelRenderer, getBezierPath, useReactFlow, XYPosition } from "@xyflow/react";
-import { useCallback, useRef, useEffect } from "react";
+import { useCallback, useRef, useEffect, useMemo } from "react";
 import { Node, Edge } from "./../lib/constants";
 import {
   ContextMenu,
@@ -73,9 +73,13 @@ export function RateEdge({ id, source, target, sourceY, sourceX, targetX, target
     flow.updateEdgeData(id, (edge) => ({ ...edge, midpoint: undefined }));
   }, [flow, id]);
 
+  const canBeOverflowed = useMemo(() => flow.getNode(target)?.type === "recipe", [flow, target]);
+
   const handleOverflowToggle = useCallback(() => {
-    flow.updateEdgeData(id, (prev) => ({ consumeOverflow: !prev.data?.consumeOverflow }));
-  }, [id, flow]);
+    if (canBeOverflowed) {
+      flow.updateEdgeData(id, (prev) => ({ consumeOverflow: !prev.data?.consumeOverflow }));
+    }
+  }, [id, flow, canBeOverflowed]);
 
   useEffect(() => {
     document.addEventListener("mouseup", handleMouseUp);
@@ -85,6 +89,9 @@ export function RateEdge({ id, source, target, sourceY, sourceX, targetX, target
       document.removeEventListener("mouseup", handleMouseMove);
     };
   }, [handleMouseUp, handleMouseMove]);
+
+  const sourceNode = flow.getNode(source)!;
+  const overflowRate = sourceNode.data.production.available - sourceNode.data.production.requested;
 
   return (
     <>
@@ -118,7 +125,11 @@ export function RateEdge({ id, source, target, sourceY, sourceX, targetX, target
             </ContextMenuTrigger>
             <ContextMenuContent>
               <ContextMenuGroup>
-                <ContextMenuItem className="flex items-center gap-2" onSelect={handleOverflowToggle}>
+                <ContextMenuItem
+                  className="flex items-center gap-2"
+                  onSelect={handleOverflowToggle}
+                  disabled={!canBeOverflowed || (overflowRate <= 0 && !data.consumeOverflow)}
+                >
                   {data?.consumeOverflow ? (
                     <>
                       <ShieldMinus size="20" />
@@ -128,6 +139,7 @@ export function RateEdge({ id, source, target, sourceY, sourceX, targetX, target
                     <>
                       <ShieldPlus size="20" />
                       <span>Consume overflow</span>
+                      {overflowRate > 0 && <span className="text-xs">({overflowRate}/min)</span>}
                     </>
                   )}
                 </ContextMenuItem>
