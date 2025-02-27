@@ -9,6 +9,7 @@ function asNodes(
     requested?: number;
     isManual?: boolean;
     data?: {
+      duration: number;
       ingredients: Array<{ item: string; amount: number }>;
       products: Array<{ item: string; amount: number }>;
     };
@@ -40,6 +41,7 @@ describe("rates", function () {
         id: "Recipe_Wire_C",
         type: "recipe",
         data: {
+          duration: 4,
           ingredients: [{ item: "Desc_CopperIngot_C", amount: 1 }],
           products: [{ item: "Desc_Wire_C", amount: 2 }],
         },
@@ -48,13 +50,14 @@ describe("rates", function () {
         id: "Recipe_Cable_C",
         type: "recipe",
         data: {
+          duration: 2,
           ingredients: [{ item: "Desc_Wire_C", amount: 2 }],
           products: [{ item: "Desc_Cable_C", amount: 1 }],
         },
       },
       { id: "Desc_CopperIngot_C", type: "item" },
       { id: "Desc_Wire_C", type: "item" },
-      { id: "Desc_Cable_C", type: "item", requested: 100 },
+      { id: "Desc_Cable_C", type: "item", requested: 120 },
     ]);
 
     const edges = asEdges([
@@ -67,11 +70,11 @@ describe("rates", function () {
     const rates = calculateRates({ nodes: nodes as Node[], edges });
 
     const p = production<typeof nodes>;
-    expect(p(rates, "Desc_CopperIngot_C")).toMatchObject({ requested: 100, available: 0 });
-    expect(p(rates, "Recipe_Wire_C")).toMatchObject({ requested: 100, available: 0 });
-    expect(p(rates, "Desc_Wire_C")).toMatchObject({ requested: 200, available: 200 });
-    expect(p(rates, "Recipe_Cable_C")).toMatchObject({ requested: 100, available: 0 });
-    expect(p(rates, "Desc_Cable_C")).toMatchObject({ requested: 100, available: 100, isManual: true });
+    expect(p(rates, "Desc_CopperIngot_C")).toMatchObject({ requested: 120, available: 0 });
+    expect(p(rates, "Recipe_Wire_C")).toMatchObject({ requested: 8, available: 0 });
+    expect(p(rates, "Desc_Wire_C")).toMatchObject({ requested: 240, available: 240 });
+    expect(p(rates, "Recipe_Cable_C")).toMatchObject({ requested: 4, available: 0 });
+    expect(p(rates, "Desc_Cable_C")).toMatchObject({ requested: 120, available: 120, isManual: true });
   });
 
   test("wire split into 2 branches", function () {
@@ -80,6 +83,7 @@ describe("rates", function () {
         id: "Recipe_Wire_C",
         type: "recipe",
         data: {
+          duration: 4,
           ingredients: [{ item: "Desc_CopperIngot_C", amount: 1 }],
           products: [{ item: "Desc_Wire_C", amount: 2 }],
         },
@@ -87,12 +91,17 @@ describe("rates", function () {
       {
         id: "Recipe_Cable_C",
         type: "recipe",
-        data: { ingredients: [{ item: "Desc_Wire_C", amount: 2 }], products: [{ item: "Desc_Cable_C", amount: 1 }] },
+        data: {
+          duration: 2,
+          ingredients: [{ item: "Desc_Wire_C", amount: 2 }],
+          products: [{ item: "Desc_Cable_C", amount: 1 }],
+        },
       },
       {
         id: "Recipe_Stator_C",
         type: "recipe",
         data: {
+          duration: 12,
           ingredients: [
             { item: "Desc_Wire_C", amount: 8 },
             { item: "Desc_SteelPipe_C", amount: 3 },
@@ -102,9 +111,9 @@ describe("rates", function () {
       },
       { id: "Desc_CopperIngot_C", type: "item" },
       { id: "Desc_Wire_C", type: "item" },
-      { id: "Desc_Cable_C", type: "item", requested: 100 },
+      { id: "Desc_Cable_C", type: "item", requested: 90 },
       { id: "Desc_SteelPipe_C", type: "item" },
-      { id: "Desc_Stator_C", type: "item", requested: 5 },
+      { id: "Desc_Stator_C", type: "item", requested: 15 },
     ]);
 
     const edges = asEdges([
@@ -120,14 +129,14 @@ describe("rates", function () {
     const rates = calculateRates({ nodes: nodes as Node[], edges });
 
     const p = production<typeof nodes>;
-    expect(p(rates, "Desc_CopperIngot_C")).toMatchObject({ requested: 120, available: 0 });
-    expect(p(rates, "Recipe_Wire_C")).toMatchObject({ requested: 120, available: 0 });
-    expect(p(rates, "Desc_Wire_C")).toMatchObject({ requested: 240, available: 240 });
-    expect(p(rates, "Desc_SteelPipe_C")).toMatchObject({ requested: 15, available: 0 });
-    expect(p(rates, "Recipe_Stator_C")).toMatchObject({ requested: 5, available: 0 });
-    expect(p(rates, "Recipe_Cable_C")).toMatchObject({ requested: 100, available: 0 });
-    expect(p(rates, "Desc_Stator_C")).toMatchObject({ requested: 5, available: 5, isManual: true });
-    expect(p(rates, "Desc_Cable_C")).toMatchObject({ requested: 100, available: 100, isManual: true });
+    expect(p(rates, "Desc_CopperIngot_C")).toMatchObject({ requested: 150, available: 0 });
+    expect(p(rates, "Recipe_Wire_C")).toMatchObject({ requested: 10, available: 0 });
+    expect(p(rates, "Desc_Wire_C")).toMatchObject({ requested: 300, available: 300 });
+    expect(p(rates, "Desc_SteelPipe_C")).toMatchObject({ requested: 45, available: 0 });
+    expect(p(rates, "Recipe_Stator_C")).toMatchObject({ requested: 3, available: 0 });
+    expect(p(rates, "Recipe_Cable_C")).toMatchObject({ requested: 3, available: 0 });
+    expect(p(rates, "Desc_Stator_C")).toMatchObject({ requested: 15, available: 15, isManual: true });
+    expect(p(rates, "Desc_Cable_C")).toMatchObject({ requested: 90, available: 90, isManual: true });
   });
 
   test("silica water loop", function () {
@@ -136,6 +145,7 @@ describe("rates", function () {
         id: "Recipe_Alternate_Silica_Distilled_C",
         type: "recipe",
         data: {
+          duration: 6,
           ingredients: [
             { item: "Desc_DissolvedSilica_C", amount: 12 },
             { item: "Desc_Stone_C", amount: 5 },
@@ -147,7 +157,7 @@ describe("rates", function () {
           ],
         },
       },
-      { id: "Desc_Silica_C", type: "item", requested: 297 },
+      { id: "Desc_Silica_C", type: "item", requested: 540 },
       { id: "Desc_DissolvedSilica_C", type: "item" },
       { id: "Desc_Stone_C", type: "item" },
       { id: "Desc_Water_C", type: "item" },
@@ -164,11 +174,11 @@ describe("rates", function () {
     const rates = calculateRates({ nodes: nodes as Node[], edges });
 
     const p = production<typeof nodes>;
-    expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 297, available: 297, isManual: true });
-    expect(p(rates, "Recipe_Alternate_Silica_Distilled_C")).toMatchObject({ requested: 11, available: 0 });
-    expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 110, available: 88 });
-    expect(p(rates, "Desc_DissolvedSilica_C")).toMatchObject({ requested: 132, available: 0 });
-    expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 55, available: 0 });
+    expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 540, available: 540, isManual: true });
+    expect(p(rates, "Recipe_Alternate_Silica_Distilled_C")).toMatchObject({ requested: 2, available: 0 });
+    expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 200, available: 160 });
+    expect(p(rates, "Desc_DissolvedSilica_C")).toMatchObject({ requested: 240, available: 0 });
+    expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 100, available: 0 });
   });
 
   test("item priority selection - iron ingots", function () {
@@ -177,6 +187,7 @@ describe("rates", function () {
         id: "Recipe_IngotIron_C",
         type: "recipe",
         data: {
+          duration: 2,
           ingredients: [{ item: "Desc_OreIron_C", amount: 1 }],
           products: [{ item: "Desc_IronIngot_C", amount: 1 }],
         },
@@ -185,6 +196,7 @@ describe("rates", function () {
         id: "Recipe_Alternate_IronIngot_Basic_C",
         type: "recipe",
         data: {
+          duration: 12,
           ingredients: [
             { item: "Desc_OreIron_C", amount: 5 },
             { item: "Desc_Stone_C", amount: 8 },
@@ -196,6 +208,7 @@ describe("rates", function () {
         id: "Recipe_Alternate_PureIronIngot_C",
         type: "recipe",
         data: {
+          duration: 12,
           ingredients: [
             { item: "Desc_OreIron_C", amount: 7 },
             { item: "Desc_Water_C", amount: 4 },
@@ -206,7 +219,7 @@ describe("rates", function () {
       { id: "Desc_Stone_C", type: "item" },
       { id: "Desc_OreIron_C", type: "item" },
       { id: "Desc_Water_C", type: "item" },
-      { id: "Desc_IronIngot_C", type: "item", requested: 130 },
+      { id: "Desc_IronIngot_C", type: "item", requested: 1950 },
     ]);
 
     const edges = asEdges([
@@ -228,23 +241,23 @@ describe("rates", function () {
 
     expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 0, available: 0 });
     expect(p(rates, "Recipe_Alternate_IronIngot_Basic_C")).toMatchObject({ requested: 0, available: 0 });
-    expect(p(rates, "Desc_OreIron_C")).toMatchObject({ requested: 130, available: 0 });
-    expect(p(rates, "Recipe_IngotIron_C")).toMatchObject({ requested: 130, available: 0 });
+    expect(p(rates, "Desc_OreIron_C")).toMatchObject({ requested: 1950, available: 0 });
+    expect(p(rates, "Recipe_IngotIron_C")).toMatchObject({ requested: 65, available: 0 });
     expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 0, available: 0 });
     expect(p(rates, "Recipe_Alternate_PureIronIngot_C")).toMatchObject({ requested: 0, available: 0 });
-    expect(p(rates, "Desc_IronIngot_C")).toMatchObject({ requested: 130, available: 130, isManual: true });
+    expect(p(rates, "Desc_IronIngot_C")).toMatchObject({ requested: 1950, available: 1950, isManual: true });
 
     nodes.find((n) => n.id === "Recipe_Alternate_IronIngot_Basic_C")!.data.priority = true;
     rates = calculateRates({ nodes: nodes as Node[], edges });
     nodes.find((n) => n.id === "Recipe_Alternate_IronIngot_Basic_C")!.data.priority = false;
 
-    expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 104, available: 0 });
-    expect(p(rates, "Recipe_Alternate_IronIngot_Basic_C")).toMatchObject({ requested: 13, available: 0 });
-    expect(p(rates, "Desc_OreIron_C")).toMatchObject({ requested: 65, available: 0 });
+    expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 1560, available: 0 });
+    expect(p(rates, "Recipe_Alternate_IronIngot_Basic_C")).toMatchObject({ requested: 39, available: 0 });
+    expect(p(rates, "Desc_OreIron_C")).toMatchObject({ requested: 975, available: 0 });
     expect(p(rates, "Recipe_IngotIron_C")).toMatchObject({ requested: 0, available: 0 });
     expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 0, available: 0 });
     expect(p(rates, "Recipe_Alternate_PureIronIngot_C")).toMatchObject({ requested: 0, available: 0 });
-    expect(p(rates, "Desc_IronIngot_C")).toMatchObject({ requested: 130, available: 130, isManual: true });
+    expect(p(rates, "Desc_IronIngot_C")).toMatchObject({ requested: 1950, available: 1950, isManual: true });
 
     nodes.find((n) => n.id === "Recipe_Alternate_PureIronIngot_C")!.data.priority = true;
     rates = calculateRates({ nodes: nodes as Node[], edges });
@@ -252,11 +265,11 @@ describe("rates", function () {
 
     expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 0, available: 0 });
     expect(p(rates, "Recipe_Alternate_IronIngot_Basic_C")).toMatchObject({ requested: 0, available: 0 });
-    expect(p(rates, "Desc_OreIron_C")).toMatchObject({ requested: 70, available: 0 });
+    expect(p(rates, "Desc_OreIron_C")).toMatchObject({ requested: 1050, available: 0 });
     expect(p(rates, "Recipe_IngotIron_C")).toMatchObject({ requested: 0, available: 0 });
-    expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 40, available: 0 });
-    expect(p(rates, "Recipe_Alternate_PureIronIngot_C")).toMatchObject({ requested: 10, available: 0 });
-    expect(p(rates, "Desc_IronIngot_C")).toMatchObject({ requested: 130, available: 130, isManual: true });
+    expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 600, available: 0 });
+    expect(p(rates, "Recipe_Alternate_PureIronIngot_C")).toMatchObject({ requested: 30, available: 0 });
+    expect(p(rates, "Desc_IronIngot_C")).toMatchObject({ requested: 1950, available: 1950, isManual: true });
   });
 
   describe("recipe selection w/ item loop", function () {
@@ -266,6 +279,7 @@ describe("rates", function () {
           id: "Recipe_Alternate_Silica_Distilled_C",
           type: "recipe",
           data: {
+            duration: 6,
             ingredients: [
               { item: "Desc_DissolvedSilica_C", amount: 12 },
               { item: "Desc_Stone_C", amount: 5 },
@@ -281,6 +295,7 @@ describe("rates", function () {
           id: "Recipe_AluminaSolution_C",
           type: "recipe",
           data: {
+            duration: 6,
             ingredients: [
               { item: "Desc_OreBauxite_C", amount: 12 },
               { item: "Desc_Water_C", amount: 18 },
@@ -326,7 +341,7 @@ describe("rates", function () {
       expect(p(rates, "Desc_DissolvedSilica_C")).toMatchObject({ requested: 60, available: 0 });
       expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 50, available: 40 });
       expect(p(rates, "Desc_OreBauxite_C")).toMatchObject({ requested: 0, available: 0 });
-      expect(p(rates, "Recipe_Alternate_Silica_Distilled_C")).toMatchObject({ requested: 5, available: 0 });
+      expect(p(rates, "Recipe_Alternate_Silica_Distilled_C")).toMatchObject({ requested: 0.5, available: 0 });
       expect(p(rates, "Recipe_AluminaSolution_C")).toMatchObject({ requested: 0, available: 0 });
       expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 135, available: 135 });
       expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 0, available: 0 });
@@ -335,7 +350,7 @@ describe("rates", function () {
     test("request silica w/o priority", function () {
       const nodes = getNodes();
       const silica = nodes.find((n) => n.id === "Desc_Silica_C")!;
-      silica.data.production.requested = 135;
+      silica.data.production.requested = 100;
       silica.data.production.isManual = true;
       nodes.find((n) => n.id === "Recipe_AluminaSolution_C")!.data.priority = true;
 
@@ -343,12 +358,12 @@ describe("rates", function () {
 
       expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 0, available: 0 });
       expect(p(rates, "Desc_DissolvedSilica_C")).toMatchObject({ requested: 0, available: 0 });
-      expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 486, available: 0 });
-      expect(p(rates, "Desc_OreBauxite_C")).toMatchObject({ requested: 324, available: 0 });
+      expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 360, available: 0 });
+      expect(p(rates, "Desc_OreBauxite_C")).toMatchObject({ requested: 240, available: 0 });
       expect(p(rates, "Recipe_Alternate_Silica_Distilled_C")).toMatchObject({ requested: 0, available: 0 });
-      expect(p(rates, "Recipe_AluminaSolution_C")).toMatchObject({ requested: 27, available: 0 });
-      expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 135, available: 135, isManual: true });
-      expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 0, available: 324 });
+      expect(p(rates, "Recipe_AluminaSolution_C")).toMatchObject({ requested: 2, available: 0 });
+      expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 100, available: 100, isManual: true });
+      expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 0, available: 240 });
     });
 
     test("request silica and solution w/ priority on silica", function () {
@@ -357,7 +372,7 @@ describe("rates", function () {
       silica.data.production.requested = 135;
       silica.data.production.isManual = true;
       const solution = nodes.find((n) => n.id === "Desc_AluminaSolution_C")!;
-      solution.data.production.requested = 12;
+      solution.data.production.requested = 120;
       solution.data.production.isManual = true;
       nodes.find((n) => n.id === "Recipe_Alternate_Silica_Distilled_C")!.data.priority = true;
 
@@ -365,22 +380,22 @@ describe("rates", function () {
 
       expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 25, available: 0 });
       expect(p(rates, "Desc_DissolvedSilica_C")).toMatchObject({ requested: 60, available: 0 });
-      expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 68, available: 40 });
-      expect(p(rates, "Desc_OreBauxite_C")).toMatchObject({ requested: 12, available: 0 });
-      expect(p(rates, "Recipe_Alternate_Silica_Distilled_C")).toMatchObject({ requested: 5, available: 0 });
+      expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 230, available: 40 });
+      expect(p(rates, "Desc_OreBauxite_C")).toMatchObject({ requested: 120, available: 0 });
+      expect(p(rates, "Recipe_Alternate_Silica_Distilled_C")).toMatchObject({ requested: 0.5, available: 0 });
       expect(p(rates, "Recipe_AluminaSolution_C")).toMatchObject({ requested: 1, available: 0 });
-      expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 135, available: 140, isManual: true });
-      expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 12, available: 12 });
+      expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 135, available: 185, isManual: true });
+      expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 120, available: 120 });
     });
 
     test("request silica and solution w/o priority on silica", function () {
       const nodes = getNodes();
 
       const silica = nodes.find((n) => n.id === "Desc_Silica_C")!;
-      silica.data.production.requested = 135;
+      silica.data.production.requested = 35;
       silica.data.production.isManual = true;
       const solution = nodes.find((n) => n.id === "Desc_AluminaSolution_C")!;
-      solution.data.production.requested = 12;
+      solution.data.production.requested = 240;
       solution.data.production.isManual = true;
       nodes.find((n) => n.id === "Recipe_AluminaSolution_C")!.data.priority = true;
 
@@ -388,12 +403,12 @@ describe("rates", function () {
 
       expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 0, available: 0 });
       expect(p(rates, "Desc_DissolvedSilica_C")).toMatchObject({ requested: 0, available: 0 });
-      expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 486, available: 0 });
-      expect(p(rates, "Desc_OreBauxite_C")).toMatchObject({ requested: 324, available: 0 });
+      expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 360, available: 0 });
+      expect(p(rates, "Desc_OreBauxite_C")).toMatchObject({ requested: 240, available: 0 });
       expect(p(rates, "Recipe_Alternate_Silica_Distilled_C")).toMatchObject({ requested: 0, available: 0 });
-      expect(p(rates, "Recipe_AluminaSolution_C")).toMatchObject({ requested: 27, available: 0 });
-      expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 135, available: 135, isManual: true });
-      expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 12, available: 324 });
+      expect(p(rates, "Recipe_AluminaSolution_C")).toMatchObject({ requested: 2, available: 0 });
+      expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 35, available: 100, isManual: true });
+      expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 240, available: 240 });
     });
   });
 
@@ -403,6 +418,7 @@ describe("rates", function () {
         id: "Recipe_AluminaSolution_C",
         type: "recipe",
         data: {
+          duration: 6,
           ingredients: [
             { item: "Desc_OreBauxite_C", amount: 12 },
             { item: "Desc_Water_C", amount: 18 },
@@ -417,6 +433,7 @@ describe("rates", function () {
         id: "Recipe_Alternate_Concrete_C",
         type: "recipe",
         data: {
+          duration: 12,
           ingredients: [
             { item: "Desc_Silica_C", amount: 3 },
             { item: "Desc_Stone_C", amount: 12 },
@@ -424,7 +441,7 @@ describe("rates", function () {
           products: [{ item: "Desc_Cement_C", amount: 10 }],
         },
       },
-      { id: "Desc_AluminaSolution_C", type: "item", requested: 36 },
+      { id: "Desc_AluminaSolution_C", type: "item", requested: 90 },
       { id: "Desc_OreBauxite_C", type: "item" },
       { id: "Desc_Water_C", type: "item" },
       { id: "Desc_Silica_C", type: "item" },
@@ -445,13 +462,13 @@ describe("rates", function () {
     const rates = calculateRates({ nodes: nodes as Node[], edges });
 
     const p = production<typeof nodes>;
-    expect(p(rates, "Desc_OreBauxite_C")).toMatchObject({ requested: 36, available: 0 });
-    expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 54, available: 0 });
-    expect(p(rates, "Recipe_AluminaSolution_C")).toMatchObject({ requested: 3, available: 0 });
-    expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 36, available: 36, isManual: true });
-    expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 15, available: 15 });
-    expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 60, available: 0 });
-    expect(p(rates, "Recipe_Alternate_Concrete_C")).toMatchObject({ requested: 5, available: 0 });
-    expect(p(rates, "Desc_Cement_C")).toMatchObject({ requested: 0, available: 50, isManual: false });
+    expect(p(rates, "Desc_OreBauxite_C")).toMatchObject({ requested: 90, available: 0 });
+    expect(p(rates, "Desc_Water_C")).toMatchObject({ requested: 135, available: 0 });
+    expect(p(rates, "Recipe_AluminaSolution_C")).toMatchObject({ requested: 0.75, available: 0 });
+    expect(p(rates, "Desc_AluminaSolution_C")).toMatchObject({ requested: 90, available: 90, isManual: true });
+    expect(p(rates, "Desc_Silica_C")).toMatchObject({ requested: 37.5, available: 37.5 });
+    expect(p(rates, "Desc_Stone_C")).toMatchObject({ requested: 150, available: 0 });
+    expect(p(rates, "Recipe_Alternate_Concrete_C")).toMatchObject({ requested: 2.5, available: 0 });
+    expect(p(rates, "Desc_Cement_C")).toMatchObject({ requested: 0, available: 125.00000000000001, isManual: false });
   });
 });
