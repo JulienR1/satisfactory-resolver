@@ -32,11 +32,11 @@ export function RecipeNode({ id, data: { recipe, production, priority } }: Recip
 
     for (const edge of ingredients) {
       const ingredient = recipe.ingredients.find((ingredient) => ingredient.item === edge.source)!;
-      flow.updateEdgeData(edge.id, { rate: production.requested * ingredient.amount });
+      flow.updateEdgeData(edge.id, { rate: ((production.requested * ingredient.amount) / recipe.duration) * 60 });
     }
     for (const edge of products) {
       const product = recipe.products.find((product) => product.item === edge.target)!;
-      flow.updateEdgeData(edge.id, { rate: production.requested * product.amount });
+      flow.updateEdgeData(edge.id, { rate: ((production.requested * product.amount) / recipe.duration) * 60 });
     }
   }, [flow, recipe, production.requested, production.available]);
 

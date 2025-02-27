@@ -48,16 +48,14 @@ export function calculateRates(graph: Graph): Node[] {
 
     if (node.type === "item") {
       if (adjacencyList[node.id].length > 0) {
-        for (const successsor of successors(node.id)) {
-          assert(successsor.type === "recipe", `item ('${node.id}') successor is not a recipe ('${successsor.id}')`);
+        for (const successor of successors(node.id)) {
+          assert(successor.type === "recipe", `item ('${node.id}') successor is not a recipe ('${successor.id}')`);
 
-          const ingredient = successsor.data.recipe.ingredients.find((ingredient) => ingredient.item === node.id);
-          assert(
-            ingredient !== undefined,
-            `ingredient (${successsor.id}) could not be found in recipe ('${node.id}') `,
-          );
+          const ingredient = successor.data.recipe.ingredients.find((ingredient) => ingredient.item === node.id);
+          assert(ingredient !== undefined, `ingredient (${successor.id}) could not be found in recipe ('${node.id}') `);
 
-          node.data.production.requested += successsor.data.production.requested * ingredient.amount;
+          node.data.production.requested +=
+            ((successor.data.production.requested * ingredient.amount) / successor.data.recipe.duration) * 60;
         }
       }
 
@@ -83,7 +81,10 @@ export function calculateRates(graph: Graph): Node[] {
         );
 
         const { requested, available } = successor.data.production;
-        multiplier = Math.max(Math.max(0, requested - available) / product.amount, multiplier);
+        multiplier = Math.max(
+          ((Math.max(0, requested - available) / product.amount) * node.data.recipe.duration) / 60,
+          multiplier,
+        );
       }
 
       node.data.production.requested += multiplier;
@@ -93,7 +94,8 @@ export function calculateRates(graph: Graph): Node[] {
         const product = node.data.recipe.products.find(
           (p) => successor.type === "item" && p.item === successor.data.item.className,
         )!;
-        successor.data.production.available += node.data.production.requested * product.amount;
+        successor.data.production.available +=
+          ((node.data.production.requested * product.amount) / node.data.recipe.duration) * 60;
       }
     } else {
       throw Error("unknown node type: '" + node.type + "'.");
@@ -129,8 +131,15 @@ export function calculateRates(graph: Graph): Node[] {
             (p) => p.data.production.requested !== currentItemAmount && p.id === item.item,
           );
           if (drivingItem) {
-            const missingFromOverflow = drivingItem.data.production.requested - currentItemAmount;
-            node.data.production.requested += missingFromOverflow / item.amount;
+            const rateInUse = successors(drivingItem.id).reduce((rate, recipe) => {
+              assert(recipe.type === "recipe", "item successor is not a recipe");
+              const ingredient = recipe.data.recipe.ingredients.find((i) => i.item === drivingItem!.id)!;
+              return rate + ((recipe.data.production.requested * ingredient.amount) / recipe.data.recipe.duration) * 60;
+            }, 0);
+
+            const missingFromOverflow = drivingItem.data.production.requested - rateInUse;
+            node.data.production.requested += ((missingFromOverflow / item.amount) * node.data.recipe.duration) / 60;
+
             break;
           }
         }
@@ -142,7 +151,8 @@ export function calculateRates(graph: Graph): Node[] {
             }
 
             const key = node.data.recipe.ingredients.includes(item) ? "requested" : "available";
-            nodes[item.item].data.production[key] += item.amount * node.data.production.requested;
+            nodes[item.item].data.production[key] +=
+              ((item.amount * node.data.production.requested) / node.data.recipe.duration) * 60;
           }
         }
       }
