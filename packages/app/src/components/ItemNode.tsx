@@ -30,7 +30,7 @@ export function ItemNode({
   const edges = useEdges<Edge>();
 
   const [showRequestInput, setShowRequestInput] = useState(false);
-  const [requestedAmount, setRequestedAmount] = useState(production.requested);
+  const [requestedAmountStr, setRequestedAmountStr] = useState(production.requested.toString());
 
   const isBuildable = Object.values(recipes).some((recipe) =>
     recipe.products.some((product) => product.item === item.className),
@@ -57,11 +57,12 @@ export function ItemNode({
 
   const handleRequestCount = useCallback(() => {
     setShowRequestInput(false);
+    const requestedAmount = parseFloat(requestedAmountStr);
     flow.updateNodeData(item.className, (n) => ({
       production: { ...n.data.production, isManual: requestedAmount > 0, requested: requestedAmount },
     }));
     setTimeout(calculateRates);
-  }, [flow, item.className, requestedAmount, calculateRates]);
+  }, [flow, item.className, requestedAmountStr, calculateRates]);
 
   useEffect(() => {
     flow.updateNode(item.className, { deletable: edgeCount === 0 });
@@ -131,7 +132,7 @@ export function ItemNode({
               >
                 <img className="block w-8 aspect-square" src={icons[item.className]} alt={item.name} />
                 <p>{item.name}</p>
-                {requestedAmount > 0 && <p className="text-sm">({requestedAmount})</p>}
+                {parseFloat(requestedAmountStr) > 0 && <p className="text-sm">({parseFloat(requestedAmountStr)})</p>}
                 {DEBUG && <pre className="text-xs">{JSON.stringify(production, null, 2)}</pre>}
               </div>
             </HoverCardTrigger>
@@ -177,8 +178,8 @@ export function ItemNode({
       <CommandDialog open={showRequestInput} onOpenChange={setShowRequestInput}>
         <Command filter={() => 1}>
           <CommandInput
-            value={(requestedAmount || undefined)?.toString()}
-            onInput={(e) => setRequestedAmount(parseInt(e.currentTarget.value))}
+            value={requestedAmountStr}
+            onInput={(e) => setRequestedAmountStr(e.currentTarget.value)}
             placeholder={`Enter the requested amount for '${item.name}'.`}
           />
           <CommandList>
